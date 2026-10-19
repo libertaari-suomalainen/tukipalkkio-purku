@@ -1,0 +1,15 @@
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tukipalkkio-purku"
+version = "2026.10.1"
+description = "Veronmaksajan Tuomioistuin: Yritys- ja järjestötukien (11,5 Mrd EUR) DiD-verovaikutuslaskuri, tukirinkien verkostoanalyysi ja VM Kehysriihi -leikkuri"
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "libertaari-suomalainen" }]
+dependencies = []
+
+[tool.setuptools.packages.find]
+where = ["src"]
