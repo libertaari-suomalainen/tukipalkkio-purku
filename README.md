@@ -1,9 +1,11 @@
 # Veronmaksajan Tuomioistuin (`tukipalkkio-purku` v2.0) — Yritys- ja Järjestötukien (11,5 Mrd €/v) Röntgen & Kehysriihi-Leikkuri
 
-* **Tekijä / Ylläpitäjä:** [`@libertaari-suomalainen`](https://github.com/libertaari-suomalainen)
-* **Lisenssi:** MIT (100 % vapaa avoin lähdekoodi)
-* **Live-selainversio (GitHub Pages):** `https://libertaari-suomalainen.github.io/tukipalkkio-purku/`
-* **Valmis VM Kehysriihi Excel-leikkuri:** [`dist/VM_Tukipalkkio_Leikkuri_2027.xlsx`](dist/VM_Tukipalkkio_Leikkuri_2027.xlsx)
+### 🌐 **[AVAA LIVE-SOVELLUS SELAIMESSA: https://libertaari-suomalainen.github.io/tukipalkkio-purku/](https://libertaari-suomalainen.github.io/tukipalkkio-purku/)**
+
+* **Live-verkkosivu (GitHub Pages):** [https://libertaari-suomalainen.github.io/tukipalkkio-purku/](https://libertaari-suomalainen.github.io/tukipalkkio-purku/)
+* **Valmis VM Kehysriihi Excel-leikkuri (`.xlsx`):** [`dist/VM_Tukipalkkio_Leikkuri_2027.xlsx`](https://github.com/libertaari-suomalainen/tukipalkkio-purku/raw/main/dist/VM_Tukipalkkio_Leikkuri_2027.xlsx)
+* **Sisartyökalu (Julkisten hankintojen 38,7 Mrd €/v sidosyksikkö- ja kartellileikkuri):** [`kartelli-tutka`](https://github.com/libertaari-suomalainen/kartelli-tutka) ([Live-sovellus](https://libertaari-suomalainen.github.io/kartelli-tutka/))
+* **Tekijä / Ylläpitäjä:** [`@libertaari-suomalainen`](https://github.com/libertaari-suomalainen) | **Lisenssi:** MIT (100 % vapaa avoin lähdekoodi)
 
 ---
 
