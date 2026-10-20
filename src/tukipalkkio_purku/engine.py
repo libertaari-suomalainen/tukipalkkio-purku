@@ -1,5 +1,5 @@
 """
-Tukipalkkio-Purku Core Engine v2.0 ("Veronmaksajan Tuomioistuin").
+Tukipalkkio-Purku Core Engine v2.2 ("Veronmaksajan Tuomioistuin").
 Implements four public-subsidy audit algorithms:
   1. Matched-Peer Difference-in-Differences (DiD) Corporate Subsidy Causal ROI Calculator + VM Momentti Compiler
   2. Multi-Registry Entity-Graph Related-Party, c/o Address & Grant-Consultant Ring Detector
@@ -12,7 +12,6 @@ from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Set, Tuple
 
 
-# Official Finnish State Budget (Valtion talousarvio) Momentti Mapping
 AGENCY_TO_VM_MOMENTTI: Dict[str, str] = {
     "Business_Finland": "32.20.40",
     "Business_Finland_Loan": "32.20.83",
@@ -103,9 +102,14 @@ def compute_subsidy_causal_roi(records: List[CorporateGrantCohortRecord]) -> Lis
         evaluated.append({
             "y_tunnus": r.y_tunnus,
             "company_name": r.company_name,
+            "nace_code": r.nace_code,
+            "postal_or_co_address": r.postal_or_co_address,
             "grant_agency": r.grant_agency,
             "vm_momentti": AGENCY_TO_VM_MOMENTTI.get(r.grant_agency, "32.20.40"),
             "subsidy_received_eur": r.subsidy_received_eur,
+            "five_yr_tax_delta_eur": r.five_yr_tax_delta_eur,
+            "recipient_five_yr_tax_delta_eur": r.five_yr_tax_delta_eur,
+            "matched_peer_five_yr_tax_delta_eur": r.matched_peer_five_yr_tax_delta_eur,
             "causal_did_roi": round(net_roi, 2),
             "is_chronic_grant_farmer": is_chronic_farmer,
             "classification": classification,
@@ -123,11 +127,6 @@ def detect_entity_grant_rings(
 ) -> List[Dict[str, object]]:
     """
     Multi-Registry Entity-Resolution Graph Engine (Company <-> Address/c-o <-> Consortium <-> Board).
-    Detects multi-entity grant-farming rings without requiring paid bulk board registries by combining:
-      1. Shared normalized postal / 'c/o' accounting/consultant hub addresses (YTJ open data)
-      2. Shared grant consortium IDs or boilerplate application text stems (BF / Tutkiavustuksia open data)
-      3. Shared board members / beneficial owners (Top-500 shortlist or Sidonnaisuusrekisteri)
-      4. Explicit cluster IDs
     """
     n = len(records)
     if n == 0:
@@ -210,11 +209,20 @@ def detect_entity_grant_rings(
             signals.update(edge_reasons[i])
 
         cluster_tax_ratio = total_tax_delta / total_subsidy if total_subsidy > 0 else 0.0
+        primary_addr = next((m.postal_or_co_address for m in members if m.postal_or_co_address), "Jaettu T&K-konsortio")
+        primary_cluster = next(
+            (m.shared_consultant_or_board_cluster_id for m in members if m.shared_consultant_or_board_cluster_id != "NONE"),
+            f"TUKI-RING-{root_idx + 1:03d}",
+        )
         rings.append({
             "ring_id": f"TUKI-RING-{root_idx + 1:03d}",
+            "ring_signature": primary_cluster,
+            "shared_address_or_agent": primary_addr,
             "entity_count": len(members),
             "y_tunnus_list": [m.y_tunnus for m in members],
+            "member_ytunnus": [m.y_tunnus for m in members],
             "company_names": [m.company_name for m in members],
+            "member_names": [m.company_name for m in members],
             "total_subsidy_eur": round(total_subsidy, 2),
             "total_five_yr_tax_delta_eur": round(total_tax_delta, 2),
             "cluster_tax_to_grant_ratio": round(cluster_tax_ratio, 2),
@@ -249,14 +257,24 @@ def score_ngo_grant_efficiency(ngos: List[NGOGrantRecord]) -> List[Dict[str, obj
             "y_tunnus": n.y_tunnus,
             "ngo_name": n.ngo_name,
             "grant_source": n.grant_source,
+            "primary_ministry": n.grant_source,
             "vm_momentti": AGENCY_TO_VM_MOMENTTI.get(n.grant_source, "33.90.50"),
             "grant_class_code": n.grant_class_code,
+            "grant_type_code": n.grant_class_code,
             "annual_grant_eur": n.annual_grant_eur,
+            "total_revenue_eur": n.total_revenue_eur,
+            "hq_admin_comms_lobbying_spend_eur": n.hq_admin_comms_lobbying_spend_eur,
+            "direct_frontline_aid_spend_eur": n.direct_frontline_aid_spend_eur,
+            "secondary_ministry_grants_eur": n.secondary_ministry_grants_eur,
+            "public_sote_procurement_sales_eur": n.public_sote_procurement_sales_eur,
+            "commercial_sote_revenue_eur": n.public_sote_procurement_sales_eur,
             "overhead_and_lobbying_pct": round(overhead_pct, 1),
+            "non_frontline_overhead_share": round(overhead_pct / 100.0, 3),
             "state_dependency_pct": round(state_dependency_pct, 1),
             "is_multi_source_double_dipper": is_double_dipper,
             "political_board_insiders": list(n.board_politicians_or_insiders),
             "flagged_for_defunding": is_flagged,
+            "classification": "GUILLOTINE_ADMIN_BLOAT" if is_flagged else "FRONTLINE_KEEP",
             "recoverable_cut_eur": round(recoverable_eur, 2),
         })
     return scored
@@ -264,10 +282,7 @@ def score_ngo_grant_efficiency(ngos: List[NGOGrantRecord]) -> List[Dict[str, obj
 
 def compute_subsidy_qoe_ebitda_strip(targets: List[AcquisitionTargetQoERecord]) -> List[Dict[str, object]]:
     """
-    Financial Quality-of-Earnings (QoE) Subsidy Stripper:
-    Strips non-operating government grants ('Other Operating Income'), capitalized grant-funded R&D payroll,
-    and circular related-party margin out of an acquisition target's reported EBITDA, computing the
-    Enterprise Value (EV) overpayment trap for M&A buyers and lenders.
+    Financial Quality-of-Earnings (QoE) Subsidy Stripper.
     """
     reports: List[Dict[str, object]] = []
     for t in targets:
@@ -294,9 +309,12 @@ def compute_subsidy_qoe_ebitda_strip(targets: List[AcquisitionTargetQoERecord]) 
         reports.append({
             "y_tunnus": t.y_tunnus,
             "company_name": t.company_name,
+            "reported_revenue_eur": round(t.reported_revenue_eur, 2),
             "reported_ebitda_eur": round(t.reported_ebitda_eur, 2),
+            "direct_grants_in_other_income_eur": round(t.other_operating_income_grants_eur, 2),
             "subsidy_and_related_party_ebitda_inflation_eur": round(artificial_ebitda_boost, 2),
             "true_subsidy_stripped_core_ebitda_eur": round(true_core_ebitda, 2),
+            "true_standalone_ebitda_eur": round(true_core_ebitda, 2),
             "ebitda_grant_inflation_pct": round(grant_inflation_pct, 1),
             "ev_overpayment_trap_at_headline_multiple_eur": round(ev_overpayment_trap_eur, 2),
             "qoe_verdict": qoe_verdict,
@@ -309,11 +327,13 @@ def summarize_vm_momentti_guillotine(
     ngo_evals: List[Dict[str, object]],
 ) -> Dict[str, float]:
     """
-    Aggregates all recommended corporate and NGO grant cuts by official VM State Budget momentti code.
+    Aggregates all recommended corporate and NGO subsidy cuts by official VM State Budget Momentti code.
     """
     totals: Dict[str, float] = defaultdict(float)
     for c in corporate_evals:
-        totals[str(c["vm_momentti"])] += float(c["recommended_cut_eur"])
+        momentti = str(c["vm_momentti"])
+        totals[momentti] = round(totals[momentti] + float(c["recommended_cut_eur"]), 2)
     for n in ngo_evals:
-        totals[str(n["vm_momentti"])] += float(n["recoverable_cut_eur"])
-    return {k: round(v, 2) for k, v in sorted(totals.items())}
+        momentti = str(n["vm_momentti"])
+        totals[momentti] = round(totals[momentti] + float(n["recoverable_cut_eur"]), 2)
+    return dict(totals)

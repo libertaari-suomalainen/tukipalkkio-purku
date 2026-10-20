@@ -51,7 +51,7 @@ def run_full_build(output_dir: str, live_ytj_enrich: bool = True) -> Dict[str, s
 
     if live_ytj_enrich:
         for b in benchmarks:
-            if not str(b["y_tunnus"]).startswith("NACE-"):
+            if not str(b["y_tunnus"]).startswith("NACE-") and "(" not in str(b["company_name"]):
                 live_meta = fetch_ytj_company_anonymous(str(b["y_tunnus"]), timeout=5.0)
                 if live_meta and live_meta.get("primary_name"):
                     b["company_name"] = str(live_meta["primary_name"])
