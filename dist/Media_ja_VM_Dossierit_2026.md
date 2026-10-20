@@ -1,6 +1,6 @@
-# Veronmaksajan Tuomioistuin 2026 — Turnkey VM Kehysriihi & Media Firestorm Dossiers
+# Suomen Tukiröntgen 2026 — Turnkey VM Kehysriihi & Media Firestorm Dossiers
 
-* **Generated Automatically by:** `Veronmaksajan Tuomioistuin` v2.0 (Avoin Verkosto-Röntgen)
+* **Generated Automatically by:** `Suomen Tukiröntgen / Veronmaksajan Tuomioistuin` v2.1 (Avoin Verkosto-Röntgen)
 * **Data Provenance:** 100% Statutory Public Open Data (`Tutkiavustuksia.fi`, `Business Finland Avoin Data`, `STEA avustukset.stea.fi`, `Verohallinto Yhteisöverotiedot`, `PRH YTJ v3 API`)
 * **Relational Link Method:** Primary-Key Table Join `ON y_tunnus` (Zero agency IT integration, zero login/registration required)
 
