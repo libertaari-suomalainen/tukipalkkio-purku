@@ -16,8 +16,10 @@ from tukipalkkio_purku.engine import (
 )
 from tukipalkkio_purku.ingest import (
     join_grants_taxes_and_ytj_by_ytunnus,
+    load_calibrated_sovereign_dataset,
     normalize_ytunnus,
     parse_verohallinto_tax_csv,
+    validate_ytunnus_checksum,
 )
 
 
@@ -178,6 +180,29 @@ class TestTukipalkkioPurkuEngine(unittest.TestCase):
                 names = zf.namelist()
                 self.assertIn("xl/worksheets/sheet1.xml", names)
                 self.assertIn("xl/worksheets/sheet5.xml", names)
+            with open(artifacts["html"], "r", encoding="utf-8") as f:
+                html_text = f.read()
+            self.assertNotIn("Konkurssiin 2024", html_text)
+            self.assertIn("1 288 virallista avustuspäätöstä", html_text)
+
+    def test_peer_review_ytunnus_checksums_and_classifications(self) -> None:
+        corps, ngos, qoes, benchmarks = load_calibrated_sovereign_dataset()
+        for c in corps:
+            self.assertTrue(validate_ytunnus_checksum(c.y_tunnus), f"Invalid corporate Y-tunnus: {c.y_tunnus}")
+        for n in ngos:
+            self.assertTrue(validate_ytunnus_checksum(n.y_tunnus), f"Invalid NGO Y-tunnus: {n.y_tunnus}")
+        for b in benchmarks:
+            self.assertTrue(validate_ytunnus_checksum(str(b["y_tunnus"])), f"Invalid benchmark Y-tunnus: {b['y_tunnus']}")
+
+        evals = {x["y_tunnus"]: x for x in compute_subsidy_causal_roi(corps)}
+        self.assertEqual(evals["2766860-9"]["classification"], "BLACKLIST_ZOMBIE")  # Infinited Fiber (€0 tax)
+        self.assertEqual(evals["1041090-0"]["classification"], "DEADWEIGHT_CROWD_OUT")  # UPM-Kymmene
+        self.assertEqual(evals["1852302-9"]["classification"], "DEADWEIGHT_CROWD_OUT")  # Neste
+        self.assertEqual(evals["0112038-9"]["classification"], "POSITIVE_EXTERNALITY_KEEP")  # Nokia
+
+        ngo_evals = score_ngo_grant_efficiency(ngos)
+        for ne in ngo_evals:
+            self.assertLessEqual(float(ne["recoverable_cut_eur"]), float(ne["annual_grant_eur"]))
 
 
 if __name__ == "__main__":

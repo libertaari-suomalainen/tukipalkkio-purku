@@ -87,12 +87,12 @@ def compile_vm_kehysriihi_xlsx(
             470000000,
             45.0,
             211500000,
-            "Välilehdet 02 & 03: Infinited Fiber (12,4 M€ tuki -> konkurssi), Spinnova (14,8 M€ -> 0 € veroa), Solar Foods (18,2 M€ -> 0 € veroa), Meyer Turku (54 M€)",
+            "Välilehdet 02 & 03: Infinited Fiber (12,4 M€ tuki -> yt-neuvottelut & 0 € veroa), Spinnova (14,8 M€ -> 0 € veroa), Solar Foods (18,2 M€ -> 0 € veroa), Meyer Turku (54 M€)",
             "Rajataan avustukset vain aidon ulkoisvaikutuksen T&K-hankkeisiin (kuten Nokia, Kempower, ICEYE); katkaistaan 0 € veron tukikonsortiot",
         ],
         [
             "32.20.83",
-            "Laina tutkimus- ja kehittämistoimintaan (Business Finland T&K-pääomalainat)",
+            "Lainat tutkimus- ja innovaatiotoimintaan (Business Finland T&K-lainat)",
             180000000,
             50.0,
             90000000,
@@ -100,10 +100,10 @@ def compile_vm_kehysriihi_xlsx(
             "Lopetetaan anteeksiannettavat vakuudettomat tuotekehityslainat kroonisesti verokielteisille yhtiöille",
         ],
         [
-            "32.30.42",
-            "Yritysten kehittämisavustukset sekä kuljetus- ja merenkulkutuet (ELY & Traficom)",
-            290000000,
-            60.0,
+            "31.20.43 / 32.30.42",
+            "Varustamoiden miehistötuet (LVM 31.20.43) sekä ELY-kehittämisavustukset (TEM 32.30.42)",
+            340000000,
+            51.2,
             174000000,
             "Välilehti 02: Viking Line (115 M€/5v), Tallink Silja (98 M€/5v) ja ELY-kehittämisavustukset (Betolar 6,9 M€ -> 0 € yhteisöveroa)",
             "Lakkautetaan paikallista kilpailua vääristävät ELY-konsulttituet ja karsitaan varustamoiden automaattitukia",
@@ -111,24 +111,24 @@ def compile_vm_kehysriihi_xlsx(
         [
             "33.90.50",
             "Avustukset yhteisöille ja säätiöille terveyden ja sos. hyvinvoinnin edistämiseen (STEA)",
-            380000000,
-            55.0,
+            410000000,
+            51.0,
             209000000,
-            "Välilehdet 04 & 06: KAIKKI 686 STEA-järjestöä 2026 (273 912 000 €), josta tasan 212 203 929 € (77,5 %) on vapaata Ak-yleisavustusta!",
-            "Leikataan Ak-yleisavustusten keskushallintopöhö, tuetut lomajärjestöt (Loma ja Terveys 2,68 M€ + Hyvinvointilomat 2,10 M€) ja sote-tuplalaskuttajat",
+            "Välilehdet 04 & 06: KAIKKI 686 STEA-järjestöä 2026 (273 912 000 € / 1 288 päätöstä), josta 212 203 929 € (77,5 %) on jatkuvaa Ak-toimintatukea!",
+            "Karsitaan jatkuvien Ak/Ay-avustusten hallintopöhö, tuetut lomajärjestöt (Loma ja Terveys 2,68 M€ + Hyvinvointilomat 2,10 M€) ja sote-päällekkäisyydet",
         ],
         [
-            "29.80.50",
-            "Opetus- ja kulttuuriministeriön yleis- ja järjestöavustukset (OKM / Nuoriso / Liikunta)",
+            "29.80.50 / 29.90.50 / 29.91.50",
+            "Opetus- ja kulttuuriministeriön valtakunnalliset katto- ja yleisavustukset (Kulttuuri / Liikunta / Nuoriso)",
             420000000,
             40.0,
             168000000,
-            "Välilehti 04: Katto- ja edunvalvontajärjestöjen (esim. Allianssi ry 1,95 M€/v) yleisavustukset ja monikanavarahoituksen tuplaus",
-            "Poistetaan poliittisten katto- ja lobbausjärjestöjen yleisavustukset; suojataan paikallinen lasten ja nuorten seuratoiminta",
+            "Välilehti 04: Katto- ja edunvalvontajärjestöjen (esim. Allianssi ry 1,95 M€/v momentilta 29.91.50) yleisavustukset ja monikanavarahoitus",
+            "Poistetaan valtakunnallisten katto- ja lobbausjärjestöjen yleisavustukset; suojataan paikallinen lasten ja nuorten seuratoiminta",
         ],
         [
-            "30.10.40_32.60.40",
-            "Kansalliset maa-, teollisuus- ja energiatuet (Sähköistämistuki & energiaveronpalautukset)",
+            "32.20.43 / 32.60.40 / 30.20.40",
+            "Suurteollisuuden sähköistämistuki, energiatuet ja kansalliset säilytystuet",
             1740000000,
             40.0,
             696000000,
@@ -280,16 +280,16 @@ def compile_vm_kehysriihi_xlsx(
             str(q["qoe_verdict"]),
         ])
 
-    # Sheet 6: ALL 686 REAL 2026 STEA ORGANIZATIONS (1,527 Official Decisions = €273,912,000)
+    # Sheet 6: ALL 686 REAL 2026 STEA ORGANIZATIONS (1,288 Funded Decisions out of 1,527 Applications = €273,912,000)
     s6_rows: List[Sequence[CellValue]] = [
         [
             "Sija (2026)",
             "STEA Organisaatio-ID",
             "Järjestön virallinen nimi (STEA 2026 avustusrekisteri)",
             "Myönnetty STEA-avustus 2026 yht. (€)",
-            "Siitä: Rajoittamaton Ak-yleisavustus 2026 (€)",
-            "Siitä: Kohdennettu hanke-/investointiavustus (€)",
-            "Ak-yleisavustuksen osuus (%)",
+            "Siitä: Jatkuva Ak-toiminta-avustus 2026 (€)",
+            "Siitä: Muut avustuslajit Ay/C/B (€)",
+            "Ak-toiminta-avustuksen osuus (%)",
             "Päätösten lkm (2026)",
             "Suurimmat avustuskohteet (2026 virallinen käyttötarkoitus)",
         ]
@@ -315,13 +315,13 @@ def compile_vm_kehysriihi_xlsx(
         s6_rows.append([
             "YHTEENSÄ",
             686,
-            "KAIKKI 686 STEA-JÄRJESTÖÄ YHTEENSÄ (VUODEN 2026 VIRALLINEN AVUSTUSREKISTERI)",
+            "KAIKKI 686 STEA-JÄRJESTÖÄ YHTEENSÄ (VUODEN 2026 VIRALLINEN AVUSTUSREKISTERI — 1 288 PÄÄTÖSTÄ)",
             f"=SUM(D2:D{last_data_row})",
             f"=SUM(E2:E{last_data_row})",
             f"=SUM(F2:F{last_data_row})",
             77.5,
             f"=SUM(H2:H{last_data_row})",
-            "Todistaa kiistattomasti: 273 912 000 € kokopotista tasan 212 203 929 € (77,5 %) on Ak-yleisavustusta",
+            "Todistaa: 273 912 000 € kokopotista tasan 212 203 929 € (77,5 %) on jatkuvaa Ak-toiminta-avustusta ja 61 708 071 € (22,5 %) Ay/C/B-avustusta",
         ])
 
     sheets = [

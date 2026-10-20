@@ -48,7 +48,7 @@ class NGOGrantRecord:
     total_revenue_eur: float
     hq_admin_comms_lobbying_spend_eur: float
     direct_frontline_aid_spend_eur: float
-    grant_class_code: str = "Ak"  # "Ak"/"Ay" = unrestricted general HQ grant, "Ah" = targeted project
+    grant_class_code: str = "Ak"  # "Ak" = continuous operating grant, "Ay" = general grant, "C"/"B" = project/investment
     secondary_ministry_grants_eur: float = 0.0
     public_sote_procurement_sales_eur: float = 0.0
     board_politicians_or_insiders: Tuple[str, ...] = field(default_factory=tuple)
@@ -69,8 +69,9 @@ class AcquisitionTargetQoERecord:
 def compute_subsidy_causal_roi(records: List[CorporateGrantCohortRecord]) -> List[Dict[str, object]]:
     """
     Computes 5-year Difference-in-Differences (DiD) Net Fiscal ROI for each grant recipient
-    relative to its unsubsidized NACE/size peer cohort, classifying zombie & deadweight grants
-    and mapping every recommended euro cut to its exact VM Kehysriihi budget momentti.
+    relative to its unsubsidized NACE/size peer cohort, classifying zero-tax grant targets
+    ('BLACKLIST_ZOMBIE') separately from profitable incumbent deadweight subsidies
+    ('DEADWEIGHT_CROWD_OUT') and mapping every recommended euro cut to its VM budget momentti.
     """
     evaluated: List[Dict[str, object]] = []
     for r in records:
@@ -78,11 +79,15 @@ def compute_subsidy_causal_roi(records: List[CorporateGrantCohortRecord]) -> Lis
         net_roi = causal_tax_gain / r.subsidy_received_eur if r.subsidy_received_eur > 0 else 0.0
         gross_tax_to_grant = r.five_yr_tax_delta_eur / r.subsidy_received_eur if r.subsidy_received_eur > 0 else 0.0
         is_chronic_farmer = r.grant_count_5yr >= 3 and gross_tax_to_grant < 0.25
+        is_zero_or_near_zero_tax = (
+            r.five_yr_tax_delta_eur <= 0.0
+            or (gross_tax_to_grant <= 0.05 and r.five_yr_tax_delta_eur <= 50000.0)
+        )
 
-        if net_roi < 0.0 or is_chronic_farmer:
+        if is_zero_or_near_zero_tax and net_roi < 0.5:
             classification = "BLACKLIST_ZOMBIE"
             cut_pct = 100.0
-        elif net_roi < 0.5:
+        elif net_roi < 0.5 or is_chronic_farmer:
             classification = "DEADWEIGHT_CROWD_OUT"
             cut_pct = 100.0
         elif net_roi < 1.2:
@@ -249,7 +254,7 @@ def score_ngo_grant_efficiency(ngos: List[NGOGrantRecord]) -> List[Dict[str, obj
         is_double_dipper = (n.secondary_ministry_grants_eur > 0.0) or (n.public_sote_procurement_sales_eur > 0.0)
         is_flagged = overhead_pct > 20.0 or state_dependency_pct > 75.0 or is_double_dipper
         recoverable_eur = (
-            n.hq_admin_comms_lobbying_spend_eur + n.secondary_ministry_grants_eur
+            min(n.annual_grant_eur, n.hq_admin_comms_lobbying_spend_eur + n.secondary_ministry_grants_eur)
             if is_flagged
             else 0.0
         )
