@@ -90,66 +90,77 @@ def compile_tuomioistuin_html(
     background: rgba(255, 255, 255, 0.96);
     backdrop-filter: blur(10px);
     border-bottom: 1px solid var(--border);
-    padding: 12px 20px;
+    padding: 10px 20px;
   }}
   .topbar-inner {{
-    max-width: 1160px;
+    max-width: 1180px;
     margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
   }}
   .brand {{
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
     text-decoration: none;
     color: var(--text);
+    min-width: 0;
   }}
   .brand-mark {{
-    width: 38px;
-    height: 38px;
+    width: 36px;
+    height: 36px;
     border-radius: 6px;
     background: var(--accent);
     color: #fff;
     font-family: 'DM Sans', sans-serif;
     font-weight: 800;
-    font-size: 14px;
+    font-size: 13.5px;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
   }}
+  .brand-text {{
+    min-width: 0;
+  }}
   .brand-text strong {{
     display: block;
     font-family: 'DM Sans', sans-serif;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 700;
     line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }}
   .brand-text span {{
     display: block;
-    font-size: 12px;
+    font-size: 11.5px;
     color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }}
   .nav-actions {{
     display: flex;
     align-items: center;
-    gap: 8px;
-    flex-wrap: wrap;
+    gap: 6px;
+    flex-shrink: 0;
   }}
   .lang-btn {{
     background: var(--stone);
     border: 1px solid var(--border-strong);
     color: var(--text);
-    padding: 8px 13px;
+    padding: 6px 10px;
     border-radius: 6px;
-    font-size: 13px;
+    font-size: 12.5px;
     font-weight: 600;
     cursor: pointer;
-    min-height: 40px;
+    min-height: 36px;
+    white-space: nowrap;
   }}
   .lang-btn.active {{
     background: var(--accent);
@@ -160,16 +171,17 @@ def compile_tuomioistuin_html(
     background: var(--accent);
     color: #fff;
     text-decoration: none;
-    padding: 9px 15px;
+    padding: 7px 13px;
     border-radius: 6px;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    min-height: 40px;
+    gap: 5px;
+    min-height: 36px;
     border: none;
     cursor: pointer;
+    white-space: nowrap;
   }}
   .btn-primary:hover {{ background: var(--accent-dark); }}
   .btn-secondary {{
@@ -177,21 +189,22 @@ def compile_tuomioistuin_html(
     color: var(--text);
     border: 1px solid var(--border-strong);
     text-decoration: none;
-    padding: 9px 14px;
+    padding: 7px 12px;
     border-radius: 6px;
-    font-size: 13.5px;
+    font-size: 13px;
     font-weight: 600;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    min-height: 40px;
+    gap: 5px;
+    min-height: 36px;
     cursor: pointer;
+    white-space: nowrap;
   }}
   .btn-secondary:hover {{ background: var(--stone); }}
   .container {{
-    max-width: 1160px;
+    max-width: 1180px;
     margin: 0 auto;
-    padding: 32px 20px 80px;
+    padding: 28px 20px 80px;
   }}
   .hero-card {{
     background: var(--surface);
@@ -411,14 +424,14 @@ def compile_tuomioistuin_html(
   .flow-step p {{ font-size: 14px; color: var(--body); }}
   .cards-grid {{
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
     gap: 18px;
   }}
   .story-card {{
     background: var(--bg);
     border: 1px solid var(--border-strong);
     border-radius: 8px;
-    padding: 22px;
+    padding: 20px 22px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -427,27 +440,70 @@ def compile_tuomioistuin_html(
   .story-card.amber-accent {{ border-left: 4px solid var(--amber); }}
   .story-card.green-accent {{ border-left: 4px solid var(--accent); }}
   .story-top {{ margin-bottom: 14px; }}
-  .story-header {{
+  .card-kicker-row {{
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    gap: 10px;
-    margin-bottom: 8px;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
   }}
-  .story-card h3 {{ font-size: 17.5px; line-height: 1.32; }}
-  .story-meta {{ font-size: 13px; color: var(--muted); margin-bottom: 10px; }}
-  .story-commentary {{ font-size: 14.5px; color: var(--body); margin-bottom: 14px; }}
+  .card-id-pill {{
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--muted);
+    background: var(--surface);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }}
+  .story-card h3 {{
+    font-size: 18px;
+    line-height: 1.28;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 4px;
+    word-break: normal;
+  }}
+  .story-subtitle {{
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--accent-dark);
+    margin-bottom: 8px;
+    line-height: 1.38;
+  }}
+  .story-meta {{ font-size: 12.5px; color: var(--muted); margin-bottom: 8px; line-height: 1.4; }}
+  .story-commentary {{ font-size: 14px; color: var(--body); line-height: 1.52; margin-bottom: 4px; }}
   .metrics-strip {{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 8px;
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 6px;
     padding: 10px 12px;
   }}
-  .metrics-strip div span {{ display: block; font-size: 11px; color: var(--muted); }}
-  .metrics-strip div strong {{ font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text); }}
+  .metrics-strip div {{
+    min-width: 0;
+  }}
+  .metrics-strip div span {{
+    display: block;
+    font-size: 11px;
+    color: var(--muted);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 2px;
+  }}
+  .metrics-strip div strong {{
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }}
   .badge {{
     display: inline-block;
     padding: 4px 10px;
@@ -464,14 +520,15 @@ def compile_tuomioistuin_html(
     background: var(--stone);
     border: 1px dashed var(--border-strong);
     border-radius: 8px;
-    padding: 20px;
-    font-size: 14.5px;
+    padding: 16px 20px;
+    font-size: 14px;
     color: var(--body);
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
     gap: 12px;
+    grid-column: 1 / -1;
   }}
 
   /* Full 686 STEA Registry Table */
@@ -574,7 +631,7 @@ def compile_tuomioistuin_html(
   .modal-section ul {{ padding-left: 20px; }}
   .modal-section li {{ margin-bottom: 6px; }}
   footer {{
-    max-width: 1160px;
+    max-width: 1180px;
     margin: 0 auto;
     padding: 28px 20px 60px;
     border-top: 1px solid var(--border);
@@ -586,20 +643,27 @@ def compile_tuomioistuin_html(
     gap: 16px;
   }}
   footer a {{ color: var(--accent-dark); font-weight: 600; text-decoration: none; }}
-  @media (max-width: 900px) {{
-    .flow-steps, .search-hub-grid {{ grid-template-columns: 1fr; }}
+  @media (max-width: 960px) {{
+    .topbar {{ position: relative; }}
+    .topbar-inner {{ flex-wrap: wrap; }}
+    .nav-actions {{ width: 100%; justify-content: flex-start; flex-wrap: wrap; }}
+    .flow-steps, .search-hub-grid {{ grid-template-columns: minmax(0, 1fr); }}
     .hero-card, .section-block {{ padding: 22px 18px; }}
   }}
   @media (max-width: 640px) {{
-    html, body {{ overflow-x: hidden; max-width: 100%; }}
-    .container {{ padding: 16px 12px 56px; }}
-    .hero-card, .section-block, .search-hub {{ padding: 18px 14px; }}
-    .hero-title {{ font-size: 24px; line-height: 1.22; }}
-    .kpi-grid, .cards-grid, .flow-steps {{ grid-template-columns: 1fr; }}
-    .badge {{ white-space: normal; text-align: right; }}
+    html, body {{ overflow-x: hidden; max-width: 100vw; width: 100%; }}
+    .topbar {{ position: relative; padding: 10px 12px; max-width: 100vw; overflow: hidden; }}
+    .brand-text strong {{ white-space: normal; font-size: 14px; line-height: 1.22; }}
+    .brand-text span {{ display: none; }}
+    .btn-primary, .btn-secondary, .lang-btn {{ white-space: normal; font-size: 12px; padding: 6px 10px; min-height: 34px; }}
+    .container {{ padding: 14px 12px 56px; max-width: 100vw; overflow-x: hidden; }}
+    .hero-card, .section-block, .search-hub {{ padding: 18px 14px; min-width: 0; max-width: 100%; overflow: hidden; }}
+    .hero-title {{ font-size: 22px; line-height: 1.22; word-wrap: break-word; }}
+    .kpi-grid, .cards-grid, .flow-steps, .search-hub-grid {{ grid-template-columns: minmax(0, 1fr); }}
+    .story-card, .kpi-card, .search-hub-grid > div {{ min-width: 0; max-width: 100%; }}
+    .input-box, .select-box {{ max-width: 100%; min-width: 0; font-size: 14px; }}
     .modal-backdrop {{ padding: 10px; align-items: flex-end; }}
     .modal-card {{ padding: 22px 18px; max-height: 92vh; border-radius: 12px 12px 0 0; }}
-    .metrics-strip {{ grid-template-columns: 1fr; }}
   }}
 </style>
 </head>
@@ -824,7 +888,23 @@ const DATA = {payload_json};
 let LANG = 'fi';
 
 const fmtM = (n) => (n / 1e6).toLocaleString('fi-FI', {{minimumFractionDigits: 2, maximumFractionDigits: 2}}) + ' milj. €';
+const fmtCardM = (n) => {{
+  const val = Number(n);
+  if (!val || Math.abs(val) < 1) return '0 €';
+  const m = val / 1e6;
+  const digits = Math.abs(m) >= 100 ? 0 : 1;
+  return m.toLocaleString('fi-FI', {{minimumFractionDigits: digits, maximumFractionDigits: digits}}) + ' M€';
+}};
 const fmtEUR = (n) => Math.round(n).toLocaleString('fi-FI') + ' €';
+const splitTitle = (raw) => {{
+  const s = String(raw || '');
+  const idx = s.indexOf(' (');
+  if (idx === -1) return {{ main: s, sub: '' }};
+  return {{
+    main: s.slice(0, idx).trim(),
+    sub: s.slice(idx + 2, s.endsWith(')') ? -1 : s.length).trim()
+  }};
+}};
 
 const I18N = {{
   fi: {{
@@ -1319,34 +1399,38 @@ function renderAll() {{
     const isDead = c.classification === 'DEADWEIGHT_CROWD_OUT';
     const accent = isZombie ? 'red-accent' : (isDead ? 'amber-accent' : 'green-accent');
     const badge = isZombie
-      ? `<span class="badge badge-red">${{fi ? 'Leikataan 100 % (Neg. vero-ROI)' : 'Cut 100% (Neg. Tax ROI)'}}</span>`
-      : (isDead ? `<span class="badge badge-amber">${{fi ? 'Säilyttävä tuki (Deadweight)' : 'Deadweight Subsidy'}}</span>`
-                : `<span class="badge badge-green">${{c.isBenchmark ? (fi ? '0 € tukea · Nettoveronmaksaja' : '€0 Grants · Net Taxpayer') : (fi ? 'Vahva verotuotto (Säilytetään)' : 'High Tax Return (Keep)')}}</span>`);
+      ? `<span class="badge badge-red">${{fi ? 'Leikataan 100 %' : 'Cut 100%'}}</span>`
+      : (isDead ? `<span class="badge badge-amber">${{fi ? 'Säilyttävä tuki' : 'Deadweight Subsidy'}}</span>`
+                : `<span class="badge badge-green">${{c.isBenchmark ? (fi ? '0 € tukea · Nettoveronmaksaja' : '€0 Grants · Net Taxpayer') : (fi ? 'Vahva verotuotto' : 'High Tax Return')}}</span>`);
 
+    const tParts = splitTitle(c.company_name);
+    const subText = tParts.sub || (c.isBenchmark ? (fi ? 'Tueton markkinaverrokki' : 'Unsubsidized Benchmark') : c.grant_agency.replace(/_/g, ' '));
+    const momClean = String(c.vm_momentti || '').replace(/_/g, ' / ');
     const commentary = c.isBenchmark
       ? (fi
-          ? `Markkinaehtoinen veronmaksajaverrokki (${{c.postal_or_co_address}}): 0 € zombitukia, maksoi ${{fmtM(c.five_yr_tax_delta_eur)}} yhteisöveroa.`
-          : `Market-driven net taxpayer benchmark (${{c.postal_or_co_address}}): €0 zombie grants, paid ${{fmtM(c.five_yr_tax_delta_eur)}} in corporate tax.`)
+          ? `Markkinaehtoinen veronmaksajaverrokki (${{c.postal_or_co_address}}) · TOL ${{c.nace_code}}.`
+          : `Market-driven net taxpayer benchmark (${{c.postal_or_co_address}}) · NACE ${{c.nace_code}}.`)
       : (fi
-          ? `Osoite: ${{c.postal_or_co_address}} · Momentti ${{c.vm_momentti}} · Nostettu tuki ${{fmtM(c.subsidy_received_eur)}}, 5v yhteisöveromuutos ${{fmtM(c.five_yr_tax_delta_eur)}}.`
-          : `Address: ${{c.postal_or_co_address}} · Line ${{c.vm_momentti}} · Grant received ${{fmtM(c.subsidy_received_eur)}}, 5-yr corporate tax change ${{fmtM(c.five_yr_tax_delta_eur)}}.`);
+          ? `${{c.postal_or_co_address}} · Momentti ${{momClean}} · TOL ${{c.nace_code}}.`
+          : `${{c.postal_or_co_address}} · Budget line ${{momClean}} · NACE ${{c.nace_code}}.`);
 
     corpHtml += `<div class="story-card ${{accent}} clickable-card" onclick="openCorpModal('${{c.y_tunnus}}')">
       <div class="story-top">
-        <div class="story-header">
-          <h3>${{c.company_name}}</h3>
+        <div class="card-kicker-row">
           ${{badge}}
+          <span class="card-id-pill">Y: ${{c.y_tunnus}}</span>
         </div>
-        <div class="story-meta">Y-tunnus: ${{c.y_tunnus}} · ${{c.grant_agency.replace(/_/g,' ')}} (TOL ${{c.nace_code}})</div>
+        <h3>${{tParts.main}}</h3>
+        <div class="story-subtitle">${{subText}}</div>
         <p class="story-commentary">${{commentary}}</p>
       </div>
       <div>
         <div class="metrics-strip">
-          <div><span>${{fi ? 'Julkinen tuki 5v' : '5-Yr Grant'}}</span><strong>${{c.subsidy_received_eur > 0 ? fmtM(c.subsidy_received_eur) : '0 €'}}</strong></div>
-          <div><span>${{fi ? 'Yhteisövero 5v' : '5-Yr Corp Tax'}}</span><strong style="color:${{c.five_yr_tax_delta_eur > 0 ? 'var(--accent-dark)' : 'var(--red)'}}">${{fmtM(c.five_yr_tax_delta_eur)}}</strong></div>
-          <div><span>${{fi ? 'Esitetty leikkaus' : 'Proposed Cut'}}</span><strong style="color:${{c.recommended_cut_eur > 0 ? 'var(--red)' : 'var(--accent-dark)'}}">${{c.recommended_cut_eur > 0 ? '-' + fmtM(c.recommended_cut_eur) : '0 €'}}</strong></div>
+          <div><span>${{fi ? 'Julkinen tuki 5v' : '5-Yr Grant'}}</span><strong>${{c.subsidy_received_eur > 0 ? fmtCardM(c.subsidy_received_eur) : '0 €'}}</strong></div>
+          <div><span>${{fi ? 'Yhteisövero 5v' : '5-Yr Corp Tax'}}</span><strong style="color:${{c.five_yr_tax_delta_eur > 0 ? 'var(--accent-dark)' : 'var(--red)'}}">${{fmtCardM(c.five_yr_tax_delta_eur)}}</strong></div>
+          <div><span>${{fi ? 'Esitetty säästö' : 'Proposed Cut'}}</span><strong style="color:${{c.recommended_cut_eur > 0 ? 'var(--red)' : 'var(--accent-dark)'}}">${{c.recommended_cut_eur > 0 ? '-' + fmtCardM(c.recommended_cut_eur) : '0 €'}}</strong></div>
         </div>
-        <div class="click-hint">${{fi ? 'Klikkaa: Avaa yhtiön vero- ja tilinpäätösanalyysi →' : 'Click: Open full tax & financial statement audit →'}}</div>
+        <div class="click-hint">${{fi ? 'Klikkaa: Vero- & tilinpäätösanalyysi →' : 'Click: Full tax & financial audit →'}}</div>
       </div>
     </div>`;
   }});
@@ -1370,27 +1454,30 @@ function renderAll() {{
     const accent = isCut ? 'red-accent' : 'green-accent';
     const badge = isCut
       ? `<span class="badge badge-red">${{fi ? 'Leikataan Ak-hallintopöhö' : 'Cut Ak Admin Bloat'}}</span>`
-      : `<span class="badge badge-green">${{fi ? 'Kohdennettu kenttätyö (0 € leikkaus)' : 'Frontline Aid (€0 Cut)'}}</span>`;
+      : `<span class="badge badge-green">${{fi ? 'Kohdennettu kenttätyö' : 'Frontline Aid (€0 Cut)'}}</span>`;
+    const nParts = splitTitle(n.ngo_name);
+    const nSub = nParts.sub || `${{n.grant_source}} · Momentti ${{n.vm_momentti}} (${{n.grant_class_code}})`;
     const commentary = fi
-      ? `Hallinto ja Ak-yleistuki: ${{n.overhead_and_lobbying_pct}} %. ${{n.public_sote_procurement_sales_eur > 0 ? `Myy lisäksi sote-palveluita ${{fmtM(n.public_sote_procurement_sales_eur)}}/v.` : (n.political_board_insiders[0] || '')}}`
-      : `HQ & Ak general share: ${{n.overhead_and_lobbying_pct}}%. ${{n.public_sote_procurement_sales_eur > 0 ? `Also bills Wellbeing Counties ${{fmtM(n.public_sote_procurement_sales_eur)}}/yr.` : ''}}`;
+      ? `Hallinto ja Ak-yleistuki: ${{n.overhead_and_lobbying_pct}} %. ${{n.public_sote_procurement_sales_eur > 0 ? `Myy lisäksi sote-palveluita ${{fmtCardM(n.public_sote_procurement_sales_eur)}}/v.` : (n.political_board_insiders[0] || '')}}`
+      : `HQ & Ak general share: ${{n.overhead_and_lobbying_pct}}%. ${{n.public_sote_procurement_sales_eur > 0 ? `Also bills Wellbeing Counties ${{fmtCardM(n.public_sote_procurement_sales_eur)}}/yr.` : ''}}`;
 
     ngoHtml += `<div class="story-card ${{accent}} clickable-card" onclick="openNgoModal(${{idx}})">
       <div class="story-top">
-        <div class="story-header">
-          <h3>${{n.ngo_name}}</h3>
+        <div class="card-kicker-row">
           ${{badge}}
+          <span class="card-id-pill">Y: ${{n.y_tunnus}}</span>
         </div>
-        <div class="story-meta">Y-tunnus: ${{n.y_tunnus}} · ${{n.grant_source}} Momentti ${{n.vm_momentti}} (${{n.grant_class_code}})</div>
+        <h3>${{nParts.main}}</h3>
+        <div class="story-subtitle">${{nSub}}</div>
         <p class="story-commentary">${{commentary}}</p>
       </div>
       <div>
         <div class="metrics-strip">
-          <div><span>${{fi ? 'Avustus 2026' : '2026 Grant'}}</span><strong>${{fmtM(n.annual_grant_eur)}}</strong></div>
-          <div><span>${{fi ? 'Sote-myynti' : 'Sote Sales'}}</span><strong>${{n.public_sote_procurement_sales_eur > 0 ? fmtM(n.public_sote_procurement_sales_eur) : '0 €'}}</strong></div>
-          <div><span>${{fi ? 'Esitetty säästö' : 'Proposed Cut'}}</span><strong style="color:${{isCut ? 'var(--red)' : 'var(--accent-dark)'}}">${{n.recoverable_cut_eur > 0 ? '-' + fmtM(n.recoverable_cut_eur) : '0 €'}}</strong></div>
+          <div><span>${{fi ? 'Avustus 2026' : '2026 Grant'}}</span><strong>${{fmtCardM(n.annual_grant_eur)}}</strong></div>
+          <div><span>${{fi ? 'Sote-myynti' : 'Sote Sales'}}</span><strong>${{n.public_sote_procurement_sales_eur > 0 ? fmtCardM(n.public_sote_procurement_sales_eur) : '0 €'}}</strong></div>
+          <div><span>${{fi ? 'Esitetty säästö' : 'Proposed Cut'}}</span><strong style="color:${{isCut ? 'var(--red)' : 'var(--accent-dark)'}}">${{n.recoverable_cut_eur > 0 ? '-' + fmtCardM(n.recoverable_cut_eur) : '0 €'}}</strong></div>
         </div>
-        <div class="click-hint">${{fi ? 'Klikkaa: Avaa järjestön tarkka rahoituserittely →' : 'Click: Open full NGO funding audit →'}}</div>
+        <div class="click-hint">${{fi ? 'Klikkaa: Järjestön rahoituserittely →' : 'Click: Open NGO funding audit →'}}</div>
       </div>
     </div>`;
   }});
@@ -1434,26 +1521,26 @@ function renderAll() {{
     }}).join('');
   }}
 
-  // 3. Momentti Cards (Always kept visible unless search specifically matches a momentti, or shown with highlight)
+  // 3. Momentti Cards
   let momHtml = '';
   MOMENTTI_META.forEach((m, idx) => {{
     const save = Math.min(m.current, m.base_cut * mult);
     momHtml += `<div class="story-card green-accent clickable-card" onclick="openMomenttiModal(${{idx}})">
       <div class="story-top">
-        <div class="story-header">
-          <h3>${{fi ? m.fi_name : m.en_name}}</h3>
-          <span class="badge badge-red">-${{fmtM(save)}}</span>
+        <div class="card-kicker-row">
+          <span class="badge badge-red">-${{fmtCardM(save)}} / v</span>
+          <span class="card-id-pill">${{fi ? 'Momentti' : 'Line'}} ${{m.code}}</span>
         </div>
-        <div class="story-meta">${{fi ? 'Valtion talousarviomomentti' : 'State Budget Line'}} ${{m.code}}</div>
-        <p class="story-commentary">${{fi ? m.fi_short : m.en_short}}</p>
+        <h3>${{fi ? m.fi_name : m.en_name}}</h3>
+        <p class="story-commentary" style="margin-top:6px;">${{fi ? m.fi_short : m.en_short}}</p>
       </div>
       <div>
         <div class="metrics-strip">
-          <div><span>${{fi ? 'Nykyinen budjetti' : 'Current Spend'}}</span><strong>${{fmtM(m.current)}}</strong></div>
-          <div><span>${{fi ? 'Vuosisäästö' : 'Annual Saving'}}</span><strong style="color:var(--red)">-${{fmtM(save)}}</strong></div>
+          <div><span>${{fi ? 'Nykybudjetti' : 'Current Spend'}}</span><strong>${{fmtCardM(m.current)}}</strong></div>
+          <div><span>${{fi ? 'Vuosisäästö' : 'Annual Saving'}}</span><strong style="color:var(--red)">-${{fmtCardM(save)}}</strong></div>
           <div><span>${{fi ? 'Leikkaus-%' : 'Cut Share'}}</span><strong>${{((save / m.current) * 100).toFixed(0)}} %</strong></div>
         </div>
-        <div class="click-hint">${{fi ? 'Klikkaa: Lue perustelut ja kohde-erittely →' : 'Click: Read policy rationale & evidence →'}}</div>
+        <div class="click-hint">${{fi ? 'Klikkaa: Perustelut & kohde-erittely →' : 'Click: Policy rationale & evidence →'}}</div>
       </div>
     </div>`;
   }});
@@ -1464,22 +1551,23 @@ function renderAll() {{
   DATA.rings.forEach((r, idx) => {{
     ringHtml += `<div class="story-card red-accent clickable-card" onclick="openRingModal(${{idx}})">
       <div class="story-top">
-        <div class="story-header">
-          <h3>${{r.shared_address_or_agent}}</h3>
-          <span class="badge badge-red">${{r.entity_count}} ${{fi ? 'yhtiötä' : 'firms'}}</span>
+        <div class="card-kicker-row">
+          <span class="badge badge-red">${{r.entity_count}} ${{fi ? 'yhtiötä klusterissa' : 'firms in cluster'}}</span>
+          <span class="card-id-pill">${{r.ring_signature}}</span>
         </div>
-        <div class="story-meta">${{r.ring_signature}} · ${{r.company_names.map(n => n.split(' (')[0]).join(', ')}}</div>
+        <h3>${{r.shared_address_or_agent}}</h3>
+        <div class="story-subtitle">${{r.company_names.map(n => n.split(' (')[0]).join(' · ')}}</div>
         <p class="story-commentary">${{fi
           ? `Klusterin ${{r.entity_count}} yhtiötä nostivat yhteensä ${{fmtM(r.total_subsidy_eur)}} julkista tukea. 5 vuoden yhteisöveron muutos: ${{fmtEUR(r.total_five_yr_tax_delta_eur)}}.`
           : `Cluster of ${{r.entity_count}} firms collected ${{fmtM(r.total_subsidy_eur)}} in public grants. 5-yr corporate tax change: ${{fmtEUR(r.total_five_yr_tax_delta_eur)}}.`}}</p>
       </div>
       <div>
         <div class="metrics-strip">
-          <div><span>${{fi ? 'Nostettu tuki' : 'Grants Taken'}}</span><strong style="color:var(--red)">${{fmtM(r.total_subsidy_eur)}}</strong></div>
-          <div><span>${{fi ? 'Yhteisövero 5v' : '5-Yr Tax Delta'}}</span><strong>${{fmtEUR(r.total_five_yr_tax_delta_eur)}}</strong></div>
-          <div><span>${{fi ? 'Koordinointi (20%)' : '20% Fee Est.'}}</span><strong style="color:var(--amber)">${{fmtM(r.estimated_20pct_consultant_cut_eur)}}</strong></div>
+          <div><span>${{fi ? 'Nostettu tuki' : 'Grants Taken'}}</span><strong style="color:var(--red)">${{fmtCardM(r.total_subsidy_eur)}}</strong></div>
+          <div><span>${{fi ? 'Yhteisövero 5v' : '5-Yr Tax Delta'}}</span><strong>${{fmtCardM(r.total_five_yr_tax_delta_eur)}}</strong></div>
+          <div><span>${{fi ? 'Koordinointi (20%)' : '20% Fee Est.'}}</span><strong style="color:var(--amber)">${{fmtCardM(r.estimated_20pct_consultant_cut_eur)}}</strong></div>
         </div>
-        <div class="click-hint">${{fi ? 'Klikkaa: Avaa klusterin yhtiöt ja luvut →' : 'Click: Inspect cluster member companies →'}}</div>
+        <div class="click-hint">${{fi ? 'Klikkaa: Klusterin yhtiöt ja luvut →' : 'Click: Inspect cluster member companies →'}}</div>
       </div>
     </div>`;
   }});
