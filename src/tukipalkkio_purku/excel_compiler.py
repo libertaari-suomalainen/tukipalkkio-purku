@@ -141,7 +141,7 @@ def compile_vm_kehysriihi_xlsx(
             "=SUM(C2:C7)",
             44.5,
             "=SUM(E2:E7)",
-            "Todistettu rivi riviltä välilehdillä 02–06 (686 STEA-järjestöä + 28 suomalaista suuryritystä, tukikohdetta ja veronmaksajaverrokkia)",
+            "Todistettu rivi riviltä välilehdillä 02–06 (686 STEA-järjestöä + 47 suomalaista suuryritystä, tukikohdetta ja veronmaksajaverrokkia)",
             "1,55 miljardin euron välitön vuosisäästö ilman yhtäkään leikkausta sairaanhoitajista, opettajista tai poliiseista",
         ],
     ]

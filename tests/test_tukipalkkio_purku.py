@@ -187,6 +187,7 @@ class TestTukipalkkioPurkuEngine(unittest.TestCase):
 
     def test_peer_review_ytunnus_checksums_and_classifications(self) -> None:
         corps, ngos, qoes, benchmarks = load_calibrated_sovereign_dataset()
+        self.assertEqual(len(corps) + len(benchmarks), 47)
         for c in corps:
             self.assertTrue(validate_ytunnus_checksum(c.y_tunnus), f"Invalid corporate Y-tunnus: {c.y_tunnus}")
         for n in ngos:
@@ -196,6 +197,7 @@ class TestTukipalkkioPurkuEngine(unittest.TestCase):
 
         evals = {x["y_tunnus"]: x for x in compute_subsidy_causal_roi(corps)}
         self.assertEqual(evals["2766860-9"]["classification"], "BLACKLIST_ZOMBIE")  # Infinited Fiber (€0 tax)
+        self.assertEqual(evals["2712152-3"]["classification"], "BLACKLIST_ZOMBIE")  # Woodio (€0 tax)
         self.assertEqual(evals["1041090-0"]["classification"], "DEADWEIGHT_CROWD_OUT")  # UPM-Kymmene
         self.assertEqual(evals["1852302-9"]["classification"], "DEADWEIGHT_CROWD_OUT")  # Neste
         self.assertEqual(evals["0112038-9"]["classification"], "POSITIVE_EXTERNALITY_KEEP")  # Nokia

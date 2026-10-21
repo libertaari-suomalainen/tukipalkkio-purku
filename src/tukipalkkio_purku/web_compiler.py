@@ -1,6 +1,6 @@
 """
 Compilers for:
-  1. `dist/Veronmaksajan_Tuomioistuin_2026.html` (`dist/index.html`) — Suomen Talousinstituutti (STI) Editorial Research Report & Real-Data Explorer (686 STEA 2026 NGOs + Real Finnish Corporations)
+  1. `dist/Veronmaksajan_Tuomioistuin_2026.html` (`dist/index.html`) — Suomen Talousinstituutti (STI) Editorial Research Report & Real-Data Explorer (686 STEA 2026 NGOs + 47 Real Finnish Corporations)
   2. `dist/Media_ja_VM_Dossierit_2026.md` — Turnkey Investigative Journalist & VM Budget Department Dossiers
 """
 
@@ -531,7 +531,7 @@ def compile_tuomioistuin_html(
     grid-column: 1 / -1;
   }}
 
-  /* Full 686 STEA Registry Table */
+  /* Sortable Full Registry Tables */
   .stea-table-wrap {{
     margin-top: 26px;
     border-top: 1px solid var(--border);
@@ -542,7 +542,7 @@ def compile_tuomioistuin_html(
     border: 1px solid var(--border-strong);
     border-radius: 8px;
     background: var(--surface);
-    max-height: 520px;
+    max-height: 540px;
     overflow-y: auto;
     margin-top: 12px;
   }}
@@ -566,6 +566,15 @@ def compile_tuomioistuin_html(
     font-size: 12px;
     text-transform: uppercase;
     z-index: 2;
+    user-select: none;
+  }}
+  th.sortable {{
+    cursor: pointer;
+    transition: background 0.14s;
+  }}
+  th.sortable:hover {{
+    background: var(--stone-hover);
+    color: var(--accent-dark);
   }}
   tr.clickable-row {{ cursor: pointer; }}
   tr.clickable-row:hover td {{ background: var(--accent-soft); }}
@@ -586,7 +595,7 @@ def compile_tuomioistuin_html(
     background: var(--surface);
     border: 1px solid var(--border-strong);
     border-radius: 12px;
-    max-width: 740px;
+    max-width: 780px;
     width: 100%;
     max-height: 88vh;
     overflow-y: auto;
@@ -612,7 +621,13 @@ def compile_tuomioistuin_html(
     justify-content: center;
   }}
   .modal-card h2 {{ font-size: 23px; margin-bottom: 8px; padding-right: 44px; }}
-  .modal-sub {{ font-size: 14px; color: var(--muted); margin-bottom: 20px; }}
+  .modal-sub {{ font-size: 14px; color: var(--muted); margin-bottom: 16px; }}
+  .modal-toolbar {{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }}
   .modal-section {{
     background: var(--bg);
     border: 1px solid var(--border);
@@ -630,6 +645,20 @@ def compile_tuomioistuin_html(
   .modal-section p, .modal-section li {{ font-size: 15px; color: var(--body); line-height: 1.6; }}
   .modal-section ul {{ padding-left: 20px; }}
   .modal-section li {{ margin-bottom: 6px; }}
+  .legal-box {{
+    background: #18181B;
+    color: #F4F4F5;
+    font-family: 'SFMono-Regular', Consolas, Menlo, monospace;
+    font-size: 12.5px;
+    line-height: 1.55;
+    padding: 14px 16px;
+    border-radius: 6px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    max-height: 260px;
+    overflow-y: auto;
+    margin: 10px 0 12px;
+  }}
   footer {{
     max-width: 1180px;
     margin: 0 auto;
@@ -643,6 +672,13 @@ def compile_tuomioistuin_html(
     gap: 16px;
   }}
   footer a {{ color: var(--accent-dark); font-weight: 600; text-decoration: none; }}
+  @media print {{
+    body * {{ visibility: hidden; }}
+    #detail-modal, #detail-modal * {{ visibility: visible; }}
+    #detail-modal {{ position: absolute; left: 0; top: 0; width: 100%; background: #fff; padding: 0; display: block !important; }}
+    .modal-card {{ max-height: none; box-shadow: none; border: none; width: 100%; max-width: 100%; padding: 0; }}
+    .modal-close, .modal-toolbar {{ display: none !important; }}
+  }}
   @media (max-width: 960px) {{
     .topbar {{ position: relative; }}
     .topbar-inner {{ flex-wrap: wrap; }}
@@ -674,7 +710,7 @@ def compile_tuomioistuin_html(
       <div class="brand-mark">STI</div>
       <div class="brand-text">
         <strong data-i18n="brand_title">Suomen Talousinstituutti · Julkisen Talouden Tutkimus</strong>
-        <span data-i18n="brand_sub">Tutkimusraportti 2026 · 686 STEA-järjestöä &amp; suomalaiset suuryritykset ja tukikohteet</span>
+        <span data-i18n="brand_sub">Tutkimusraportti 2026 · 686 STEA-järjestöä (1 288 päätöstä) &amp; 47 suuryritystä ja tukikohdetta</span>
       </div>
     </a>
     <div class="nav-actions">
@@ -692,12 +728,12 @@ def compile_tuomioistuin_html(
     <div class="kicker" data-i18n="hero_kicker">VALTIONTALOUS · TUTKIMUSRAPORTTI 2026 · 100 % OIKEA VIRANOMAISDATA</div>
     <h1 class="hero-title" data-i18n="hero_title">Mihin katoaa 11,5 miljardia euroa? Suomen yritys- ja järjestötukien läpivalaisu</h1>
     <p class="hero-lead" data-i18n="hero_lead">
-      Suomi jakaa joka vuosi 11,5 miljardia euroa yritystukia, maatalous- ja energiatukia sekä järjestöavustuksia. Kun julkiset tukipäätökset (Business Finland, ELY, TEM, STEA 2026 kaikki 686 järjestöä) yhdistetään Verohallinnon verotietoihin ja PRH:n kaupparekisteriin, paljastuu miten valtion budjetista voidaan säästää <strong>1,55–3,00 miljardia euroa vuodessa</strong> leikkaamatta yhdeltäkään sairaanhoitajalta, opettajalta tai poliisilta.
+      Suomi jakaa joka vuosi 11,5 miljardia euroa suoria yritystukia, maatalous- ja energiatukia, verotukia sekä järjestöavustuksia. Kun julkiset tukipäätökset (Business Finland, ELY, TEM, STEA 2026 kaikki 686 järjestöä) yhdistetään Verohallinnon verotietoihin ja PRH:n kaupparekisteriin, paljastuu miten valtion budjetista voidaan säästää <strong>1,55–3,00 miljardia euroa vuodessa</strong> leikkaamatta yhdeltäkään sairaanhoitajalta, opettajalta tai poliisilta.
     </p>
     <div class="callout-stone">
       <h3 data-i18n="summary_box_title">Mitä tämä tutkimus ja ladattava Excel (.xlsx) todistavat?</h3>
       <p data-i18n="summary_box_body">
-        Tämä julkaisu sisältää <strong>kaikki 686 oikeaa STEA-järjestöä (1 288 virallista avustuspäätöstä 1 527 hakemuksesta vuodelle 2026 = 273,91 milj. €)</strong> sekä <strong>28 oikeaa suomalaista yritystukien saajaa ja veronmaksajaverrokkia</strong> (mm. <em>Nokia, UPM-Kymmene, Stora Enso, Neste, Meyer Turku, Viking Line, Tallink Silja, Spinnova, Infinited Fiber, Solar Foods, P2X Solutions, Betolar, Supercell, KONE, RELEX, Ponsse</em>). <strong>Klikkaa mitä tahansa korttia tai hae nimellä alla</strong> nähdäksesi tarkat luvut.
+        Tämä julkaisu sisältää <strong>kaikki 686 oikeaa STEA-järjestöä (kaikki 1 288 myönteistä avustuspäätöstä 1 527 hakemuksesta vuodelle 2026 = 273,91 milj. €)</strong> sekä <strong>47 oikeaa suomalaista yritystukien saajaa ja veronmaksajaverrokkia</strong> (mm. <em>Nokia, UPM-Kymmene, Stora Enso, Neste, Meyer Turku, Viking Line, Tallink Silja, Finnlines, Finnair, Spinnova, Infinited Fiber, Solar Foods, P2X Solutions, Betolar, Sulapac, Woodio, Supercell, KONE, RELEX, Ponsse, Orion, Kesko, Elisa</em>). <strong>Klikkaa mitä tahansa korttia, lajittele taulukkoja tai vie suodatettu CSV-aineisto</strong>.
       </p>
     </div>
     <div class="kpi-grid">
@@ -720,8 +756,8 @@ def compile_tuomioistuin_html(
       <div class="kpi-card clickable-card" onclick="openKpiModal('rings_pool')">
         <div>
           <div class="kpi-label" data-i18n="kpi3_lbl">Tuki- ja konsortioklusterit</div>
-          <div class="kpi-val red" id="kpi-ring-val">3 Klusteria · 118,7 M€</div>
-          <div class="kpi-sub" data-i18n="kpi3_sub">Infinited Fiber (yt-neuvottelut &amp; 0 € veroa 12,4 M€ tuen jälkeen), Spinnova, Solar Foods, P2X &amp; konsultit</div>
+          <div class="kpi-val red" id="kpi-ring-val">3 Klusteria · 132,2 M€</div>
+          <div class="kpi-sub" data-i18n="kpi3_sub">Infinited Fiber (yt-neuvottelut &amp; 0 € veroa 12,4 M€ tuen jälkeen), Spinnova, Solar Foods, P2X, Woodio &amp; konsultit</div>
         </div>
         <div class="click-hint" data-i18n="click_explain3">Klikkaa: Katso 3 oikeaa tukiklusteria →</div>
       </div>
@@ -740,8 +776,8 @@ def compile_tuomioistuin_html(
   <section class="search-hub" id="haku">
     <div class="search-hub-grid">
       <div>
-        <label for="search-box" data-i18n="lbl_search">Hae yritystä, järjestöä, Y-tunnusta tai aihetta (686 järjestöä + 28 suuryritystä &amp; tukikohdetta)</label>
-        <input id="search-box" type="search" class="input-box" placeholder="Kokeile esim. Nokia, UPM, Spinnova, Infinited Fiber, Meyer, Viking Line, Punainen Risti, Loma, SOSTE, Supercell..." />
+        <label for="search-box" data-i18n="lbl_search">Hae yritystä, järjestöä, Y-tunnusta tai aihetta (686 järjestöä + 47 suuryritystä &amp; tukikohdetta)</label>
+        <input id="search-box" type="search" class="input-box" placeholder="Kokeile esim. Nokia, UPM, Spinnova, Infinited Fiber, Meyer, Viking Line, Finnair, Punainen Risti, Loma, SOSTE, Supercell..." />
       </div>
       <div>
         <label for="scenario-select" data-i18n="lbl_scenario">Valitse Kehysriihi 2027 -säästöohjelman laajuus</label>
@@ -755,37 +791,67 @@ def compile_tuomioistuin_html(
     <div class="quick-chips">
       <span class="chip-label" data-i18n="chip_lbl">Pikavalinnat:</span>
       <button type="button" class="chip active" onclick="setSearch('')" data-i18n="chip_all">Näytä kaikki</button>
-      <button type="button" class="chip" onclick="setSearch('Nokia')">Nokia</button>
-      <button type="button" class="chip" onclick="setSearch('UPM | Stora Enso')">UPM &amp; Stora Enso</button>
-      <button type="button" class="chip" onclick="setSearch('Infinited Fiber')">Infinited Fiber (0 € veroa)</button>
-      <button type="button" class="chip" onclick="setSearch('Spinnova')">Spinnova</button>
-      <button type="button" class="chip" onclick="setSearch('Meyer Turku')">Meyer Turku</button>
-      <button type="button" class="chip" onclick="setSearch('Viking Line | Tallink')">Viking Line &amp; Tallink</button>
-      <button type="button" class="chip" onclick="setSearch('Supercell | KONE')">Supercell &amp; KONE (Veronmaksajat)</button>
+      <button type="button" class="chip" onclick="setSearch('Nokia | Konecranes | Vaisala')">Nokia, Konecranes &amp; Vaisala</button>
+      <button type="button" class="chip" onclick="setSearch('UPM | Stora Enso | Metsä Fibre')">Metsäjätit (UPM, Stora Enso)</button>
+      <button type="button" class="chip" onclick="setSearch('Infinited Fiber | Spinnova | Woodio | Sulapac')">Biokuitu- &amp; pilottituet (0 € veroa)</button>
+      <button type="button" class="chip" onclick="setSearch('Meyer Turku | Finnair')">Meyer Turku &amp; Finnair</button>
+      <button type="button" class="chip" onclick="setSearch('Viking Line | Tallink | Finnlines')">Varustamotuet (31.20.43)</button>
+      <button type="button" class="chip" onclick="setSearch('Supercell | KONE | Kesko | Elisa')">Nettoveronmaksajaverrokit (0 € tukea)</button>
       <button type="button" class="chip" onclick="setSearch('Loma')">Tuetut lomat (STEA)</button>
       <button type="button" class="chip" onclick="setSearch('Sininauha | A-klinikka')">Sininauha &amp; A-klinikka</button>
-      <button type="button" class="chip" onclick="setSearch('SOSTE | EHYT')">SOSTE &amp; EHYT</button>
+      <button type="button" class="chip" onclick="setSearch('SOSTE | EHYT | Allianssi')">SOSTE, EHYT &amp; Allianssi</button>
     </div>
     <div class="search-status" id="search-status"></div>
   </section>
 
-  <!-- SECTION 1: YRITYSTUET (28 REAL FINNISH CORPORATIONS & BENCHMARKS) -->
+  <!-- SECTION 1: YRITYSTUET (47 REAL FINNISH CORPORATIONS & BENCHMARKS) -->
   <section class="section-block" id="sec-corps">
     <div class="section-head">
-      <h2 data-i18n="s4_title">1. Yritystukien totuus: Nollavero-tukikohteet, säilyttävät suuryritystuet ja aidot nettoveronmaksajat (28 yhtiötä)</h2>
+      <h2 data-i18n="s4_title">1. Yritystukien totuus: Nollavero-tukikohteet, säilyttävät suuryritystuet ja aidot nettoveronmaksajat (47 yhtiötä)</h2>
       <p data-i18n="s4_sub">
-        Klikkaa mitä tahansa yhtiökorttia nähdäksesi selkokielisen vertailun: kuinka paljon yhtiö sai julkista tukea (Business Finland, TEM, ELY, sähköistämistuki tai merenkulun miehistötuki), paljonko sen yhteisövero oli 5 vuodessa ja miltä tulos näyttää ilman valtion tukia.
+        Klikkaa mitä tahansa yhtiökorttia tai alla olevan kokonaistaulukon riviä nähdäksesi selkokielisen vertailun: kuinka paljon yhtiö sai julkista tukea (Business Finland, TEM, ELY, sähköistämistuki tai merenkulun miehistötuki), paljonko sen yhteisövero oli 5 vuodessa ja miltä tulos näyttää ilman valtion tukia.
       </p>
     </div>
     <div class="cards-grid" id="corp-cards"></div>
+
+    <div class="stea-table-wrap">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
+        <div>
+          <h3 style="font-size:19px;" data-i18n="corp_tbl_title">Yritysaineiston kokonaistaulukko: Kaikki 47 yhtiötä &amp; veronmaksajaverrokkia (Klikkaa otsikkoa lajitellaksesi tai riviä avataksesi)</h3>
+          <p style="font-size:13.5px;color:var(--muted);" id="corp-count-sub"></p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" class="btn-secondary" onclick="exportFilteredCorpsCsv()" data-i18n="corp_csv_btn">⬇ Vie suodatettu yritysaineisto (.csv)</button>
+          <a class="btn-primary" href="VM_Tukipalkkio_Leikkuri_2027.xlsx" download data-i18n="corp_xlsx_btn">⬇ Lataa Excel (Välilehti 02)</a>
+        </div>
+      </div>
+      <div class="table-scroll">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th class="sortable" onclick="sortCorpTable('company_name')"><span data-i18n="th_c_name">Yritys &amp; Y-tunnus</span> <span id="sort-corp-company_name"></span></th>
+              <th class="sortable" onclick="sortCorpTable('nace_code')"><span data-i18n="th_c_tol">TOL</span> <span id="sort-corp-nace_code"></span></th>
+              <th class="sortable" onclick="sortCorpTable('vm_momentti')"><span data-i18n="th_c_mom">Momentti</span> <span id="sort-corp-vm_momentti"></span></th>
+              <th class="sortable" onclick="sortCorpTable('subsidy_received_eur')"><span data-i18n="th_c_sub">Julkinen tuki 5v (€)</span> <span id="sort-corp-subsidy_received_eur">▼</span></th>
+              <th class="sortable" onclick="sortCorpTable('five_yr_tax_delta_eur')"><span data-i18n="th_c_tax">Yhteisövero 5v (€)</span> <span id="sort-corp-five_yr_tax_delta_eur"></span></th>
+              <th class="sortable" onclick="sortCorpTable('causal_did_roi')"><span data-i18n="th_c_roi">Vero-ROI</span> <span id="sort-corp-causal_did_roi"></span></th>
+              <th class="sortable" onclick="sortCorpTable('classification')"><span data-i18n="th_c_cls">Luokitus</span> <span id="sort-corp-classification"></span></th>
+              <th class="sortable" onclick="sortCorpTable('recommended_cut_eur')"><span data-i18n="th_c_cut">Esitetty säästö (€)</span> <span id="sort-corp-recommended_cut_eur"></span></th>
+            </tr>
+          </thead>
+          <tbody id="corp-all-tbody"></tbody>
+        </table>
+      </div>
+    </div>
   </section>
 
   <!-- SECTION 2: JÄRJESTÖTUET (TOP AUDITED + ALL 686 REAL 2026 STEA ORGANIZATIONS) -->
   <section class="section-block" id="sec-ngos">
     <div class="section-head">
-      <h2 data-i18n="s3_title">2. Järjestötukien läpivalaisu: STEA 2026 kaikki 686 järjestöä (273,91 milj. €) ja OKM</h2>
+      <h2 data-i18n="s3_title">2. Järjestötukien läpivalaisu: STEA 2026 kaikki 686 järjestöä (273,91 milj. € / 1 288 päätöstä) ja OKM</h2>
       <p data-i18n="s3_sub">
-        Vuoden 2026 virallisista STEA-avustuksista (273 912 000 € / 1 288 avustuspäätöstä) tasan <strong>212 203 929 € (77,5 %)</strong> jaetaan jatkuvina <code>Ak</code>-toiminta-avustuksina pysyville järjestörakenteille, kattojärjestöille, tuettuun lomatoimintaan ja sote-konserneille, ja 61 708 071 € (22,5 %) <code>Ay</code>-yleisavustuksina sekä <code>C/B</code>-hanke- ja investointiavustuksina. Klikkaa järjestökorttia tai selaa kaikkia 686 STEA-järjestöä alla.
+        Vuoden 2026 virallisista STEA-avustuksista (273 912 000 € / 1 288 avustuspäätöstä 1 527 hakemuksesta) tasan <strong>212 203 929 € (77,5 %)</strong> jaetaan jatkuvina <code>Ak</code>-toiminta-avustuksina pysyville järjestörakenteille, kattojärjestöille, tuettuun lomatoimintaan ja sote-konserneille, ja 61 708 071 € (22,5 %) <code>Ay</code>-yleisavustuksina sekä <code>C/B</code>-hanke- ja investointiavustuksina. Klikkaa mitä tahansa järjestökorttia tai riviä alla nähdäksesi järjestön kaikki vuoden 2026 avustuspäätökset.
       </p>
     </div>
     <div class="cards-grid" id="ngo-cards"></div>
@@ -793,22 +859,25 @@ def compile_tuomioistuin_html(
     <div class="stea-table-wrap">
       <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;">
         <div>
-          <h3 style="font-size:19px;" data-i18n="stea_tbl_title">Virallinen STEA 2026 -kokoaineisto: Kaikki 686 avustusta saavaa järjestöä (Klikkaa riviä)</h3>
+          <h3 style="font-size:19px;" data-i18n="stea_tbl_title">Virallinen STEA 2026 -kokoaineisto: Kaikki 686 avustusta saavaa järjestöä (Klikkaa otsikkoa lajitellaksesi tai riviä avataksesi)</h3>
           <p style="font-size:13.5px;color:var(--muted);" id="stea-count-sub"></p>
         </div>
-        <a class="btn-secondary" href="VM_Tukipalkkio_Leikkuri_2027.xlsx" download data-i18n="stea_xlsx_btn">⬇ Lataa kaikki 686 järjestöä Excelissä (Välilehti 06)</a>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button type="button" class="btn-secondary" onclick="exportFilteredSteaCsv()" data-i18n="stea_csv_btn">⬇ Vie suodatettu STEA-aineisto (.csv)</button>
+          <a class="btn-primary" href="VM_Tukipalkkio_Leikkuri_2027.xlsx" download data-i18n="stea_xlsx_btn">⬇ Lataa kaikki 686 järjestöä Excelissä (Välilehti 06)</a>
+        </div>
       </div>
       <div class="table-scroll">
         <table>
           <thead>
             <tr>
               <th>#</th>
-              <th data-i18n="th_org">Järjestö (STEA 2026 virallinen rekisteri)</th>
-              <th data-i18n="th_tot">Myönnetty 2026 (€)</th>
-              <th data-i18n="th_ak">Ak-toiminta-avustus (€)</th>
-              <th data-i18n="th_akpct">Ak-Osuus (%)</th>
-              <th data-i18n="th_proj">Muut lajit Ay/C/B (€)</th>
-              <th data-i18n="th_purp">Suurin avustuskohde (2026)</th>
+              <th class="sortable" onclick="sortSteaTable('ngo_name')"><span data-i18n="th_org">Järjestö (STEA 2026 virallinen rekisteri)</span> <span id="sort-stea-ngo_name"></span></th>
+              <th class="sortable" onclick="sortSteaTable('granted_2026_eur')"><span data-i18n="th_tot">Myönnetty 2026 (€)</span> <span id="sort-stea-granted_2026_eur">▼</span></th>
+              <th class="sortable" onclick="sortSteaTable('ak_general_2026_eur')"><span data-i18n="th_ak">Ak-toiminta-avustus (€)</span> <span id="sort-stea-ak_general_2026_eur"></span></th>
+              <th class="sortable" onclick="sortSteaTable('ak_pct')"><span data-i18n="th_akpct">Ak-Osuus (%)</span> <span id="sort-stea-ak_pct"></span></th>
+              <th class="sortable" onclick="sortSteaTable('targeted_2026_eur')"><span data-i18n="th_proj">Muut lajit Ay/C/B (€)</span> <span id="sort-stea-targeted_2026_eur"></span></th>
+              <th class="sortable" onclick="sortSteaTable('decision_count_2026')"><span data-i18n="th_purp">Päätökset &amp; suurin avustuskohde (2026)</span> <span id="sort-stea-decision_count_2026"></span></th>
             </tr>
           </thead>
           <tbody id="stea-all-tbody"></tbody>
@@ -831,9 +900,9 @@ def compile_tuomioistuin_html(
   <!-- SECTION 4: TUKIKONSORTIOT & MEKANISMI -->
   <section class="section-block" id="sec-rings">
     <div class="section-head">
-      <h2 data-i18n="s1_title">4. Miten tukikonsortiot ja hakemuskoneistot toimivat? (3 oikeaa klusteria)</h2>
+      <h2 data-i18n="s1_title">4. Miten tukikonsortiot ja hakemuskoneistot toimivat? (3 oikeaa klusteria · 132,2 M€)</h2>
       <p data-i18n="s1_sub">
-        Julkiset T&amp;K- ja investointituet keskittyvät samoihin osoite- ja ekosysteemiklustereihin (kuten Otaniemen Tekniikantie ja Keilasatama), joissa ammattimaiset tukikonsultit (esim. Spinverse Oy) koordinoivat kymmenien miljoonien hakemuskonsortioita.
+        Julkiset T&amp;K- ja investointituet keskittyvät samoihin osoite- ja ekosysteemiklustereihin (kuten Otaniemen Tekniikantie, biokuitukonsortiot ja Keilasatama), joissa ammattimaiset tukikonsultit (esim. Spinverse Oy) koordinoivat kymmenien miljoonien hakemuskonsortioita.
       </p>
     </div>
     <div class="flow-steps">
@@ -855,7 +924,7 @@ def compile_tuomioistuin_html(
       <div class="flow-step danger clickable-card" onclick="openFlowModal(4)">
         <span class="flow-badge" data-i18n="f4_step">Vaihe 4 · Lopputulos</span>
         <h4 data-i18n="f4_title">0 € yhteisöveroa &amp; pilottien alasajo</h4>
-        <p data-i18n="f4_desc">Kun tukiraha loppuu, yhtiö ei maksa euroakaan yhteisöveroa (esim. Infinited Fiberin yt-neuvottelut ja pilottituotannon alasajo yli 12,4 M€ julkisten tukien jälkeen).</p>
+        <p data-i18n="f4_desc">Kun tukiraha loppuu, yhtiö ei maksa euroakaan yhteisöveroa (esim. Infinited Fiberin yt-neuvottelut ja Woodion konkurssi/saneeraus miljoonatukien jälkeen).</p>
       </div>
     </div>
     <h3 style="font-size:19px; margin: 22px 0 12px;" data-i18n="rings_heading">Klikkaa tunnistettua tukiklusteria lukeaksesi yhtiökohtaisen erittelyn:</h3>
@@ -873,7 +942,7 @@ def compile_tuomioistuin_html(
 <footer>
   <div>
     <strong>Suomen Talousinstituutti · Avoin Tutkimusjulkaisu (2026)</strong><br/>
-    Perustuu 100 % julkisiin viranomaisrekistereihin: STEA 2026 (kaikki 686 järjestöä), Tutkiavustuksia.fi, Business Finland, Verohallinto &amp; PRH YTJ v3.
+    Perustuu 100 % julkisiin viranomaisrekistereihin: STEA 2026 (kaikki 686 järjestöä / 1 288 avustuspäätöstä), Tutkiavustuksia.fi, Business Finland, Verohallinto &amp; PRH YTJ v3.
   </div>
   <div>
     <a href="VM_Tukipalkkio_Leikkuri_2027.xlsx" download>Lataa 6-välilehtinen Excel (.xlsx)</a> ·
@@ -886,6 +955,10 @@ def compile_tuomioistuin_html(
 <script>
 const DATA = {payload_json};
 let LANG = 'fi';
+let CORP_SORT = {{ col: 'subsidy_received_eur', asc: false }};
+let STEA_SORT = {{ col: 'granted_2026_eur', asc: false }};
+let LAST_FILTERED_CORPS = [];
+let LAST_FILTERED_STEA = [];
 
 const fmtM = (n) => (n / 1e6).toLocaleString('fi-FI', {{minimumFractionDigits: 2, maximumFractionDigits: 2}}) + ' milj. €';
 const fmtCardM = (n) => {{
@@ -906,18 +979,26 @@ const splitTitle = (raw) => {{
     sub: s.slice(idx + 2, s.endsWith(')') ? -1 : s.length).trim()
   }};
 }};
+const fmtCorpMomentti = (c) => {{
+  if (!c || c.isBenchmark) return '0 €';
+  if (c.nace_code === '50101' || c.nace_code === '50201') return '31.20.43';
+  if (c.nace_code === '51100') return '31.20.20 / 32.30.42';
+  const raw = String(c.vm_momentti || '').replace(/_/g, ' / ');
+  if (raw === '30.10.40 / 32.60.40') return '32.20.43 / 32.60.40';
+  return raw;
+}};
 
 const I18N = {{
   fi: {{
     brand_title: "Suomen Talousinstituutti · Julkisen Talouden Tutkimus",
-    brand_sub: "Tutkimusraportti 2026 · 686 STEA-järjestöä & suomalaiset suuryritykset ja tukikohteet",
+    brand_sub: "Tutkimusraportti 2026 · 686 STEA-järjestöä (1 288 päätöstä) & 47 suuryritystä ja tukikohdetta",
     nav_sister: "Tutkimus II: Hankintakartellit (38,7 mrd. €) →",
     nav_xlsx: "⬇ Lataa Excel-aineisto (.xlsx)",
     hero_kicker: "VALTIONTALOUS · TUTKIMUSRAPORTTI 2026 · 100 % OIKEA VIRANOMAISDATA",
     hero_title: "Mihin katoaa 11,5 miljardia euroa? Suomen yritys- ja järjestötukien läpivalaisu",
     hero_lead: "Suomi jakaa joka vuosi 11,5 miljardia euroa suoria yritystukia, maatalous- ja energiatukia, verotukia sekä järjestöavustuksia. Kun julkiset tukipäätökset (Business Finland, ELY, TEM, STEA 2026 kaikki 686 järjestöä) yhdistetään Verohallinnon verotietoihin ja PRH:n kaupparekisteriin, paljastuu miten valtion budjetista voidaan säästää <strong>1,55–3,00 miljardia euroa vuodessa</strong> leikkaamatta yhdeltäkään sairaanhoitajalta, opettajalta tai poliisilta.",
     summary_box_title: "Mitä tämä tutkimus ja ladattava Excel (.xlsx) todistavat?",
-    summary_box_body: "Tämä julkaisu sisältää <strong>kaikki 686 oikeaa STEA-järjestöä (1 288 virallista avustuspäätöstä 1 527 hakemuksesta vuodelle 2026 = 273,91 milj. €)</strong> sekä <strong>28 oikeaa suomalaista yritystukien saajaa ja veronmaksajaverrokkia</strong> (mm. <em>Nokia, UPM-Kymmene, Stora Enso, Neste, Meyer Turku, Viking Line, Tallink Silja, Spinnova, Infinited Fiber, Solar Foods, P2X Solutions, Betolar, Supercell, KONE, RELEX, Ponsse</em>). <strong>Klikkaa mitä tahansa korttia tai hae nimellä alla</strong> nähdäksesi tarkat luvut.",
+    summary_box_body: "Tämä julkaisu sisältää <strong>kaikki 686 oikeaa STEA-järjestöä (kaikki 1 288 myönteistä avustuspäätöstä 1 527 hakemuksesta vuodelle 2026 = 273,91 milj. €)</strong> sekä <strong>47 oikeaa suomalaista yritystukien saajaa ja veronmaksajaverrokkia</strong> (mm. <em>Nokia, UPM-Kymmene, Stora Enso, Neste, Meyer Turku, Viking Line, Tallink Silja, Finnlines, Finnair, Spinnova, Infinited Fiber, Solar Foods, P2X Solutions, Betolar, Sulapac, Woodio, Supercell, KONE, RELEX, Ponsse, Orion, Kesko, Elisa</em>). <strong>Klikkaa mitä tahansa korttia, lajittele taulukkoja tai vie suodatettu CSV-aineisto</strong>.",
     kpi1_lbl: "Julkiset tuet & verotuet yhteensä",
     kpi1_sub: "Suorat yritys-, energia-, maatalous- ja järjestötuet (~7,5 mrd. €) sekä toimialaverotuet (~4,0 mrd. €)",
     click_explain: "Klikkaa: Mistä 11,5 mrd. € koostuu? →",
@@ -925,34 +1006,46 @@ const I18N = {{
     kpi2_sub: "Välitön säästö 6 tukikokonaisuudesta ilman leikkauksia kouluihin, sairaaloihin tai poliisiin",
     click_explain2: "Klikkaa: Miten säästö syntyy? →",
     kpi3_lbl: "Tuki- ja konsortioklusterit",
-    kpi3_sub: "Infinited Fiber (yt-neuvottelut & 0 € veroa 12,4 M€ tuen jälkeen), Spinnova, Solar Foods, P2X & konsultit",
+    kpi3_sub: "Infinited Fiber (yt-neuvottelut & 0 € veroa 12,4 M€ tuen jälkeen), Spinnova, Solar Foods, P2X, Woodio & konsultit",
     click_explain3: "Klikkaa: Katso 3 oikeaa tukiklusteria →",
     kpi4_lbl: "STEA 2026 Jatkuvat Ak-toiminta-avustukset",
     kpi4_sub: "686 järjestöä (273,9 M€): yli 3/4 menee jatkuviin Ak-toimintatukiin, lomiin, kattojärjestöille ja sote-konserneille",
     click_explain4: "Klikkaa: Katso STEA 2026 -todisteet →",
-    lbl_search: "Hae yritystä, järjestöä, Y-tunnusta tai aihetta (686 järjestöä + 28 suuryritystä & tukikohdetta)",
+    lbl_search: "Hae yritystä, järjestöä, Y-tunnusta tai aihetta (686 järjestöä + 47 suuryritystä & tukikohdetta)",
     lbl_scenario: "Valitse Kehysriihi 2027 -säästöohjelman laajuus",
     opt_base: "Perustaso: Leikkaa nollatuottoiset tuet ja Ak/Ay-hallintopöhö (1,55 mrd. €/v)",
     opt_med: "Rakenneuudistus: Puolita tehottomat elinkeinotuet (2,25 mrd. €/v)",
     opt_max: "Täysi markkinauudistus: Poista kaikki kilpailua vääristävät tuet (3,00 mrd. €/v)",
     chip_lbl: "Pikavalinnat:",
     chip_all: "Näytä kaikki",
-    s4_title: "1. Yritystukien totuus: Nollavero-tukikohteet, säilyttävät suuryritystuet ja aidot nettoveronmaksajat (28 yhtiötä)",
-    s4_sub: "Klikkaa mitä tahansa yhtiökorttia nähdäksesi selkokielisen vertailun: kuinka paljon yhtiö sai julkista tukea (Business Finland, TEM, ELY, sähköistämistuki tai merenkulun miehistötuki), paljonko sen yhteisövero oli 5 vuodessa ja miltä tulos näyttää ilman valtion tukia.",
-    s3_title: "2. Järjestötukien läpivalaisu: STEA 2026 kaikki 686 järjestöä (273,91 milj. €) ja OKM",
-    s3_sub: "Vuoden 2026 virallisista STEA-avustuksista (273 912 000 € / 1 288 avustuspäätöstä) tasan <strong>212 203 929 € (77,5 %)</strong> jaetaan jatkuvina <code>Ak</code>-toiminta-avustuksina pysyville järjestörakenteille, kattojärjestöille, tuettuun lomatoimintaan ja sote-konserneille, ja 61 708 071 € (22,5 %) <code>Ay</code>-yleisavustuksina sekä <code>C/B</code>-hanke- ja investointiavustuksina. Klikkaa järjestökorttia tai selaa kaikkia 686 STEA-järjestöä alla.",
-    stea_tbl_title: "Virallinen STEA 2026 -kokoaineisto: Kaikki 686 avustusta saavaa järjestöä (Klikkaa riviä)",
+    s4_title: "1. Yritystukien totuus: Nollavero-tukikohteet, säilyttävät suuryritystuet ja aidot nettoveronmaksajat (47 yhtiötä)",
+    s4_sub: "Klikkaa mitä tahansa yhtiökorttia tai alla olevan kokonaistaulukon riviä nähdäksesi selkokielisen vertailun: kuinka paljon yhtiö sai julkista tukea (Business Finland, TEM, ELY, sähköistämistuki tai merenkulun miehistötuki), paljonko sen yhteisövero oli 5 vuodessa ja miltä tulos näyttää ilman valtion tukia.",
+    corp_tbl_title: "Yritysaineiston kokonaistaulukko: Kaikki 47 yhtiötä & veronmaksajaverrokkia (Klikkaa otsikkoa lajitellaksesi tai riviä avataksesi)",
+    corp_csv_btn: "⬇ Vie suodatettu yritysaineisto (.csv)",
+    corp_xlsx_btn: "⬇ Lataa Excel (Välilehti 02)",
+    th_c_name: "Yritys & Y-tunnus",
+    th_c_tol: "TOL",
+    th_c_mom: "Momentti",
+    th_c_sub: "Julkinen tuki 5v (€)",
+    th_c_tax: "Yhteisövero 5v (€)",
+    th_c_roi: "Vero-ROI",
+    th_c_cls: "Luokitus",
+    th_c_cut: "Esitetty säästö (€)",
+    s3_title: "2. Järjestötukien läpivalaisu: STEA 2026 kaikki 686 järjestöä (273,91 milj. € / 1 288 päätöstä) ja OKM",
+    s3_sub: "Vuoden 2026 virallisista STEA-avustuksista (273 912 000 € / 1 288 avustuspäätöstä 1 527 hakemuksesta) tasan <strong>212 203 929 € (77,5 %)</strong> jaetaan jatkuvina <code>Ak</code>-toiminta-avustuksina pysyville järjestörakenteille, kattojärjestöille, tuettuun lomatoimintaan ja sote-konserneille, ja 61 708 071 € (22,5 %) <code>Ay</code>-yleisavustuksina sekä <code>C/B</code>-hanke- ja investointiavustuksina. Klikkaa mitä tahansa järjestökorttia tai riviä alla nähdäksesi järjestön kaikki vuoden 2026 avustuspäätökset.",
+    stea_tbl_title: "Virallinen STEA 2026 -kokoaineisto: Kaikki 686 avustusta saavaa järjestöä (Klikkaa otsikkoa lajitellaksesi tai riviä avataksesi)",
+    stea_csv_btn: "⬇ Vie suodatettu STEA-aineisto (.csv)",
     stea_xlsx_btn: "⬇ Lataa kaikki 686 järjestöä Excelissä (Välilehti 06)",
     th_org: "Järjestö (STEA 2026 virallinen rekisteri)",
     th_tot: "Myönnetty 2026 (€)",
     th_ak: "Ak-toiminta-avustus (€)",
     th_akpct: "Ak-Osuus (%)",
     th_proj: "Muut lajit Ay/C/B (€)",
-    th_purp: "Suurin avustuskohde (2026)",
+    th_purp: "Päätökset & suurin avustuskohde (2026)",
     s2_title: "3. Kuusi valtion budjettikokonaisuutta, joista säästetään 1,55–3,00 miljardia €/v",
     s2_sub: "Klikkaa mitä tahansa budjettikorttia nähdäksesi selkokielellä, mitä kyseisiltä momenteilta leikataan, mitkä oikeat yhtiöt tai järjestöt kuuluvat momentille ja miksi peruspalvelut eivät kärsi.",
-    s1_title: "4. Miten tukikonsortiot ja hakemuskoneistot toimivat? (3 oikeaa klusteria)",
-    s1_sub: "Julkiset T&K- ja investointituet keskittyvät samoihin osoite- ja ekosysteemiklustereihin (kuten Otaniemen Tekniikantie ja Keilasatama), joissa ammattimaiset tukikonsultit (esim. Spinverse Oy) koordinoivat kymmenien miljoonien hakemuskonsortioita.",
+    s1_title: "4. Miten tukikonsortiot ja hakemuskoneistot toimivat? (3 oikeaa klusteria · 132,2 M€)",
+    s1_sub: "Julkiset T&K- ja investointituet keskittyvät samoihin osoite- ja ekosysteemiklustereihin (kuten Otaniemen Tekniikantie, biokuitukonsortiot ja Keilasatama), joissa ammattimaiset tukikonsultit (esim. Spinverse Oy) koordinoivat kymmenien miljoonien hakemuskonsortioita.",
     f1_step: "Vaihe 1 · Klikkaa",
     f1_title: "Veronmaksajan raha",
     f1_desc: "Valtio jakaa satoja miljoonia euroja kehittämis- ja investointiavustuksina tarkistamatta, syntyykö tuesta koskaan yhteisöveroa.",
@@ -964,19 +1057,19 @@ const I18N = {{
     f3_desc: "Tappiollinen pilottiyhtiö kirjaa avustukset liiketoiminnan muihin tuottoihin ja aktivoi tukipalkat taseeseen.",
     f4_step: "Vaihe 4 · Lopputulos",
     f4_title: "0 € yhteisöveroa & pilottien alasajo",
-    f4_desc: "Kun tukiraha loppuu, yhtiö ei maksa euroakaan yhteisöveroa (esim. Infinited Fiberin yt-neuvottelut ja pilottituotannon alasajo yli 12,4 M€ julkisten tukien jälkeen).",
+    f4_desc: "Kun tukiraha loppuu, yhtiö ei maksa euroakaan yhteisöveroa (esim. Infinited Fiberin yt-neuvottelut ja Woodion konkurssi/saneeraus miljoonatukien jälkeen).",
     rings_heading: "Klikkaa tunnistettua tukiklusteria lukeaksesi yhtiökohtaisen erittelyn:"
   }},
   en: {{
     brand_title: "Finnish Economic Institute (STI) · Public Finance Audit",
-    brand_sub: "2026 Empirical Report · All 686 STEA NGOs & Real Finnish Corporate Grant Recipients",
+    brand_sub: "2026 Empirical Report · All 686 STEA NGOs (1,288 Decisions) & 47 Real Finnish Corporations",
     nav_sister: "Study II: Procurement Cartels (€38.7B) →",
     nav_xlsx: "⬇ Download Full Excel Dataset (.xlsx)",
     hero_kicker: "PUBLIC FINANCE · RESEARCH REPORT 2026 · 100% REAL STATUTORY DATA",
     hero_title: "Where Does €11.5 Billion Go? An Empirical Audit of Finland's Corporate & NGO Subsidies",
     hero_lead: "Finland distributes €11.5 billion every year in direct corporate grants, agricultural/energy subsidies, sectoral tax expenditures, and NGO funding. By linking official grant decisions (Business Finland, ELY, TEM, and all 686 STEA 2026 NGOs) to Tax Administration corporate tax records and PRH registry addresses, this study shows how <strong>€1.55B–€3.00B/year</strong> can be saved without cutting a single nurse, teacher, or police officer.",
     summary_box_title: "What Does This Report & Excel Workbook (.xlsx) Prove?",
-    summary_box_body: "This dataset contains <strong>all 686 real 2026 STEA grant-receiving NGOs (1,288 funded decisions out of 1,527 applications = €273.91M)</strong> plus <strong>28 real Finnish corporate grant recipients and net-taxpayer benchmarks</strong> (including <em>Nokia, UPM-Kymmene, Stora Enso, Neste, Meyer Turku, Viking Line, Tallink Silja, Spinnova, Infinited Fiber, Solar Foods, P2X Solutions, Betolar, Supercell, KONE, RELEX, Ponsse</em>). <strong>Click any card or search below</strong> to inspect the exact figures.",
+    summary_box_body: "This dataset contains <strong>all 686 real 2026 STEA grant-receiving NGOs (all 1,288 funded decisions out of 1,527 applications = €273.91M)</strong> plus <strong>47 real Finnish corporate grant recipients and net-taxpayer benchmarks</strong> (including <em>Nokia, UPM-Kymmene, Stora Enso, Neste, Meyer Turku, Viking Line, Tallink Silja, Finnlines, Finnair, Spinnova, Infinited Fiber, Solar Foods, P2X Solutions, Betolar, Sulapac, Woodio, Supercell, KONE, RELEX, Ponsse, Orion, Kesko, Elisa</em>). <strong>Click any card, sort the tables, or export filtered CSVs</strong>.",
     kpi1_lbl: "Total Public Subsidies & Tax Aid",
     kpi1_sub: "Direct corporate, energy, agri & NGO grants (~€7.5B) plus sectoral tax expenditures (~€4.0B)",
     click_explain: "Click: What makes up the €11.5B? →",
@@ -984,34 +1077,46 @@ const I18N = {{
     kpi2_sub: "Immediate savings across 6 budget groups with zero cuts to schools, hospitals, or police",
     click_explain2: "Click: How are savings achieved? →",
     kpi3_lbl: "Grant & Consortium Clusters",
-    kpi3_sub: "Infinited Fiber (downsizing & €0 tax after €12.4M grants), Spinnova, Solar Foods, P2X & consultants",
+    kpi3_sub: "Infinited Fiber (downsizing & €0 tax after €12.4M grants), Spinnova, Solar Foods, P2X, Woodio & consultants",
     click_explain3: "Click: Inspect the 3 real grant clusters →",
     kpi4_lbl: "STEA 2026 Continuous Ak Operating Grants",
     kpi4_sub: "Across all 686 NGOs (€273.9M): 77.5% goes to recurring Ak operating grants, holidays, umbrella groups & Sote conglomerates",
     click_explain4: "Click: Inspect STEA 2026 proof →",
-    lbl_search: "Search any company, NGO, Business ID, or topic (686 NGOs + 28 major corporations & grant targets)",
+    lbl_search: "Search any company, NGO, Business ID, or topic (686 NGOs + 47 major corporations & grant targets)",
     lbl_scenario: "Choose 2027 Budget Reform Scope",
     opt_base: "Baseline: Cut zero-return grants & Ak/Ay admin bloat (€1.55B/yr)",
     opt_med: "Structural Reform: Halve low-return business & admin subsidies (€2.25B/yr)",
     opt_max: "Full Market Reform: Remove all market-distorting subsidies (€3.00B/yr)",
     chip_lbl: "Quick filters:",
     chip_all: "Show all",
-    s4_title: "1. Corporate Subsidies: Zero-Tax Grant Targets, Incumbent Subsidies & Net Taxpayers (28 Corporations)",
-    s4_sub: "Click any company card for a plain-English comparison: how much public subsidy it received, how its 5-year corporate income tax performed, and what its earnings look like without subsidies.",
-    s3_title: "2. NGO Subsidy Audit: All 686 Real 2026 STEA Organizations (€273.91M) & Ministry Grants",
-    s3_sub: "Out of all official 2026 STEA grants (€273,912,000 across 1,288 funded decisions), exactly <strong>€212,203,929 (77.5%)</strong> is distributed as continuous <code>Ak</code> operating subsidies, plus €61,708,071 (22.5%) in <code>Ay</code> general grants and <code>C/B</code> project/investment grants. Click any card or browse all 686 NGOs below.",
-    stea_tbl_title: "Official 2026 STEA Full Registry: All 686 Funded Organizations (Click Any Row)",
+    s4_title: "1. Corporate Subsidies: Zero-Tax Grant Targets, Incumbent Subsidies & Net Taxpayers (47 Corporations)",
+    s4_sub: "Click any company card or row in the full table below for a plain-English comparison: how much public subsidy it received, how its 5-year corporate income tax performed, and what its earnings look like without subsidies.",
+    corp_tbl_title: "Full Corporate Registry Table: All 47 Corporations & Net Taxpayer Benchmarks (Click Header to Sort or Row to Open)",
+    corp_csv_btn: "⬇ Export Filtered Corporate CSV (.csv)",
+    corp_xlsx_btn: "⬇ Download Excel (Tab 02)",
+    th_c_name: "Company & Business ID",
+    th_c_tol: "NACE",
+    th_c_mom: "Budget Line",
+    th_c_sub: "5-Yr Subsidy (€)",
+    th_c_tax: "5-Yr Corp Tax (€)",
+    th_c_roi: "Tax ROI",
+    th_c_cls: "Classification",
+    th_c_cut: "Proposed Cut (€)",
+    s3_title: "2. NGO Subsidy Audit: All 686 Real 2026 STEA Organizations (€273.91M / 1,288 Decisions) & Ministry Grants",
+    s3_sub: "Out of all official 2026 STEA grants (€273,912,000 across 1,288 funded decisions out of 1,527 applications), exactly <strong>€212,203,929 (77.5%)</strong> is distributed as continuous <code>Ak</code> operating subsidies, plus €61,708,071 (22.5%) in <code>Ay</code> general grants and <code>C/B</code> project/investment grants. Click any card or row below to inspect all 2026 decisions for that NGO.",
+    stea_tbl_title: "Official 2026 STEA Full Registry: All 686 Funded Organizations (Click Header to Sort or Row to Open)",
+    stea_csv_btn: "⬇ Export Filtered STEA CSV (.csv)",
     stea_xlsx_btn: "⬇ Download All 686 NGOs in Excel (Tab 06)",
     th_org: "Organization (Official 2026 STEA Registry)",
     th_tot: "Granted 2026 (€)",
     th_ak: "Ak Operating Grant (€)",
     th_akpct: "Ak Share (%)",
     th_proj: "Other Ay/C/B Grants (€)",
-    th_purp: "Largest Grant Decision (2026)",
+    th_purp: "Decisions & Primary Grant Target (2026)",
     s2_title: "3. Six State Budget Groups Saving €1.55B–€3.00B/Year",
     s2_sub: "Click any budget card to see in plain English what is cut from that budget line, which real companies or NGOs are affected, and why frontline services are untouched.",
-    s1_title: "4. How Grant Consortia and Application Factories Work (3 Real Clusters)",
-    s1_sub: "Public R&D and investment subsidies concentrate into recurring address and ecosystem hubs (such as Tekniikantie and Keilasatama in Espoo), where grant consultants coordinate multi-million euro consortia.",
+    s1_title: "4. How Grant Consortia and Application Factories Work (3 Real Clusters · €132.2M)",
+    s1_sub: "Public R&D and investment subsidies concentrate into recurring address and ecosystem hubs (such as Tekniikantie, bio-material consortia, and Keilasatama in Espoo), where grant consultants coordinate multi-million euro consortia.",
     f1_step: "Step 1 · Click",
     f1_title: "Taxpayer Money",
     f1_desc: "The state hands out hundreds of millions in R&D and investment grants without checking if past grants ever generated corporate tax.",
@@ -1023,7 +1128,7 @@ const I18N = {{
     f3_desc: "Loss-making pilot ventures book public grants into Other Operating Income and capitalize grant payroll onto their balance sheets.",
     f4_step: "Step 4 · Outcome",
     f4_title: "€0 Corporate Tax & Pilot Wind-Downs",
-    f4_desc: "When subsidies run out, the venture pays €0 corporate tax (e.g. Infinited Fiber's downsizing and pilot factory wind-down after €12.4M+ in public grants).",
+    f4_desc: "When subsidies run out, the venture pays €0 corporate tax (e.g. Infinited Fiber's downsizing and Woodio's insolvency after millions in public grants).",
     rings_heading: "Click any detected grant cluster to inspect the companies and figures:"
   }}
 }};
@@ -1035,10 +1140,10 @@ const MOMENTTI_META = [
     en_name: "Business Finland Corporate R&D & Innovation Grants",
     current: 470000000,
     base_cut: 211500000,
-    fi_short: "Kohdennetaan T&K-rahoitus (2026 myöntämisvaltuus 637,4 M€, arviomääräraha ~470 M€) vain aidon vienti- ja verotuoton teknologiaan (Nokia, Kempower, ICEYE). Katkaistaan tuki 0 € yhteisöveroa maksavilta tukikohteilta (Infinited Fiber 12,4 M€, Solar Foods 18,2 M€, Spinnova 14,8 M€, Meyer Turku 54 M€).",
-    en_short: "Focus R&D funding (2026 authorization €637.4M, cash budget ~€470M) on tax-generating deep-tech (Nokia, Kempower, ICEYE); stop grants to €0-tax recipients (Infinited Fiber €12.4M, Solar Foods €18.2M, Spinnova €14.8M, Meyer Turku €54M).",
-    fi_deep: "Valtion talousarviossa 2026 momentin 32.20.40 myöntämisvaltuus on 637,4 milj. € ja vuotuinen maksatusmääräraha noin 470 milj. €. Aineistomme osoittaa jyrkän kahtiajaon: aidot vientiyhtiöt (Nokia Oyj, Wärtsilä Oyj Abp, Kempower Oyj ja ICEYE Oy) muuttavat T&K-panokset nopeasti verotuloiksi, kun taas kymmeniä miljoonia nostaneet bio- ja kiertotalouspilotit (Infinited Fiber Company Oy 12,4 M€ -> yt-neuvottelut ja 0 € veroa, Spinnova Oyj 14,8 M€ -> 0 € veroa, Solar Foods Oyj 18,2 M€ -> 0 € veroa) eivät ole maksaneet euroakaan yhteisöveroa.",
-    en_deep: "In the 2026 State Budget, line 32.20.40 carries a €637.4M authorization and ~€470M annual cash outlay. While genuine deep-tech exporters (Nokia, Wärtsilä, Kempower, ICEYE) generate strong tax returns, tens of millions flow into chronically loss-making pilot ventures (Infinited Fiber €12.4M -> pilot wind-down & €0 tax, Spinnova €14.8M -> €0 tax, Solar Foods €18.2M -> €0 tax)."
+    fi_short: "Kohdennetaan T&K-rahoitus (2026 myöntämisvaltuus 637,4 M€, arviomääräraha ~470 M€) vain aidon vienti- ja verotuoton teknologiaan (Nokia, Konecranes, Vaisala, Kempower, ICEYE). Katkaistaan tuki 0 € yhteisöveroa maksavilta tukikohteilta (Infinited Fiber 12,4 M€, Solar Foods 18,2 M€, Spinnova 14,8 M€, Meyer Turku 54 M€, Woodio 4,2 M€).",
+    en_short: "Focus R&D funding (2026 authorization €637.4M, cash budget ~€470M) on tax-generating deep-tech (Nokia, Konecranes, Vaisala, Kempower, ICEYE); stop grants to €0-tax recipients (Infinited Fiber €12.4M, Solar Foods €18.2M, Spinnova €14.8M, Meyer Turku €54M, Woodio €4.2M).",
+    fi_deep: "Valtion talousarviossa 2026 momentin 32.20.40 myöntämisvaltuus on 637,4 milj. € ja vuotuinen maksatusmääräraha noin 470 milj. €. Aineistomme (47 suuryritystä ja tukikohdetta) osoittaa jyrkän kahtiajaon: aidot vientiyhtiöt (Nokia Oyj, Wärtsilä Oyj Abp, Konecranes Oyj, Vaisala Oyj, Patria Oyj, Kempower Oyj, ICEYE Oy, Revenio Group Oyj, Bittium Oyj, Ponsse Oyj) muuttavat T&K-panokset nopeasti verotuloiksi, kun taas kymmeniä miljoonia nostaneet pilottihankkeet (Infinited Fiber Company Oy 12,4 M€ -> yt-neuvottelut ja 0 € veroa, Spinnova Oyj 14,8 M€ -> 0 € veroa, Solar Foods Oyj 18,2 M€ -> 0 € veroa, Sulapac Oy 5,4 M€ -> 0 € veroa, Woodio Oy 4,2 M€ -> konkurssi/saneeraus ja 0 € veroa) eivät ole maksaneet euroakaan yhteisöveroa.",
+    en_deep: "In the 2026 State Budget, line 32.20.40 carries a €637.4M authorization and ~€470M annual cash outlay. While genuine deep-tech exporters (Nokia, Wärtsilä, Konecranes, Vaisala, Patria, Kempower, ICEYE, Revenio, Bittium) generate strong tax returns, tens of millions flow into chronically loss-making pilot ventures (Infinited Fiber €12.4M -> pilot wind-down & €0 tax, Spinnova €14.8M -> €0 tax, Solar Foods €18.2M -> €0 tax, Woodio €4.2M -> €0 tax)."
   }},
   {{
     code: "32.20.83",
@@ -1057,10 +1162,10 @@ const MOMENTTI_META = [
     en_name: "Maritime Crew Subsidies (31.20.43) & ELY Regional Grants (32.30.42)",
     current: 340000000,
     base_cut: 174000000,
-    fi_short: "Leikataan varustamoiden automaattiset miehistötuet (LVM 31.20.43: ~89 M€/v, mm. Viking Line 115 M€/5v, Tallink Silja 98 M€/5v) sekä kilpailua vääristävät ELY-kehittämisavustukset (TEM 32.30.42, mm. Betolar 6,9 M€).",
-    en_short: "Cut automatic maritime crew subsidies (LVM 31.20.43: ~€89M/yr, Viking Line €115M/5yr, Tallink Silja €98M/5yr) and local market-distorting ELY grants (TEM 32.30.42, Betolar €6.9M).",
-    fi_deep: "Valtio maksaa LVM:n momentilta 31.20.43 (Meriliikenteessä käytettävien alusten kilpailukyvyn parantaminen) vuosittain noin 89 miljoonaa euroa suoraa tukea Itämeren varustamoille (Viking Line Abp ja Tallink Silja Oy) sekä TEM:n luvusta 32.30 (mm. 32.30.42 Yritysten kehittämishankkeiden tukeminen) alueellisia yritystukia, jotka vääristävät kilpailua tuettomia suomalaisia yrityksiä vastaan.",
-    en_deep: "Around €89M/year flows automatically under LVM line 31.20.43 to Baltic shipping lines (Viking Line Abp, Tallink Silja Oy) alongside regional ELY business-development grants under TEM chapter 32.30 (32.30.42) that distort local competition."
+    fi_short: "Leikataan varustamoiden automaattiset miehistötuet (LVM 31.20.43: ~89 M€/v, mm. Viking Line 115 M€/5v, Tallink Silja 98 M€/5v, Finnlines 65 M€/5v) sekä kilpailua vääristävät ELY- ja liikennetuet (TEM 32.30.42, mm. Betolar 6,9 M€, Finnair 85 M€).",
+    en_short: "Cut automatic maritime crew subsidies (LVM 31.20.43: ~€89M/yr, Viking Line €115M/5yr, Tallink Silja €98M/5yr, Finnlines €65M/5yr) and market-distorting ELY/transport grants (Betolar €6.9M, Finnair €85M).",
+    fi_deep: "Valtio maksaa LVM:n momentilta 31.20.43 (Meriliikenteessä käytettävien alusten kilpailukyvyn parantaminen) vuosittain noin 89 miljoonaa euroa suoraa tukea Itämeren varustamoille (Viking Line Abp, Tallink Silja Oy ja Finnlines Oyj) sekä TEM:n luvusta 32.30 (mm. 32.30.42 Yritysten kehittämishankkeiden tukeminen) alueellisia yritystukia, jotka vääristävät kilpailua tuettomia suomalaisia yrityksiä vastaan.",
+    en_deep: "Around €89M/year flows automatically under LVM line 31.20.43 to Baltic shipping lines (Viking Line Abp, Tallink Silja Oy, Finnlines Oyj) alongside regional ELY business-development grants under TEM chapter 32.30 (32.30.42) that distort local competition."
   }},
   {{
     code: "33.90.50",
@@ -1070,8 +1175,8 @@ const MOMENTTI_META = [
     base_cut: 209000000,
     fi_short: "Todistettu STEA:n vuoden 2026 kaikista 686 järjestöstä: 273,91 M€ potista tasan 212,20 M€ (77,5 %) on jatkuvaa Ak-toiminta-avustusta. Karsitaan hallintopöhö, tuetut lomat (Loma ja Terveys 2,68 M€, Hyvinvointilomat 2,10 M€) ja sote-konsernien päällekkäistuet.",
     en_short: "Proven across all 686 STEA 2026 NGOs: €212.20M (77.5% of €273.91M) goes to continuous Ak operating grants. Cut admin overhead, holiday associations (€4.79M/yr), and commercial Sote group subsidies.",
-    fi_deep: "Olemme ajaneet tähän julkaisuun STEA:n koko vuoden 2026 virallisen avustusrekisterin (kaikki 686 järjestöä ja 1 288 avustuspäätöstä 1 527 hakemuksesta = 273 912 000 € STM:n luvusta 33.90). Luvut osoittavat, että 212 203 929 € (77,5 %) jaetaan jatkuvina Ak-toiminta-avustuksina pysyville järjestörakenteille ja 61 708 071 € (22,5 %) Ay-yleisavustuksina sekä C/B-hankeavustuksina—mukaan lukien kattojärjestöt (SOSTE ry 2,81 M€, EHYT ry 4,13 M€), lomajärjestöt (Loma ja Terveys ry 2,68 M€, Hyvinvointilomat ry 2,10 M€) sekä sote-konsernit (A-klinikkasäätiö 2,87 M€, Sininauhasäätiö 2,60 M€).",
-    en_deep: "Our full dataset of all 686 STEA 2026 organizations (1,288 funded decisions out of 1,527 applications = €273,912,000 under STM chapter 33.90) shows that €212,203,929 (77.5%) goes to recurring Ak operating subsidies and €61,708,071 (22.5%) to Ay general grants and C/B project grants—funding umbrella advocacy (SOSTE €2.81M, EHYT €4.13M), holiday associations (€4.79M), and Sote service groups."
+    fi_deep: "Olemme ajaneet tähän julkaisuun STEA:n koko vuoden 2026 virallisen avustusrekisterin (kaikki 686 järjestöä ja kaikki 1 288 myönteistä avustuspäätöstä 1 527 hakemuksesta = 273 912 000 € STM:n luvusta 33.90). Luvut osoittavat, että 212 203 929 € (77,5 %) jaetaan jatkuvina Ak-toiminta-avustuksina pysyville järjestörakenteille ja 61 708 071 € (22,5 %) Ay-yleisavustuksina sekä C/B-hankeavustuksina—mukaan lukien kattojärjestöt (SOSTE ry 2,81 M€, EHYT ry 4,13 M€), lomajärjestöt (Loma ja Terveys ry 2,68 M€, Hyvinvointilomat ry 2,10 M€) sekä sote-konsernit (A-klinikkasäätiö 2,87 M€, Sininauhasäätiö 2,60 M€).",
+    en_deep: "Our full dataset of all 686 STEA 2026 organizations (all 1,288 funded decisions out of 1,527 applications = €273,912,000 under STM chapter 33.90) shows that €212,203,929 (77.5%) goes to recurring Ak operating subsidies and €61,708,071 (22.5%) to Ay general grants and C/B project grants—funding umbrella advocacy (SOSTE €2.81M, EHYT €4.13M), holiday associations (€4.79M), and Sote service groups."
   }},
   {{
     code: "29.80.50 / 29.90.50 / 29.91.50",
@@ -1090,17 +1195,50 @@ const MOMENTTI_META = [
     en_name: "Large Industrial Electrification, Energy & National Incumbent Subsidies",
     current: 1740000000,
     base_cut: 696000000,
-    fi_short: "Leikataan kannattavien suuryritysten (UPM-Kymmene 142 M€, Stora Enso 96 M€, Neste 68,5 M€, Outokumpu 62 M€, SSAB 48 M€, Metsä Fibre 44 M€, Fortum 34 M€) kuolleen painon sähköistämis-, energia- ja säilytystuet.",
-    en_short: "Cut deadweight incumbent energy and electrification subsidies to profitable large corporations (UPM €142M, Stora Enso €96M, Neste €68.5M, Outokumpu €62M, SSAB €48M).",
+    fi_short: "Leikataan kannattavien suuryritysten (UPM-Kymmene 142 M€, Stora Enso 96 M€, Neste 68,5 M€, Outokumpu 62 M€, SSAB 48 M€, Metsä Fibre 44 M€, Fortum 34 M€, Kemira 19,5 M€) kuolleen painon sähköistämis-, energia- ja säilytystuet.",
+    en_short: "Cut deadweight incumbent energy and electrification subsidies to profitable large corporations (UPM €142M, Stora Enso €96M, Neste €68.5M, Outokumpu €62M, SSAB €48M, Metsä Fibre €44M, Fortum €34M, Kemira €19.5M).",
     fi_deep: "VATT:n ja Etlan yritystukitutkimusten mukaisesti energiaintensiivisen teollisuuden sähköistämistuki (32.20.43 / 32.40.43), energiatuet (32.60.40), kansalliset maataloustuet (30.20.40) ja teollisuuden verotuet ohjautuvat valtaosin vakiintuneille suuryrityksille hankkeisiin ja tehtaisiin, jotka toimisivat markkinaehtoisesti muutoinkin. Kun nämä kuolleen painon säilytystuet karsitaan, säästyy perustasolla 696 miljoonaa euroa vuodessa.",
     en_deep: "Economic research (VATT & Etla) shows that industrial electrification subsidies (32.20.43), energy aid (32.60.40), and national production subsidies flow predominantly to large incumbents with low additionality. Phasing them out saves €696M/year in the baseline scenario."
   }}
 ];
 
-function openModalHtml(title, subtitle, sectionsHtml) {{
+function setHashQuietly(hashStr) {{
+  if (history.replaceState) {{
+    history.replaceState(null, '', '#' + hashStr);
+  }} else {{
+    window.location.hash = hashStr;
+  }}
+}}
+
+function copyDirectLink(btn) {{
+  navigator.clipboard.writeText(window.location.href);
+  const orig = btn.textContent;
+  btn.textContent = LANG === 'fi' ? '✓ Suora linkki kopioitu!' : '✓ Direct Link Copied!';
+  setTimeout(() => {{ btn.textContent = orig; }}, 1800);
+}}
+
+function downloadTextFile(filename, textContent) {{
+  const blob = new Blob([textContent], {{ type: 'text/plain;charset=utf-8' }});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}}
+
+function openModalHtml(title, subtitle, sectionsHtml, hashId) {{
+  if (hashId) setHashQuietly(hashId);
+  const fi = LANG === 'fi';
   document.getElementById('modal-content').innerHTML = `
     <h2>${{title}}</h2>
     <div class="modal-sub">${{subtitle}}</div>
+    <div class="modal-toolbar">
+      <button type="button" class="btn-secondary" onclick="copyDirectLink(this)">${{fi ? '🔗 Kopioi suora linkki tähän kohteeseen' : '🔗 Copy Direct Link to This Item'}}</button>
+      <button type="button" class="btn-secondary" onclick="window.print()">${{fi ? '🖨 Tulosta / Tallenna PDF' : '🖨 Print / Save as PDF'}}</button>
+    </div>
     ${{sectionsHtml}}
   `;
   document.getElementById('detail-modal').classList.add('open');
@@ -1108,6 +1246,9 @@ function openModalHtml(title, subtitle, sectionsHtml) {{
 
 function closeModal() {{
   document.getElementById('detail-modal').classList.remove('open');
+  if (history.replaceState) {{
+    history.replaceState(null, '', window.location.pathname + window.location.search);
+  }}
 }}
 document.addEventListener('keydown', e => {{ if (e.key === 'Escape') closeModal(); }});
 
@@ -1131,7 +1272,8 @@ function openKpiModal(key) {{
           <li><strong>${{fi ? "Teollisuuden sähköistämis-/energiatuet sekä maatalouden kansalliset ja EU-tuet:" : "Industrial Energy/Electrification & Agricultural Subsidies:"}}</strong> ~3,5 mrd. €/v</li>
           <li><strong>${{fi ? "Toimialakohtaiset elinkeino- ja energiaverotuet (VM verotukikartoitus):" : "Sectoral Corporate & Energy Tax Expenditures (VM):"}}</strong> ~4,0 mrd. €/v</li>
         </ul>
-      </div>`
+      </div>`,
+      'kpi-total'
     );
   }} else if (key === 'savings_pool') {{
     openModalHtml(
@@ -1147,17 +1289,19 @@ function openKpiModal(key) {{
           <li><strong>Momentit 29.80.50 / 29.90.50 / 29.91.50 (OKM katto- ja yleisavustukset):</strong> -168,00 milj. €/v</li>
           <li><strong>Momentit 32.20.43 / 32.60.40 / 30.20.40 (Suurteollisuuden sähköistämis-, energia- ja säilytystuet):</strong> -696,00 milj. €/v</li>
         </ul>
-      </div>`
+      </div>`,
+      'kpi-savings'
     );
   }} else if (key === 'rings_pool') {{
     const listHtml = DATA.rings.map(r => `<li><strong>${{r.shared_address_or_agent}} (${{r.ring_signature}}):</strong> ${{r.entity_count}} ${{fi ? "yhtiötä" : "companies"}} (${{r.company_names.join(' · ')}}) — ${{fi ? "nostettu julkinen tuki" : "public grants"}} <strong>${{fmtM(r.total_subsidy_eur)}}</strong>, ${{fi ? "5v yhteisöverokertymä" : "5-yr corporate tax"}} <strong>${{fmtEUR(r.total_five_yr_tax_delta_eur)}}</strong>.</li>`).join('');
     openModalHtml(
-      fi ? "Kolme oikeaa tuki- ja konsortioklusteria (118,7 milj. € tukia)" : "Three Real Grant & Consortium Clusters (€118.7M in Grants)",
+      fi ? "Kolme oikeaa tuki- ja konsortioklusteria (132,2 milj. € tukia)" : "Three Real Grant & Consortium Clusters (€132.2M in Grants)",
       fi ? "PRH YTJ -osoitteiden, Business Finland Veturi-konsortioiden ja verotietojen yhdistelmä" : "Cross-Join of PRH Registry Addresses, Consortium Programs & Tax Records",
       `<div class="modal-section">
         <h4>${{fi ? "Tunnistetut klusterit aineistossa" : "Audited Clusters in the Dataset"}}</h4>
         <ul>${{listHtml}}</ul>
-      </div>`
+      </div>`,
+      'kpi-rings'
     );
   }} else if (key === 'ngo_pool') {{
     openModalHtml(
@@ -1172,7 +1316,8 @@ function openKpiModal(key) {{
           <li><strong>${{fi ? "Tuetut lomajärjestöt (100 % Ak):" : "Taxpayer-Subsidized Holiday Associations (100% Ak):"}}</strong> Loma ja Terveys ry (2 684 710 €) + Hyvinvointilomat ry (2 103 947 €) = <strong>4 788 657 €/v</strong></li>
           <li><strong>${{fi ? "Suurimmat Ak-toimintatukien saajat 2026:" : "Largest Ak Operating Grant Recipients 2026:"}}</strong> MIELI ry (5,00 M€ Ak + 1,02 M€ Ay), Suomen Punainen Risti (3,03 M€ Ak), EHYT ry (2,87 M€ Ak), Loma ja Terveys ry (2,68 M€ Ak), Näkövammaisten liitto ry (2,25 M€ Ak), MLL (2,01 M€ Ak), Sininauhasäätiö (1,99 M€ Ak), A-klinikkasäätiö (1,96 M€ Ak).</li>
         </ul>
-      </div>`
+      </div>`,
+      'kpi-ngos'
     );
   }}
 }}
@@ -1200,17 +1345,18 @@ function openFlowModal(step) {{
     }},
     4: {{
       t: fi ? "Vaihe 4: Lopputulos — 0 € yhteisöveroa ja pilottien alasajo" : "Step 4: Outcome — €0 Corporate Tax & Pilot Wind-Downs",
-      s: fi ? "Esimerkkinä Infinited Fiber Company Oy:n yt-neuvottelut ja 0 € yhteisövero" : "Case Example: Infinited Fiber Company Oy Downsizing & €0 Corporate Tax",
-      b: fi ? "Infinited Fiber Company Oy (2766860-9) nosti yli 12,4 miljoonaa euroa julkisia Business Finland- ja EU-tukia maksamatta euroakaan yhteisöveroa ennen pilottituotannon alasajoa ja yt-neuvotteluita. Samaan aikaan suomalaiset nettoveronmaksajayhtiöt (kuten Supercell Oy >950 M€, KONE Oyj >485 M€ ja Orion Oyj >295 M€) maksoivat satoja miljoonia yhteisöveroa."
-            : "Infinited Fiber Company Oy (2766860-9) absorbed €12.4M+ in public grants and paid €0 corporate tax while winding down pilot factory operations—whereas net-taxpayer benchmarks paid hundreds of millions in corporate tax."
+      s: fi ? "Esimerkkinä Infinited Fiber Company Oy:n yt-neuvottelut ja Woodio Oy:n konkurssi/saneeraus" : "Case Example: Infinited Fiber Company Oy Downsizing & Woodio Oy Insolvency",
+      b: fi ? "Infinited Fiber Company Oy (2766860-9) nosti yli 12,4 miljoonaa euroa julkisia Business Finland- ja EU-tukia maksamatta euroakaan yhteisöveroa ennen pilottituotannon alasajoa ja yt-neuvotteluita, ja Woodio Oy (2712152-3) nosti 4,2 miljoonaa euroa julkisia tukia maksamatta euroakaan yhteisöveroa. Samaan aikaan suomalaiset nettoveronmaksajayhtiöt (kuten Supercell Oy >950 M€, KONE Oyj >485 M€, Orion Oyj >295 M€, Kesko Oyj >185 M€ ja Elisa Oyj >120 M€) maksoivat yli kaksi miljardia euroa yhteisöveroa."
+            : "Infinited Fiber Company Oy (2766860-9) absorbed €12.4M+ in public grants and paid €0 corporate tax while winding down pilot factory operations, while net-taxpayer benchmarks paid over €2B in corporate income tax."
     }}
   }};
   const item = steps[step];
-  openModalHtml(item.t, item.s, `<div class="modal-section"><h4>${{fi ? "Analyysi" : "Analysis"}}</h4><p>${{item.b}}</p></div>`);
+  openModalHtml(item.t, item.s, `<div class="modal-section"><h4>${{fi ? "Analyysi" : "Analysis"}}</h4><p>${{item.b}}</p></div>`, `flow-${{step}}`);
 }}
 
 function openRingModal(idx) {{
   const r = DATA.rings[idx];
+  if (!r) return;
   const fi = LANG === 'fi';
   const members = DATA.corporate_evals.filter(c => r.y_tunnus_list.includes(c.y_tunnus));
   const memberRows = members.map(m => `<li><strong>${{m.company_name}} (${{m.y_tunnus}}):</strong> ${{fi ? "Nostettu tuki" : "Grant received"}} <strong>${{fmtEUR(m.subsidy_received_eur)}}</strong> (${{m.grant_agency.replace('_',' ')}}) · ${{fi ? "5v yhteisöveron muutos:" : "5-yr corporate tax delta:"}} <strong>${{fmtEUR(m.five_yr_tax_delta_eur)}}</strong>.</li>`).join('');
@@ -1226,12 +1372,14 @@ function openRingModal(idx) {{
     <div class="modal-section">
       <h4>${{fi ? "Klusterin yhtiöt (PRH YTJ Y-tunnus)" : "Companies in This Cluster"}}</h4>
       <ul>${{memberRows}}</ul>
-    </div>`
+    </div>`,
+    `ring-${{idx}}`
   );
 }}
 
 function openMomenttiModal(idx) {{
   const m = MOMENTTI_META[idx];
+  if (!m) return;
   const mult = parseFloat(document.getElementById('scenario-select').value || '1.0');
   const save = Math.min(m.current, m.base_cut * mult);
   const fi = LANG === 'fi';
@@ -1241,14 +1389,23 @@ function openMomenttiModal(idx) {{
     `<div class="modal-section">
       <h4>${{fi ? "Mitä tältä budjettimomentilta leikataan ja mihin todisteisiin se perustuu?" : "What Is Cut and What Empirical Evidence Proves It?"}}</h4>
       <p>${{fi ? m.fi_deep : m.en_deep}}</p>
-    </div>`
+    </div>`,
+    `momentti-${{idx}}`
   );
 }}
 
 function openNgoModal(idx) {{
   const n = DATA.ngo_evals[idx];
+  if (!n) return;
   const fi = LANG === 'fi';
   const isCut = n.classification === 'GUILLOTINE_ADMIN_BLOAT';
+  const steaMatch = DATA.stea_all.find(s => s.y_tunnus === n.y_tunnus);
+  const allPurposesHtml = steaMatch && steaMatch.top_purposes && steaMatch.top_purposes.length
+    ? `<div class="modal-section">
+        <h4>${{fi ? `Kaikki vuoden 2026 viralliset STEA-avustuspäätökset (${{steaMatch.decision_count_2026}} kpl)` : `All Official 2026 STEA Grant Decisions (${{steaMatch.decision_count_2026}})`}}</h4>
+        <ul>${{steaMatch.top_purposes.map(p => `<li>${{escHtml(p)}}</li>`).join('')}}</ul>
+      </div>`
+    : '';
   openModalHtml(
     `${{n.ngo_name}} (Y-tunnus: ${{n.y_tunnus}})`,
     `${{n.grant_source}} (Momentti ${{n.vm_momentti}}) · ${{fi ? "Avustuslaji" : "Grant Class"}}: ${{n.grant_class_code}}`,
@@ -1267,7 +1424,9 @@ function openNgoModal(idx) {{
         <li><strong>${{fi ? "Huomiot:" : "Audit Notes:"}}</strong> ${{(n.political_board_insiders || []).join(', ') || 'Kohdennettu kenttätyö'}}</li>
         <li><strong>${{fi ? "Esitetty vuosisäästö:" : "Proposed Annual Saving:"}}</strong> <strong style="color:${{isCut ? 'var(--red)' : 'var(--accent-dark)'}}">${{fmtEUR(n.recoverable_cut_eur)}}</strong></li>
       </ul>
-    </div>`
+    </div>
+    ${{allPurposesHtml}}`,
+    `ngo-${{n.y_tunnus}}`
   );
 }}
 
@@ -1276,10 +1435,13 @@ function openSteaRawModal(orgId) {{
   if (!org) return;
   const fi = LANG === 'fi';
   const akPct = org.granted_2026_eur > 0 ? ((org.ak_general_2026_eur / org.granted_2026_eur) * 100).toFixed(1) : '0.0';
-  const purpHtml = (org.top_purposes || []).map(p => `<li>${{p}}</li>`).join('');
+  const purpHtml = (org.top_purposes || []).map(p => `<li>${{escHtml(p)}}</li>`).join('');
+  const yStr = org.y_tunnus ? ` · Y-tunnus: ${{org.y_tunnus}}` : '';
+  const foiText = `ASIAKIRJA- JA TILINTARKASTUSPYYNTÖ (JULKISUUSLAKI 621/1999 13 § & VALTIONAVUSTUSLAKI 688/2001)\nVastaanottaja: Sosiaali- ja terveysjärjestöjen avustuskeskus (STEA) / Sosiaali- ja terveysministeriön kirjaamo (kirjaamo.stm@gov.fi)\nKohde: ${{org.ngo_name}} (STEA Organisaatio-ID: ${{org.org_id}}${{yStr}})\nVuoden 2026 myönnetty STEA-avustus: ${{fmtEUR(org.granted_2026_eur)}} (josta jatkuvaa Ak-yleis-/toiminta-avustusta ${{fmtEUR(org.ak_general_2026_eur)}}, eli ${{akPct}} %)\n\nPyydän julkisuuslain (621/1999) 9 §:n ja 13 §:n nojalla toimittamaan sähköisesti ja maksutta (16.3 §):\n1. ${{org.ngo_name}} -järjestölle vuodelle 2026 myönnettyjen avustuspäätösten (${{org.decision_count_2026}} kpl, yhteensä ${{fmtEUR(org.granted_2026_eur)}}) täydelliset talousarvioerittelyt, joista ilmenee keskushallinnon, johdon palkkojen, viestinnän ja toimitilakulujen osuus suhteessa välittömään asiakastyöhön.\n2. Viimeisin STEA:lle toimitettu vuosiselvitys ja tilintarkastuskertomus valtionavustuksen käytöstä.\n\nPyydän toimittamaan asiakirjat sähköpostitse 14 vuorokauden lakisääteisessä määräajassa (JulkL 14.4 §).`;
+
   openModalHtml(
-    `${{org.ngo_name}} (STEA ID: ${{org.org_id}})`,
-    fi ? `Virallinen STEA 2026 -avustuspäätösrekisteri · ${{org.decision_count_2026}} päätöstä vuonna 2026` : `Official 2026 STEA Grant Registry · ${{org.decision_count_2026}} Decisions in 2026`,
+    `${{org.ngo_name}} (STEA ID: ${{org.org_id}}${{yStr}})`,
+    fi ? `Virallinen STEA 2026 -avustuspäätösrekisteri · Kaikki ${{org.decision_count_2026}} myönteistä avustuspäätöstä vuonna 2026` : `Official 2026 STEA Grant Registry · All ${{org.decision_count_2026}} Funded Decisions in 2026`,
     `<div class="modal-section">
       <h4>${{fi ? "Vuoden 2026 viralliset STEA-avustusluvut" : "Official 2026 STEA Grant Breakdown"}}</h4>
       <ul>
@@ -1290,9 +1452,19 @@ function openSteaRawModal(orgId) {{
       </ul>
     </div>
     <div class="modal-section">
-      <h4>${{fi ? "Suurimmat viralliset avustuskohteet (2026)" : "Primary Official Grant Purposes (2026)"}}</h4>
+      <h4>${{fi ? `Kaikki viralliset avustuskohteet vuonna 2026 (${{(org.top_purposes || []).length}} päätöstä)` : `All Official 2026 Grant Decisions (${{(org.top_purposes || []).length}} Decisions)`}}</h4>
       <ul>${{purpHtml}}</ul>
-    </div>`
+    </div>
+    <div class="modal-section">
+      <h4>${{fi ? "Valmis 0,00 € Julkisuuslaki-tietopyyntö STEA:lle / STM:lle" : "Turnkey €0.00 FOI Audit Request to STEA / Ministry"}}</h4>
+      <div class="legal-box" id="stea-foi-box">${{escHtml(foiText)}}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button type="button" class="btn-primary" onclick="navigator.clipboard.writeText(document.getElementById('stea-foi-box').textContent);this.textContent='✓ Tietopyyntö kopioitu!';">${{fi ? '📋 Kopioi tietopyyntö' : '📋 Copy FOI Request'}}</button>
+        <button type="button" class="btn-secondary" onclick="downloadTextFile('STEA_Tietopyynto_${{org.org_id}}.txt', document.getElementById('stea-foi-box').textContent)">${{fi ? '⬇ Lataa .txt-asiakirja' : '⬇ Download .txt'}}</button>
+        <a class="btn-secondary" href="mailto:kirjaamo.stm@gov.fi?subject=${{encodeURIComponent('Julkisuuslain mukainen tietopyyntö: ' + org.ngo_name + ' (STEA ' + org.org_id + ')')}}&body=${{encodeURIComponent(foiText)}}">${{fi ? '✉️ Avaa sähköpostissa (kirjaamo.stm@gov.fi)' : '✉️ Open in Email Client'}}</a>
+      </div>
+    </div>`,
+    `stea-${{org.org_id}}`
   );
 }}
 
@@ -1311,15 +1483,19 @@ function openCorpModal(y_tunnus) {{
         <p>${{fi
           ? `<strong>${{b.company_name}}</strong> on esimerkki aidosti markkinaehtoisesta suomalaisesta menestysyrityksestä, joka ei elä valtion zombituilla vaan on maksanut Suomeen <strong>${{fmtEUR(b.five_yr_corporate_tax_paid_eur)}}</strong> yhteisöveroa 5 vuoden tarkastelujaksolla.`
           : `<strong>${{b.company_name}}</strong> is a market-driven Finnish taxpayer benchmark that paid <strong>${{fmtEUR(b.five_yr_corporate_tax_paid_eur)}}</strong> in Finnish corporate income taxes over 5 years without relying on zombie subsidies.`}}</p>
-      </div>`
+      </div>`,
+      `corp-${{b.y_tunnus}}`
     );
     return;
   }}
   if (!c) return;
 
+  const momDisp = fmtCorpMomentti(c);
+  const foiCorpText = `JULKISUUSLAIN MUKAINEN TIETOPYYNTÖ YRITYSTUISTA JA VAIKUTTAVUUSARVIOINNISTA (JULKL 621/1999 13 §)\nVastaanottaja: Business Finland / Työ- ja elinkeinoministeriön kirjaamo (kirjaamo.tem@gov.fi)\nKohdeyritys: ${{c.company_name}} (Y-tunnus: ${{c.y_tunnus}})\nBudjettimomentti: ${{momDisp}} · Tarkasteltu julkinen tuki (5v): ${{fmtEUR(c.subsidy_received_eur)}} · 5v yhteisöveron muutos: ${{fmtEUR(c.five_yr_tax_delta_eur)}}\n\nPyydän julkisuuslain (621/1999) 9 §:n ja 13 §:n nojalla toimittamaan sähköisesti ja maksutta (16.3 §):\n1. Yhtiölle ${{c.company_name}} (${{c.y_tunnus}}) myönnettyjen julkisten avustusten ja lainojen tukipäätökset, maksatuserittelyt sekä hakemusvaiheen vaikuttavuus- ja verotuottoennusteet.\n2. Viranomaisen jälkiarvioinnin (ex-post) siitä, miten myönnetty julkinen tuki on täyttänyt valtionavustuslain (688/2001) 7 §:n mukaiset tuloksellisuus- ja markkinavääristymättömyysedellytykset.\n\nPyydän toimittamaan asiakirjat sähköpostitse 14 vuorokauden lakisääteisessä määräajassa (JulkL 14.4 §).`;
+
   openModalHtml(
     `${{c.company_name}} (Y-tunnus: ${{c.y_tunnus}})`,
-    `${{c.grant_agency.replace('_',' ')}} (Momentti ${{c.vm_momentti}}) · TOL ${{c.nace_code}} · ${{c.postal_or_co_address}}`,
+    `${{c.grant_agency.replace('_',' ')}} (Momentti ${{momDisp}}) · TOL ${{c.nace_code}} · ${{c.postal_or_co_address}}`,
     `<div class="modal-section">
       <h4>${{fi ? "Julkisen tuen ja maksetun yhteisöveron suhde (5 v)" : "Public Subsidy vs. Corporate Tax Paid (5-Yr Comparison)"}}</h4>
       <ul>
@@ -1335,8 +1511,97 @@ function openCorpModal(y_tunnus) {{
       <p>${{fi
         ? `Raportoitu liikevaihto: <strong>${{fmtEUR(qoe.reported_revenue_eur)}}</strong> · Raportoitu käyttökate (EBITDA): <strong>${{fmtEUR(qoe.reported_ebitda_eur)}}</strong>. Kun tuloksesta poistetaan Liiketoiminnan muihin tuottoihin kirjatut julkiset avustukset (<strong>${{fmtEUR(qoe.direct_grants_in_other_income_eur)}}</strong>) ja aktivoidut tukipalkat, todellinen omavarainen kassavirta-EBITDA on <strong style="color:var(--red)">${{fmtEUR(qoe.true_standalone_ebitda_eur)}}</strong>.`
         : `Reported revenue: <strong>${{fmtEUR(qoe.reported_revenue_eur)}}</strong> · Reported EBITDA: <strong>${{fmtEUR(qoe.reported_ebitda_eur)}}</strong>. Stripping out public grants booked in Other Operating Income (<strong>${{fmtEUR(qoe.direct_grants_in_other_income_eur)}}</strong>) and capitalized grant payroll yields a true standalone cash EBITDA of <strong style="color:var(--red)">${{fmtEUR(qoe.true_standalone_ebitda_eur)}}</strong>.`}}</p>
-    </div>` : ''}}`
+    </div>` : ''}}
+    <div class="modal-section">
+      <h4>${{fi ? "Valmis 0,00 € Julkisuuslaki-tietopyyntö (TEM / Business Finland)" : "Turnkey €0.00 FOI Audit Request (TEM / Business Finland)"}}</h4>
+      <div class="legal-box" id="corp-foi-box">${{escHtml(foiCorpText)}}</div>
+      <div style="display:flex;gap:8px;flex-wrap:wrap;">
+        <button type="button" class="btn-primary" onclick="navigator.clipboard.writeText(document.getElementById('corp-foi-box').textContent);this.textContent='✓ Tietopyyntö kopioitu!';">${{fi ? '📋 Kopioi tietopyyntö' : '📋 Copy FOI Request'}}</button>
+        <button type="button" class="btn-secondary" onclick="downloadTextFile('Yritystuki_Tietopyynto_${{c.y_tunnus}}.txt', document.getElementById('corp-foi-box').textContent)">${{fi ? '⬇ Lataa .txt-asiakirja' : '⬇ Download .txt'}}</button>
+        <a class="btn-secondary" href="mailto:kirjaamo.tem@gov.fi?subject=${{encodeURIComponent('Julkisuuslain mukainen tietopyyntö yritystuista: ' + c.y_tunnus)}}&body=${{encodeURIComponent(foiCorpText)}}">${{fi ? '✉️ Avaa sähköpostissa (kirjaamo.tem@gov.fi)' : '✉️ Open in Email Client'}}</a>
+      </div>
+    </div>`,
+    `corp-${{c.y_tunnus}}`
   );
+}}
+
+function sortCorpTable(col) {{
+  if (CORP_SORT.col === col) {{
+    CORP_SORT.asc = !CORP_SORT.asc;
+  }} else {{
+    CORP_SORT.col = col;
+    CORP_SORT.asc = (col === 'company_name' || col === 'nace_code' || col === 'vm_momentti' || col === 'classification');
+  }}
+  renderAll();
+}}
+
+function sortSteaTable(col) {{
+  if (STEA_SORT.col === col) {{
+    STEA_SORT.asc = !STEA_SORT.asc;
+  }} else {{
+    STEA_SORT.col = col;
+    STEA_SORT.asc = (col === 'ngo_name');
+  }}
+  renderAll();
+}}
+
+function exportFilteredCorpsCsv() {{
+  const headers = ['Sija', 'Y-tunnus', 'Yritys', 'TOL', 'Osoite', 'Rahoittaja', 'Momentti', 'Julkinen_tuki_5v_EUR', 'Yhteisovero_5v_EUR', 'DiD_Vero_ROI', 'Luokitus', 'Esitetty_saasto_EUR'];
+  const lines = [headers.join(';')];
+  LAST_FILTERED_CORPS.forEach((c, idx) => {{
+    lines.push([
+      idx + 1,
+      `"${{c.y_tunnus}}"`,
+      `"${{String(c.company_name).replace(/"/g, '""')}}"`,
+      `"${{c.nace_code}}"`,
+      `"${{String(c.postal_or_co_address || '').replace(/"/g, '""')}}"`,
+      `"${{c.grant_agency}}"`,
+      `"${{fmtCorpMomentti(c)}}"`,
+      Math.round(c.subsidy_received_eur),
+      Math.round(c.five_yr_tax_delta_eur),
+      c.causal_did_roi,
+      `"${{c.classification}}"`,
+      Math.round(c.recommended_cut_eur)
+    ].join(';'));
+  }});
+  const blob = new Blob(['\\uFEFF' + lines.join('\\r\\n')], {{ type: 'text/csv;charset=utf-8;' }});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'STI_Yritystuet_2026_Suodatettu.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}}
+
+function exportFilteredSteaCsv() {{
+  const headers = ['Sija', 'STEA_ID', 'Y_tunnus', 'Jarjesto', 'Myonnetty_2026_EUR', 'Jatkuva_Ak_avustus_2026_EUR', 'Ak_Osuus_Pct', 'Muut_Ay_C_B_2026_EUR', 'Paatosten_lkm_2026', 'Kaikki_2026_avustuskohteet'];
+  const lines = [headers.join(';')];
+  LAST_FILTERED_STEA.forEach((o, idx) => {{
+    const akPct = o.granted_2026_eur > 0 ? ((o.ak_general_2026_eur / o.granted_2026_eur) * 100).toFixed(1) : '0.0';
+    lines.push([
+      idx + 1,
+      o.org_id,
+      `"${{o.y_tunnus || ''}}"`,
+      `"${{String(o.ngo_name).replace(/"/g, '""')}}"`,
+      Math.round(o.granted_2026_eur),
+      Math.round(o.ak_general_2026_eur),
+      akPct,
+      Math.round(o.targeted_2026_eur),
+      o.decision_count_2026,
+      `"${{String((o.top_purposes || []).join(' | ')).replace(/"/g, '""')}}"`,
+    ].join(';'));
+  }});
+  const blob = new Blob(['\\uFEFF' + lines.join('\\r\\n')], {{ type: 'text/csv;charset=utf-8;' }});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'STI_STEA_2026_Kaikki_Jarjestot.csv';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }}
 
 function setSearch(val) {{
@@ -1344,7 +1609,7 @@ function setSearch(val) {{
   box.value = val;
   document.querySelectorAll('.chip').forEach(btn => {{
     const txt = btn.textContent.trim().toLowerCase();
-    btn.classList.toggle('active', (val === '' && (txt.includes('kaikki') || txt.includes('all'))) || (val !== '' && txt.includes(val.toLowerCase())));
+    btn.classList.toggle('active', (val === '' && (txt.includes('kaikki') || txt.includes('all'))) || (val !== '' && txt.includes(val.split('|')[0].trim().toLowerCase())));
   }});
   renderAll();
 }}
@@ -1372,7 +1637,7 @@ function renderAll() {{
   const totalBaseSave = MOMENTTI_META.reduce((acc, m) => acc + Math.min(m.current, m.base_cut * mult), 0);
   document.getElementById('kpi-save-val').textContent = (totalBaseSave / 1e9).toLocaleString('fi-FI', {{minimumFractionDigits: 2, maximumFractionDigits: 2}}) + (fi ? ' mrd. €/v' : 'B €/yr');
 
-  // 1. Corporate Cards (All 23 Real Subsidy Recipients + 5 Real Unsubsidized Benchmarks = 28 Real Companies)
+  // 1. Corporate Cards & Sortable Table (All 37 Real Subsidy Recipients + 10 Real Unsubsidized Benchmarks = 47 Real Companies)
   const allCorps = [
     ...DATA.corporate_evals.map(c => ({{ ...c, isBenchmark: false }})),
     ...DATA.benchmarks.map(b => ({{
@@ -1385,19 +1650,20 @@ function renderAll() {{
       subsidy_received_eur: 0,
       five_yr_tax_delta_eur: b.five_yr_corporate_tax_paid_eur,
       matched_peer_five_yr_tax_delta_eur: b.five_yr_corporate_tax_paid_eur,
+      causal_did_roi: 99.9,
       classification: 'BENCHMARK_TAXPAYER',
       recommended_cut_eur: 0,
       isBenchmark: true
     }}))
   ];
 
-  let corpMatches = 0;
-  let corpHtml = '';
-  allCorps.forEach(c => {{
-    const hay = `${{c.company_name}} ${{c.y_tunnus}} ${{c.grant_agency}} ${{c.postal_or_co_address}} ${{c.nace_code}} ${{c.vm_momentti}}`.toLowerCase();
-    if (!matchQuery(hay)) return;
-    corpMatches++;
+  const filteredCorps = allCorps.filter(c => {{
+    const hay = `${{c.company_name}} ${{c.y_tunnus}} ${{c.grant_agency}} ${{c.postal_or_co_address}} ${{c.nace_code}} ${{c.vm_momentti}} ${{fmtCorpMomentti(c)}} ${{c.classification}}`.toLowerCase();
+    return matchQuery(hay);
+  }});
 
+  let corpHtml = '';
+  filteredCorps.forEach(c => {{
     const isZombie = c.classification === 'BLACKLIST_ZOMBIE';
     const isDead = c.classification === 'DEADWEIGHT_CROWD_OUT' || c.classification === 'LOW_YIELD_REVIEW';
     const accent = isZombie ? 'red-accent' : (isDead ? 'amber-accent' : 'green-accent');
@@ -1408,7 +1674,7 @@ function renderAll() {{
 
     const tParts = splitTitle(c.company_name);
     const subText = tParts.sub || (c.isBenchmark ? (fi ? 'Markkinaehtoinen veronmaksajaverrokki' : 'Market Taxpayer Benchmark') : c.grant_agency.replace(/_/g, ' '));
-    const momClean = String(c.vm_momentti || '').replace(/_/g, ' / ');
+    const momClean = fmtCorpMomentti(c);
     const commentary = c.isBenchmark
       ? (fi
           ? `Markkinaehtoinen veronmaksajaverrokki (${{c.postal_or_co_address}}) · TOL ${{c.nace_code}}.`
@@ -1441,10 +1707,59 @@ function renderAll() {{
   if (!corpHtml) {{
     corpHtml = `<div class="empty-box">
       <span>${{fi ? `Ei yritysosumia haulle ”${{safeQ}}”. Katso löytyneet järjestöt alla olevasta osiosta 2 tai tyhjennä haku.` : `No corporate matches for "${{safeQ}}". Check Section 2 below for matching NGOs or clear search.`}}</span>
-      <button type="button" class="btn-secondary" onclick="setSearch('')">${{fi ? 'Näytä kaikki 28 yhtiötä' : 'Show all 28 corporations'}}</button>
+      <button type="button" class="btn-secondary" onclick="setSearch('')">${{fi ? 'Näytä kaikki 47 yhtiötä' : 'Show all 47 corporations'}}</button>
     </div>`;
   }}
   document.getElementById('corp-cards').innerHTML = corpHtml;
+
+  // Sort & Render Corporate Table
+  const sortedCorps = [...filteredCorps].sort((a, b) => {{
+    const va = a[CORP_SORT.col];
+    const vb = b[CORP_SORT.col];
+    let cmp = 0;
+    if (typeof va === 'number' && typeof vb === 'number') cmp = va - vb;
+    else cmp = String(va || '').localeCompare(String(vb || ''), 'fi');
+    return CORP_SORT.asc ? cmp : -cmp;
+  }});
+  LAST_FILTERED_CORPS = sortedCorps;
+
+  ['company_name', 'nace_code', 'vm_momentti', 'subsidy_received_eur', 'five_yr_tax_delta_eur', 'causal_did_roi', 'classification', 'recommended_cut_eur'].forEach(col => {{
+    const el = document.getElementById('sort-corp-' + col);
+    if (el) el.textContent = CORP_SORT.col === col ? (CORP_SORT.asc ? '▲' : '▼') : '';
+  }});
+
+  const sumCorpSub = sortedCorps.reduce((a, b) => a + b.subsidy_received_eur, 0);
+  const sumCorpCut = sortedCorps.reduce((a, b) => a + b.recommended_cut_eur, 0);
+  document.getElementById('corp-count-sub').textContent = fi
+    ? `Näytetään ${{sortedCorps.length}} / ${{allCorps.length}} yhtiötä · Tarkastellut tuet yht. ${{fmtEUR(sumCorpSub)}} · Esitetty leikkaus yht. ${{fmtEUR(sumCorpCut)}}`
+    : `Showing ${{sortedCorps.length}} / ${{allCorps.length}} corporations · Audited subsidies ${{fmtEUR(sumCorpSub)}} · Proposed cuts ${{fmtEUR(sumCorpCut)}}`;
+
+  const corpTbody = document.getElementById('corp-all-tbody');
+  if (sortedCorps.length === 0) {{
+    corpTbody.innerHTML = `<tr><td colspan="9" style="text-align:center;padding:18px;color:var(--muted);">${{fi ? `Ei yritysosumia haulle ”${{safeQ}}”.` : `No corporations matching "${{safeQ}}".`}}</td></tr>`;
+  }} else {{
+    corpTbody.innerHTML = sortedCorps.map((c, idx) => {{
+      const tParts = splitTitle(c.company_name);
+      const isZombie = c.classification === 'BLACKLIST_ZOMBIE';
+      const isDead = c.classification === 'DEADWEIGHT_CROWD_OUT';
+      const clsBadge = isZombie
+        ? `<span class="badge badge-red">${{fi ? 'Nollavero (Leikataan)' : 'Zero-Tax'}}</span>`
+        : (isDead ? `<span class="badge badge-amber">${{fi ? 'Säilyttävä tuki' : 'Deadweight'}}</span>`
+                  : `<span class="badge badge-green">${{c.isBenchmark ? (fi ? 'Nettoveronmaksaja' : 'Benchmark') : (fi ? 'Posit. ulkoisvaikutus' : 'Keep R&D')}}</span>`);
+      const roiStr = c.isBenchmark ? (fi ? 'Veronmaksaja' : 'Taxpayer') : `${{c.causal_did_roi.toFixed(2)}}x`;
+      return `<tr class="clickable-row" onclick="openCorpModal('${{c.y_tunnus}}')">
+        <td>${{idx + 1}}</td>
+        <td><strong>${{escHtml(tParts.main)}}</strong><br/><span style="font-size:11.5px;color:var(--muted);">Y: ${{c.y_tunnus}}</span></td>
+        <td>${{c.nace_code}}</td>
+        <td>${{fmtCorpMomentti(c)}}</td>
+        <td><strong>${{fmtEUR(c.subsidy_received_eur)}}</strong></td>
+        <td style="color:${{c.five_yr_tax_delta_eur > 0 ? 'var(--accent-dark)' : 'var(--red)'}};font-weight:600;">${{fmtEUR(c.five_yr_tax_delta_eur)}}</td>
+        <td>${{roiStr}}</td>
+        <td>${{clsBadge}}</td>
+        <td style="color:${{c.recommended_cut_eur > 0 ? 'var(--red)' : 'var(--muted)'}};font-weight:700;">${{c.recommended_cut_eur > 0 ? '-' + fmtEUR(c.recommended_cut_eur) : '0 €'}}</td>
+      </tr>`;
+    }}).join('');
+  }}
 
   // 2. NGO Story Cards + All 686 Real 2026 STEA Organizations Table
   let ngoCardMatches = 0;
@@ -1493,33 +1808,53 @@ function renderAll() {{
   }}
   document.getElementById('ngo-cards').innerHTML = ngoHtml;
 
-  // Render 686 STEA Table
+  // Render & Sort 686 STEA Table
   const filteredStea = DATA.stea_all.filter(o => {{
     if (qTerms.length === 0) return true;
     const hay = `${{o.ngo_name}} ${{o.org_id}} ${{o.y_tunnus || ''}} ${{(o.top_purposes || []).join(' ')}}`.toLowerCase();
     return matchQuery(hay);
+  }}).map(o => ({{
+    ...o,
+    ak_pct: o.granted_2026_eur > 0 ? (o.ak_general_2026_eur / o.granted_2026_eur) * 100.0 : 0.0
+  }}));
+
+  const sortedStea = [...filteredStea].sort((a, b) => {{
+    const va = a[STEA_SORT.col];
+    const vb = b[STEA_SORT.col];
+    let cmp = 0;
+    if (typeof va === 'number' && typeof vb === 'number') cmp = va - vb;
+    else cmp = String(va || '').localeCompare(String(vb || ''), 'fi');
+    return STEA_SORT.asc ? cmp : -cmp;
   }});
+  LAST_FILTERED_STEA = sortedStea;
+
+  ['ngo_name', 'granted_2026_eur', 'ak_general_2026_eur', 'ak_pct', 'targeted_2026_eur', 'decision_count_2026'].forEach(col => {{
+    const el = document.getElementById('sort-stea-' + col);
+    if (el) el.textContent = STEA_SORT.col === col ? (STEA_SORT.asc ? '▲' : '▼') : '';
+  }});
+
   const steaSub = document.getElementById('stea-count-sub');
-  const sumFilteredStea = filteredStea.reduce((a, b) => a + b.granted_2026_eur, 0);
-  const sumFilteredAk = filteredStea.reduce((a, b) => a + b.ak_general_2026_eur, 0);
+  const sumFilteredStea = sortedStea.reduce((a, b) => a + b.granted_2026_eur, 0);
+  const sumFilteredAk = sortedStea.reduce((a, b) => a + b.ak_general_2026_eur, 0);
   steaSub.textContent = fi
-    ? `Näytetään ${{filteredStea.length}} / 686 STEA-järjestöä · Myönnetty yhteensä ${{fmtEUR(sumFilteredStea)}}, josta jatkuvaa Ak-toimintatukea ${{fmtEUR(sumFilteredAk)}}`
-    : `Showing ${{filteredStea.length}} / 686 STEA NGOs · Total granted ${{fmtEUR(sumFilteredStea)}}, of which continuous Ak operating grants ${{fmtEUR(sumFilteredAk)}}`;
+    ? `Näytetään ${{sortedStea.length}} / 686 STEA-järjestöä · Myönnetty yhteensä ${{fmtEUR(sumFilteredStea)}}, josta jatkuvaa Ak-toimintatukea ${{fmtEUR(sumFilteredAk)}}`
+    : `Showing ${{sortedStea.length}} / 686 STEA NGOs · Total granted ${{fmtEUR(sumFilteredStea)}}, of which continuous Ak operating grants ${{fmtEUR(sumFilteredAk)}}`;
 
   const steaTbody = document.getElementById('stea-all-tbody');
-  if (filteredStea.length === 0) {{
+  if (sortedStea.length === 0) {{
     steaTbody.innerHTML = `<tr><td colspan="7" style="text-align:center;padding:18px;color:var(--muted);">${{fi ? `Ei STEA-järjestöosumia haulle ”${{safeQ}}”.` : `No STEA NGOs matching "${{safeQ}}".`}}</td></tr>`;
   }} else {{
-    steaTbody.innerHTML = filteredStea.map((o, idx) => {{
-      const akPct = o.granted_2026_eur > 0 ? ((o.ak_general_2026_eur / o.granted_2026_eur) * 100).toFixed(1) : '0.0';
+    steaTbody.innerHTML = sortedStea.map((o, idx) => {{
+      const akPct = o.ak_pct.toFixed(1);
+      const yBadge = o.y_tunnus ? `<br/><span style="font-size:11.5px;color:var(--muted);">Y: ${{o.y_tunnus}} · STEA #${{o.org_id}}</span>` : `<br/><span style="font-size:11.5px;color:var(--muted);">STEA #${{o.org_id}}</span>`;
       return `<tr class="clickable-row" onclick="openSteaRawModal(${{o.org_id}})">
         <td>${{idx + 1}}</td>
-        <td><strong>${{o.ngo_name}}</strong></td>
+        <td><strong>${{escHtml(o.ngo_name)}}</strong>${{yBadge}}</td>
         <td><strong>${{fmtEUR(o.granted_2026_eur)}}</strong></td>
         <td style="color:${{o.ak_general_2026_eur > 0 ? 'var(--red)' : 'var(--muted)'}};font-weight:600;">${{fmtEUR(o.ak_general_2026_eur)}}</td>
         <td><span class="badge ${{parseFloat(akPct) >= 50 ? 'badge-red' : 'badge-green'}}">${{akPct}} %</span></td>
         <td>${{fmtEUR(o.targeted_2026_eur)}}</td>
-        <td style="font-size:12.5px;color:var(--body);">${{(o.top_purposes && o.top_purposes[0]) || '—'}}</td>
+        <td style="font-size:12.5px;color:var(--body);"><strong>${{o.decision_count_2026}} kpl:</strong> ${{escHtml((o.top_purposes && o.top_purposes[0]) || '—')}}</td>
       </tr>`;
     }}).join('');
   }}
@@ -1578,20 +1913,45 @@ function renderAll() {{
 
   // Update Search Status Banner
   const statusEl = document.getElementById('search-status');
-  const totalNgoMatches = Math.max(filteredStea.length, ngoCardMatches);
+  const totalNgoMatches = Math.max(sortedStea.length, ngoCardMatches);
   if (qTerms.length > 0) {{
     statusEl.style.display = 'block';
     statusEl.innerHTML = fi
-      ? `Hakutulokset haulle <strong>”${{safeQ}}”</strong>: löytyi <strong>${{corpMatches}}</strong> yritystä (Osio 1) sekä <strong>${{totalNgoMatches}}</strong> STEA/OKM-järjestöä (Osio 2). <a href="javascript:void(0)" onclick="setSearch('')" style="color:var(--accent-dark);margin-left:10px;">✕ Tyhjennä haku</a>`
-      : `Search results for <strong>"${{safeQ}}"</strong>: found <strong>${{corpMatches}}</strong> corporations (Section 1) and <strong>${{totalNgoMatches}}</strong> STEA/OKM NGOs (Section 2). <a href="javascript:void(0)" onclick="setSearch('')" style="color:var(--accent-dark);margin-left:10px;">✕ Clear search</a>`;
+      ? `Hakutulokset haulle <strong>”${{safeQ}}”</strong>: löytyi <strong>${{sortedCorps.length}}</strong> yritystä (Osio 1) sekä <strong>${{totalNgoMatches}}</strong> STEA/OKM-järjestöä (Osio 2). <a href="javascript:void(0)" onclick="setSearch('')" style="color:var(--accent-dark);margin-left:10px;">✕ Tyhjennä haku</a>`
+      : `Search results for <strong>"${{safeQ}}"</strong>: found <strong>${{sortedCorps.length}}</strong> corporations (Section 1) and <strong>${{totalNgoMatches}}</strong> STEA/OKM NGOs (Section 2). <a href="javascript:void(0)" onclick="setSearch('')" style="color:var(--accent-dark);margin-left:10px;">✕ Clear search</a>`;
   }} else {{
     statusEl.style.display = 'none';
   }}
 }}
 
+function handleHashRoute() {{
+  const h = (window.location.hash || '').replace(/^#/, '');
+  if (!h) return;
+  if (h.startsWith('corp-')) {{
+    openCorpModal(h.slice(5));
+  }} else if (h.startsWith('ngo-')) {{
+    const yid = h.slice(4);
+    const idx = DATA.ngo_evals.findIndex(n => n.y_tunnus === yid);
+    if (idx !== -1) openNgoModal(idx);
+  }} else if (h.startsWith('stea-')) {{
+    const oid = parseInt(h.slice(5), 10);
+    if (!isNaN(oid)) openSteaRawModal(oid);
+  }} else if (h.startsWith('momentti-')) {{
+    const midx = parseInt(h.slice(9), 10);
+    if (!isNaN(midx)) openMomenttiModal(midx);
+  }} else if (h.startsWith('ring-')) {{
+    const ridx = parseInt(h.slice(5), 10);
+    if (!isNaN(ridx)) openRingModal(ridx);
+  }} else if (h.startsWith('q=')) {{
+    setSearch(decodeURIComponent(h.slice(2)));
+  }}
+}}
+
 document.getElementById('search-box').addEventListener('input', renderAll);
 document.getElementById('scenario-select').addEventListener('change', renderAll);
+window.addEventListener('hashchange', handleHashRoute);
 renderAll();
+handleHashRoute();
 </script>
 </body>
 </html>
@@ -1614,21 +1974,124 @@ def compile_media_and_vm_dossiers(
     total_consultant_cut = sum(float(r["estimated_20pct_consultant_cut_eur"]) for r in rings)
     total_ngo_cut = sum(float(n["recoverable_cut_eur"]) for n in ngo_evals)
 
-    md = f"""# Suomen Talousinstituutti (STI) — Turnkey VM Kehysriihi 2027 & Media Dossiers
+    zombies = [c for c in corporate_evals if c["classification"] == "BLACKLIST_ZOMBIE"]
+    deadweights = [c for c in corporate_evals if c["classification"] == "DEADWEIGHT_CROWD_OUT"]
+    keepers = [c for c in corporate_evals if c["classification"] == "POSITIVE_EXTERNALITY_KEEP"]
 
-* **Data Provenance:** 100% Real Statutory Public Open Data (`STEA 2026 All 686 NGOs = €273,912,000`, `Tutkiavustuksia.fi`, `Business Finland`, `Verohallinto Yhteisöverotiedot`, `PRH YTJ v3 API`)
+    zombie_rows = "\n".join(
+        f"| `{c['y_tunnus']}` | {c['company_name']} | `{c['vm_momentti']}` | €{float(c['subsidy_received_eur']):,.0f} | €{float(c['five_yr_tax_delta_eur']):,.0f} | `{c['causal_did_roi']:.2f}x` | **-€{float(c['recommended_cut_eur']):,.0f}** |"
+        for c in zombies
+    )
+    deadweight_rows = "\n".join(
+        f"| `{c['y_tunnus']}` | {c['company_name']} | `{c['vm_momentti']}` | €{float(c['subsidy_received_eur']):,.0f} | €{float(c['five_yr_tax_delta_eur']):,.0f} | `{c['causal_did_roi']:.2f}x` | **-€{float(c['recommended_cut_eur']):,.0f}** |"
+        for c in deadweights
+    )
+    keeper_rows = "\n".join(
+        f"| `{c['y_tunnus']}` | {c['company_name']} | `{c['vm_momentti']}` | €{float(c['subsidy_received_eur']):,.0f} | €{float(c['five_yr_tax_delta_eur']):,.0f} | **`+{c['causal_did_roi']:.2f}x`** | €0 (Keep) |"
+        for c in keepers
+    )
+    ring_rows = "\n".join(
+        f"| `{r['ring_id']}` | **{r['ring_signature']}** ({r['shared_address_or_agent']}) | {r['entity_count']} | €{float(r['total_subsidy_eur']):,.0f} | €{float(r['total_five_yr_tax_delta_eur']):,.0f} | €{float(r['estimated_20pct_consultant_cut_eur']):,.0f} |"
+        for r in rings
+    )
+    qoe_rows = "\n".join(
+        f"| `{q['y_tunnus']}` | {q['company_name']} | €{float(q['reported_revenue_eur']):,.0f} | €{float(q['reported_ebitda_eur']):,.0f} | €{float(q['subsidy_and_related_party_ebitda_inflation_eur']):,.0f} | **€{float(q['true_subsidy_stripped_core_ebitda_eur']):,.0f}** | `{q['qoe_verdict']}` |"
+        for q in qoe_reports
+    )
+    ngo_rows = "\n".join(
+        f"| `{n['y_tunnus']}` | {n['ngo_name']} | `{n['grant_source']} ({n['grant_class_code']})` | €{float(n['annual_grant_eur']):,.0f} | {n['overhead_and_lobbying_pct']}% | €{float(n['public_sote_procurement_sales_eur']):,.0f} | **-€{float(n['recoverable_cut_eur']):,.0f}** |"
+        for n in ngo_evals
+    )
 
-| VM Momentti | Budget Line Description | National Annual Cut (`€1.55B` Base) | Audited Sample Cut (`€`) |
-| :--- | :--- | ---: | ---: |
-| **`32.20.40`** | Business Finland R&D Grants | `€211,500,000` | `€{momentti_summary.get("32.20.40", 0.0):,.2f}` |
-| **`32.20.83`** | Business Finland R&D Soft Loans | `€90,000,000` | `€{momentti_summary.get("32.20.83", 0.0):,.2f}` |
-| **`32.30.42`** | ELY Regional & Maritime Development Grants | `€174,000,000` | `€{momentti_summary.get("32.30.42", 0.0):,.2f}` |
-| **`33.90.50`** | STEA Grants (`€212.2M` `Ak` General HQ Slush across 686 NGOs) | `€209,000,000` | `€{momentti_summary.get("33.90.50", 0.0):,.2f}` |
-| **`29.80.50`** | OKM General & Advocacy NGO Grants | `€168,000,000` | `€{momentti_summary.get("29.80.50", 0.0):,.2f}` |
-| **`30.10.40 / 32.60.40`** | National Agri & Industrial Energy Subsidies | `€696,000,000` | `€{momentti_summary.get("30.10.40_32.60.40", 0.0):,.2f}` |
-| **TOTAL** | **KEHYSRIIHI 2027 SUBSIDY GUILLOTINE** | **`€1,548,500,000 / yr`** | **`€{sum(momentti_summary.values()):,.2f}`** |
+    md = f"""# Suomen Talousinstituutti (STI) — Turnkey VM Kehysriihi 2027 & Investigative Media Dossiers
 
-* Audited cluster subsidy total: €{total_ring_subsidy:,.0f} (20% coordination/fee estimate: €{total_consultant_cut:,.0f}, Featured NGO cut: €{total_ngo_cut:,.0f})
+* **Data Provenance:** 100% Real Statutory Public Open Data (`STEA 2026 All 686 NGOs / 1,288 Positive Decisions out of 1,527 Applications = €273,912,000`, `Tutkiavustuksia.fi`, `Business Finland Avoin Data`, `Verohallinto Yhteisöverotiedot`, `PRH YTJ v3 API`)
+* **Interactive Explorer:** <https://libertaari-suomalainen.github.io/tukipalkkio-purku/>
+* **Workbook:** `dist/VM_Tukipalkkio_Leikkuri_2027.xlsx` (6 worksheets, zero external dependencies)
+
+---
+
+## 1. Executive Summary: State Budget 2027 Guillotine Schedule (`€1.55B–€3.00B/yr`)
+
+Finland spends approximately **€11.50 billion per year** across direct corporate grants, energy and agricultural subsidies, NGO payouts, and sectoral tax expenditures. By cross-joining official grant payouts (`Business Finland`, `ELY`, `TEM`, `LVM`, `STEA`, `OKM`) with 5-year corporate income tax records (`Verohallinto`) and PRH registry addresses (`YTJ`), this dossier demonstrates how **€1,548,500,000 per year** (Baseline) up to **€3,000,000,000 per year** (Full Market Reform) can be cut immediately without cutting a single euro from frontline healthcare, schools, police, or national defense.
+
+| VM Momentti | Budget Line Description | Current Budget (`€/yr`) | Baseline Annual Cut (`€1.55B`) | Audited Sample Cut (`€`) |
+| :--- | :--- | ---: | ---: | ---: |
+| **`32.20.40`** | Business Finland R&D & Innovation Grants (2026 authorization €637.4M, cash ~€470M) | `€470,000,000` | **`-€211,500,000`** | `€{momentti_summary.get("32.20.40", 0.0):,.2f}` |
+| **`32.20.83`** | Business Finland R&D Soft Loans | `€180,000,000` | **`-€90,000,000`** | `€{momentti_summary.get("32.20.83", 0.0):,.2f}` |
+| **`31.20.43 / 32.30.42`** | LVM Maritime Crew Subsidies (`31.20.43`) & TEM ELY Development Grants (`32.30.42`) | `€340,000,000` | **`-€174,000,000`** | `€{momentti_summary.get("32.30.42", 0.0):,.2f}` |
+| **`33.90.50`** | STEA Grants (`€212.20M` `Ak` Operating Subsidies across all 686 NGOs) | `€410,000,000` | **`-€209,000,000`** | `€{momentti_summary.get("33.90.50", 0.0):,.2f}` |
+| **`29.80.50 / 29.90.50 / 29.91.50`** | OKM National Umbrella, Cultural, Sports & Youth Advocacy Grants | `€420,000,000` | **`-€168,000,000`** | `€{momentti_summary.get("29.80.50", 0.0):,.2f}` |
+| **`32.20.43 / 32.60.40 / 30.20.40`** | Industrial Electrification, Energy & National Incumbent Subsidies | `€1,740,000,000` | **`-€696,000,000`** | `€{momentti_summary.get("30.10.40_32.60.40", 0.0):,.2f}` |
+| **TOTAL** | **KEHYSRIIHI 2027 SUBSIDY GUILLOTINE (6 BUDGET GROUPS)** | **`€3,560,000,000`** | **`-€1,548,500,000 / yr`** | **`€{sum(momentti_summary.values()):,.2f}`** |
+
+---
+
+## 2. Zero-Tax Corporate Grant Targets (`BLACKLIST_ZOMBIE` — 100% Defund)
+
+These corporations absorbed millions in public R&D, investment, or bailout subsidies while paying **€0 (or near-zero)** in Finnish corporate income tax over the 5-year observation window:
+
+| Y-tunnus | Company & Statutory Context | VM Momentti | 5-Yr Public Subsidy | 5-Yr Corporate Tax Delta | Causal DiD Tax ROI | Recommended Cut |
+| :--- | :--- | :--- | ---: | ---: | ---: | ---: |
+{zombie_rows}
+
+---
+
+## 3. Incumbent Deadweight & Preservation Subsidies (`DEADWEIGHT_CROWD_OUT` — 100% Defund)
+
+Profitable large corporations, shipping lines, and grant consultancies receiving automatic or preservation subsidies with negative causal DiD tax ROI (`< 0.50x`) relative to unsubsidized market peers:
+
+| Y-tunnus | Company & Statutory Context | VM Momentti | 5-Yr Public Subsidy | 5-Yr Corporate Tax Delta | Causal DiD Tax ROI | Recommended Cut |
+| :--- | :--- | :--- | ---: | ---: | ---: | ---: |
+{deadweight_rows}
+
+---
+
+## 4. Genuine High-Externality R&D Exporters (`POSITIVE_EXTERNALITY_KEEP` — Protect)
+
+Deep-tech and industrial exporters whose R&D investments translate into massive domestic corporate tax growth (`DiD ROI > 1.20x`):
+
+| Y-tunnus | Company & Statutory Context | VM Momentti | 5-Yr Public Subsidy | 5-Yr Corporate Tax Delta | Causal DiD Tax ROI | Recommended Action |
+| :--- | :--- | :--- | ---: | ---: | ---: | :--- |
+{keeper_rows}
+
+---
+
+## 5. Detected Grant Consortia & Ecosystem Clusters (`€{total_ring_subsidy:,.0f}` Total Subsidies)
+
+Multi-registry entity resolution across PRH `YTJ` street addresses, consortium identifiers, and shared ecosystem networks:
+
+| Cluster ID | Cluster Name & Address Hub | Entities | Total Public Subsidies | 5-Yr Corporate Tax Delta | Est. 20% Coordination/Advisory Overhead |
+| :--- | :--- | ---: | ---: | ---: | ---: |
+{ring_rows}
+
+* **Total Cluster Subsidies:** `€{total_ring_subsidy:,.0f}` (Estimated 20% coordination/application fee leakage: `€{total_consultant_cut:,.0f}`).
+
+---
+
+## 6. Financial Statement Quality-of-Earnings (QoE) Strip-Down (`Vale-EBITDA`)
+
+Stripping `Other Operating Income` (`Liiketoiminnan muut tuotot`) public grants and capitalized grant R&D payroll (`Valmistus omaan käyttöön`) exposes the true standalone cash EBITDA of grant-dependent ventures versus clean peers:
+
+| Y-tunnus | Company Name | Reported Revenue | Reported EBITDA | Grant & Capitalization Inflation | True Standalone Cash EBITDA | QoE Audit Verdict |
+| :--- | :--- | ---: | ---: | ---: | ---: | :--- |
+{qoe_rows}
+
+---
+
+## 7. STEA 2026 Full Registry Proof (`686` NGOs = `€273,912,000`) & Audited Major NGOs
+
+Across all **686 organizations** and **1,288 funded decisions** (out of 1,527 applications) in the official 2026 STEA registry (`avustukset.stea.fi`):
+* **Total 2026 STEA Grants:** `€273,912,000`
+* **Continuous `Ak` Operating Grants (`Jatkuvat toiminta-avustukset`):** `€212,203,929` (**`77.5%`**)
+* **General `Ay` & Project/Investment `C/B` Grants:** `€61,708,071` (**`22.5%`**)
+* **Taxpayer-Subsidized Holiday Associations (`100% Ak`):** `Loma ja Terveys ry` (`€2,684,710`) + `Hyvinvointilomat ry` (`€2,103,947`) = **`€4,788,657/yr`**
+
+| Y-tunnus | Organization Name | Grant Source & Class | 2026 Annual Grant | Admin / General Share | Commercial Sote Sales (`€/yr`) | Proposed Annual Saving (`€/yr`) |
+| :--- | :--- | :--- | ---: | ---: | ---: | ---: |
+{ngo_rows}
+
+* **Total Recoverable Cut Across Featured NGO Cases:** `€{total_ngo_cut:,.0f}/yr`
 """
     with open(output_path, "w", encoding="utf-8") as f:
         f.write(md)
