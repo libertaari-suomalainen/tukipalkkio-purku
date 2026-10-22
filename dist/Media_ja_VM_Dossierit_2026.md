@@ -12,13 +12,13 @@ Finland allocates approximately **€11.50 billion per year** across direct corp
 
 | VM Momentti | Budget Line Description | Current Budget (`€/yr`) | Baseline Annual Saving (`€1.55B`) | Audited Sample Adjustment (`€`) |
 | :--- | :--- | ---: | ---: | ---: |
-| **`32.20.40`** | Business Finland R&D & Innovation Grants (2026 authorization €637.4M, cash ~€470M) | `€470,000,000` | **`-€211,500,000`** | `€173,550,000.00` |
+| **`32.20.40`** | Business Finland R&D & Innovation Grants (2026 authorization €637.4M, cash ~€470M) | `€470,000,000` | **`-€211,500,000`** | `€128,050,000.00` |
 | **`32.20.83`** | Business Finland R&D Soft Loans | `€180,000,000` | **`-€90,000,000`** | `€7,200,000.00` |
 | **`31.20.43 / 32.30.42`** | LVM Maritime Crew Subsidies (`31.20.43`) & TEM ELY Development Grants (`32.30.42`) | `€340,000,000` | **`-€174,000,000`** | `€384,900,000.00` |
-| **`33.90.50`** | STEA Grants (`€212.20M` `Ak` Operating Grants & `€58.21M` `Ay` General Grants across 686 NGOs) | `€410,000,000` | **`-€209,000,000`** | `€14,441,591.00` |
+| **`33.90.50`** | STEA Grants (`€273.91M` in 2026: `€212.20M` `Ak` & `€58.21M` `Ay` across 686 NGOs) + Municipal/Regional Sote NGO Grants (`~€136M`) | `€410,000,000` | **`-€209,000,000`** | `€12,665,801.00` |
 | **`29.80.50 / 29.90.50 / 29.91.50`** | OKM National Umbrella, Cultural, Sports & Youth Advocacy Grants | `€420,000,000` | **`-€168,000,000`** | `€1,700,000.00` |
 | **`32.20.43 / 32.60.40 / 30.20.40`** | Industrial Electrification, Energy & National Incumbent Subsidies | `€1,740,000,000` | **`-€696,000,000`** | `€538,000,000.00` |
-| **TOTAL** | **KEHYSRIIHI 2027 STRUCTURAL REFORM (6 BUDGET GROUPS)** | **`€3,560,000,000`** | **`-€1,548,500,000 / yr`** | **`€1,119,791,591.00`** |
+| **TOTAL** | **KEHYSRIIHI 2027 STRUCTURAL REFORM (6 BUDGET GROUPS)** | **`€3,560,000,000`** | **`-€1,548,500,000 / yr`** | **`€1,072,515,801.00`** |
 
 ---
 
@@ -39,7 +39,7 @@ These development- and pilot-stage ventures or state-supported enterprises recei
 | `2712152-3` | Woodio Oy (Puu- ja biomateriaaliavustukset — yrityssaneeraus/konkurssimenettely 4,2 M€ tukien jälkeen, 0 € yhteisöveroa) | `32.20.40` | €4,200,000 | €0 | `-0.08x` | **-€4,200,000** |
 | `3005880-1` | Rester Oy (Tekstiilikierrätyslaitoksen julkiset kehittämisavustukset — 0 € yhteisöveroa tarkastelujaksolla) | `32.20.40` | €3,900,000 | €0 | `-0.08x` | **-€3,900,000** |
 | `2506251-5` | Norsepower Oy Ltd (Roottoripurjeiden puhtaan merenkulun T&K-tuet — kaupallistamisvaihe, 0 € yhteisöveroa tarkastelujaksolla) | `32.20.40` | €6,500,000 | €0 | `-0.07x` | **-€6,500,000** |
-| `0772017-4` | Meyer Turku Oy (Business Finland NEcOLEAP Veturi 20 M€ & TEM meriteollisuuden innovaatiotuet — 0 € yhteisöveroa) | `32.20.40` | €54,000,000 | €0 | `-0.22x` | **-€54,000,000** |
+| `0772017-4` | Meyer Turku Oy (Business Finland NEcOLEAP Veturi 20 M€ & TEM meriteollisuuden innovaatiotuet — 0 € yhteisöveroa tarkastelujaksolla) | `32.20.40` | €54,000,000 | €0 | `-0.22x` | **-€54,000,000** |
 | `0108023-3` | Finnair Oyj (Julkiset reitti-, huoltovarmuus- ja tukirahoituserät — 0 € maksettua yhteisöveroa tarkastelujaksolla) | `32.30.42` | €85,000,000 | €0 | `-0.29x` | **-€85,000,000** |
 
 ---
@@ -50,29 +50,29 @@ Established corporations and shipping lines receiving automatic or preservation 
 
 | Y-tunnus | Company & Statutory Context | VM Momentti | 5-Yr Public Subsidy | 5-Yr Corporate Tax Delta | Causal DiD Tax ROI | Evaluated Adjustment |
 | :--- | :--- | :--- | ---: | ---: | ---: | ---: |
-| `1877769-4` | Spinverse Oy (Innovaatio- ja EU/Veturi-ekosysteemikonsultointi — omat T&K- ja kehittämisavustukset) | `32.20.40` | €3,850,000 | €420,000 | `-0.07x` | **-€3,850,000** |
-| `2553019-8` | Valmet Oyj (Keilasatama 5 — Business Finland Beyond Circularity Veturi & teollisuuden T&K-tuet) | `32.20.40` | €24,500,000 | €4,800,000 | `-0.60x` | **-€24,500,000** |
-| `1041090-0` | UPM-Kymmene Oyj (TEM 2020–2025 suurin suora yritystukisaaja 140 M€: teollisuuden sähköistämistuki, energiatuet & BF) | `30.10.40_32.60.40` | €140,000,000 | €38,000,000 | `-0.05x` | **-€140,000,000** |
-| `1039050-8` | Stora Enso Oyj (Teollisuuden sähköistämistuki, energiatuet & T&K-avustukset — matala lisäisyys VATT/Etla-arvioissa) | `30.10.40_32.60.40` | €96,000,000 | €22,000,000 | `-0.24x` | **-€96,000,000** |
-| `1852302-9` | Neste Oyj (Business Finland Veturi & puhtaan siirtymän investointi- ja energiatuet) | `30.10.40_32.60.40` | €68,500,000 | €18,000,000 | `-0.20x` | **-€68,500,000** |
-| `2389445-7` | SSAB Europe Oy (Raahen terästehtaan energia- ja vihreän siirtymän investointituet) | `30.10.40_32.60.40` | €48,000,000 | €9,500,000 | `-0.30x` | **-€48,000,000** |
-| `0215254-2` | Outokumpu Oyj (Energiaintensiivisen teollisuuden sähköistämis- ja energiatuet) | `30.10.40_32.60.40` | €62,000,000 | €11,000,000 | `-0.24x` | **-€62,000,000** |
-| `0144983-8` | Viking Line Abp (TEM/Traficom 2020–2025 suorat varustamo- ja miehistötuet 129 M€ — momentti 31.20.43) | `32.30.42` | €129,000,000 | €4,200,000 | `-0.11x` | **-€129,000,000** |
-| `0114296-7` | Tallink Silja Oy (TEM/Traficom 2020–2025 merenkulun miehistö- ja varustamotuet 71 M€ — momentti 31.20.43) | `32.30.42` | €71,000,000 | €1,500,000 | `-0.23x` | **-€71,000,000** |
-| `0201153-9` | Finnlines Oyj (TEM/Traficom 2020–2025 rahti- ja matkustajavarustamoiden miehistötuet 93 M€ — momentti 31.20.43) | `32.30.42` | €93,000,000 | €8,500,000 | `-0.15x` | **-€93,000,000** |
-| `1463611-4` | Fortum Oyj (Business Finland ExpandFibre Veturi, energia- ja vetyhankeavustukset) | `30.10.40_32.60.40` | €34,000,000 | €12,000,000 | `-0.38x` | **-€34,000,000** |
-| `0791416-3` | Metsä Fibre Oy / Metsä Group (ExpandFibre Veturi sekä biotuotetehtaiden energia- ja investointituet) | `30.10.40_32.60.40` | €44,000,000 | €14,000,000 | `-0.32x` | **-€44,000,000** |
-| `0109823-0` | Kemira Oyj (Teollisuuden energia-, sähköistämis- ja T&K-avustukset) | `30.10.40_32.60.40` | €19,500,000 | €42,000,000 | `-0.31x` | **-€19,500,000** |
-| `0828105-4` | Metso Oyj (Business Finland Veturi & kaivosteknologian T&K-tuet) | `32.20.40` | €21,000,000 | €58,000,000 | `-0.33x` | **-€21,000,000** |
+| `1877769-4` | Spinverse Oy (Innovaatio- ja EU/Veturi-ekosysteemikonsultointi — omat T&K- ja kehittämisavustukset) | `32.20.40` | €3,850,000 | €2,100,000 | `-0.06x` | **-€3,850,000** |
+| `1041090-0` | UPM-Kymmene Oyj (TEM 2020–2025 suurin suora yritystukisaaja 140 M€: sähköistämis- ja energiatuet — matala lisäisyys VATT/Etla-arvioissa) | `30.10.40_32.60.40` | €140,000,000 | €620,000,000 | `0.07x` | **-€140,000,000** |
+| `1039050-8` | Stora Enso Oyj (Teollisuuden sähköistämistuki, energiatuet & T&K-avustukset — matala lisäisyys VATT/Etla-arvioissa) | `30.10.40_32.60.40` | €96,000,000 | €185,000,000 | `0.05x` | **-€96,000,000** |
+| `1852302-9` | Neste Oyj (Puhtaan siirtymän investointi- ja energiatuet sekä Veturi — suuri veronmaksaja, mutta suorilla energiatuilla matala lisäisyys) | `30.10.40_32.60.40` | €68,500,000 | €680,000,000 | `0.15x` | **-€68,500,000** |
+| `2389445-7` | SSAB Europe Oy (Raahen terästehtaan energia- ja vihreän siirtymän investointituet — matala lisäisyys) | `30.10.40_32.60.40` | €48,000,000 | €115,000,000 | `0.10x` | **-€48,000,000** |
+| `0215254-2` | Outokumpu Oyj (Energiaintensiivisen teollisuuden sähköistämis- ja energiatuet — matala lisäisyys VATT/Etla-arvioissa) | `30.10.40_32.60.40` | €62,000,000 | €140,000,000 | `0.08x` | **-€62,000,000** |
+| `0144983-8` | Viking Line Abp (TEM/Traficom 2020–2025 suorat varustamo- ja miehistötuet 129 M€ — momentti 31.20.43) | `32.30.42` | €129,000,000 | €18,000,000 | `-0.03x` | **-€129,000,000** |
+| `0114296-7` | Tallink Silja Oy (TEM/Traficom 2020–2025 merenkulun miehistö- ja varustamotuet 71 M€ — momentti 31.20.43) | `32.30.42` | €71,000,000 | €6,500,000 | `-0.16x` | **-€71,000,000** |
+| `0201153-9` | Finnlines Oyj (TEM/Traficom 2020–2025 rahti- ja matkustajavarustamoiden miehistötuet 93 M€ — momentti 31.20.43) | `32.30.42` | €93,000,000 | €24,000,000 | `-0.04x` | **-€93,000,000** |
+| `1463611-4` | Fortum Oyj (Energia- ja vetyhankeavustukset sekä ExpandFibre — suuri veronmaksaja, mutta suorilla energiatuilla matala lisäisyys) | `30.10.40_32.60.40` | €34,000,000 | €480,000,000 | `0.15x` | **-€34,000,000** |
+| `0791416-3` | Metsä Fibre Oy / Metsä Group (ExpandFibre sekä biotuotetehtaiden energia- ja sähköistämistuet — matala lisäisyys) | `30.10.40_32.60.40` | €44,000,000 | €390,000,000 | `0.11x` | **-€44,000,000** |
+| `0109823-0` | Kemira Oyj (Teollisuuden energia- ja sähköistämistuet — kannattavan perusteollisuuden säilyttävä tuki) | `30.10.40_32.60.40` | €19,500,000 | €135,000,000 | `0.26x` | **-€19,500,000** |
 
 ---
 
-## 4. High-Externality R&D & Veturi Exporters (`POSITIVE_EXTERNALITY_KEEP` — Protect)
+## 4. High-Externality R&D & Veturi Exporters (Positive Tax Externality — Protect)
 
 Industrial and technology exporters whose R&D investments and Business Finland Veturi ecosystems translate into strong domestic corporate tax returns (`DiD ROI > 1.20x`):
 
-| Y-tunnus | Company & Statutory Context | VM Momentti | 5-Yr Public Subsidy | 5-Yr Corporate Tax Delta | Causal DiD Tax ROI | Recommended Action |
+| Y-tunnus | Company & Statutory Context | VM Momentti | 5-Yr Public Subsidy | 5-Yr Corporate Tax Paid | Causal DiD Tax ROI | Recommended Action |
 | :--- | :--- | :--- | ---: | ---: | ---: | :--- |
+| `2553019-8` | Valmet Oyj (Keilasatama 5 — Business Finland Beyond Circularity Veturi — ~195 milj. € yhteisöveroa Suomeen 5v) | `32.20.40` | €24,500,000 | €195,000,000 | **`+2.04x`** | €0 (Keep) |
+| `0828105-4` | Metso Oyj (Business Finland Veturi & kaivosteknologian T&K-tuet — ~210 milj. € yhteisöveroa Suomeen 5v) | `32.20.40` | €21,000,000 | €210,000,000 | **`+2.62x`** | €0 (Keep) |
 | `0112038-9` | Nokia Oyj (5G/6G & puolijohde-T&K Veturi — vahva yhteisö- ja T&K-verojälki Suomessa) | `32.20.40` | €84,500,000 | €420,000,000 | **`+3.96x`** | €0 (Keep) |
 | `1927400-1` | KONE Oyj (Business Finland Flow of Urban Life Veturi 20 M€ — >485 milj. € yhteisöveroa Suomeen 5v) | `32.20.40` | €20,000,000 | €485,000,000 | **`+22.00x`** | €0 (Keep) |
 | `1999212-6` | Orion Oyj (Business Finland Virtual BigPharma Veturi 10 M€ — >340 milj. € yhteisöveroa Suomeen 5v, 78,5 M€ v. 2024) | `32.20.40` | €10,000,000 | €340,000,000 | **`+30.50x`** | €0 (Keep) |
@@ -90,13 +90,13 @@ Industrial and technology exporters whose R&D investments and Business Finland V
 
 Multi-registry entity resolution across PRH `YTJ` street addresses, consortium identifiers, and shared ecosystem hubs:
 
-| Cluster ID | Cluster Name & Address Hub | Entities | Total Public Subsidies | 5-Yr Corporate Tax Delta | Est. 20% Admin/Coordination Allocation |
+| Cluster ID | Cluster Name & Address Hub | Entities | Total Public Subsidies | 5-Yr Corporate Tax Paid | Tax / Subsidy Ratio |
 | :--- | :--- | ---: | ---: | ---: | ---: |
-| `TUKI-RING-001` | **KLUSTERI-OTANIEMI-TEKNIIKANTIE** (Tekniikantie 14, 02150 Espoo) | 4 | €61,400,000 | €0 | €12,280,000 |
-| `TUKI-RING-005` | **KLUSTERI-BIOMATERIAALI-TUKIKONSORTIO** (Palokärjentie 2-4, 40320 Jyväskylä) | 6 | €42,400,000 | €0 | €8,480,000 |
-| `TUKI-RING-012` | **KLUSTERI-KEILASATAMA-KONSORTIO** (Keilasatama 5, 02150 Espoo) | 2 | €28,350,000 | €5,220,000 | €5,670,000 |
+| `CLUSTER-01` | **KLUSTERI-OTANIEMI-TEKNIIKANTIE** (Tekniikantie 14, 02150 Espoo) | 4 | €61,400,000 | €0 | `0.00x` |
+| `CLUSTER-02` | **KLUSTERI-BIOMATERIAALI-TUKIKONSORTIO** (Palokärjentie 2-4, 40320 Jyväskylä) | 6 | €42,400,000 | €0 | `0.00x` |
+| `CLUSTER-03` | **KLUSTERI-KEILASATAMA-KONSORTIO** (Keilasatama 5, 02150 Espoo) | 2 | €28,350,000 | €197,100,000 | `6.95x` |
 
-* **Total Cluster Subsidies:** `€132,150,000` (Calculated 20% coordination/administrative allocation: `€26,430,000`).
+* **Total Cluster Subsidies:** `€132,150,000` across 3 regional/thematic R&D ecosystems.
 
 ---
 
@@ -106,10 +106,10 @@ Adjusting for `Other Operating Income` (`Liiketoiminnan muut tuotot`) public gra
 
 | Y-tunnus | Company Name | Reported Revenue | Reported EBITDA | Statutory Grant & R&D Capitalization Items | Standalone Cash EBITDA Before Subsidies | Classification |
 | :--- | :--- | ---: | ---: | ---: | ---: | :--- |
-| `2653299-6` | Spinnova Oyj (IFRS/KPL: Liiketoiminnan muiden tuottojen avustuserät ja T&K-aktivoinnit vs. omavarainen käyttökate) | €7,600,000 | €-8,400,000 | €5,050,000 | **€-13,450,000** | `CRITICAL_GRANT_ZOMBIE_DO_NOT_BUY` |
-| `2766860-9` | Infinited Fiber Company Oy (KPL: Julkisten T&K-avustusten ja kehittämisaktivointien osuus ennen pilottituotannon sopeutusta) | €4,200,000 | €-6,500,000 | €6,500,000 | **€-13,000,000** | `CRITICAL_GRANT_ZOMBIE_DO_NOT_BUY` |
-| `2872116-8` | Solar Foods Oyj (IFRS/KPL: Liiketoiminnan muihin tuottoihin kirjatut julkiset IPCEI/BF-kehittämisavustukset) | €2,100,000 | €-5,900,000 | €6,500,000 | **€-12,400,000** | `CRITICAL_GRANT_ZOMBIE_DO_NOT_BUY` |
-| `0112038-9` | Nokia Oyj (Vertailu: Vahva operatiivinen kassavirta-EBITDA, avustusten osuus <1 % käyttökatteesta) | €19,200,000,000 | €2,650,000,000 | €16,900,000 | **€2,633,100,000** | `CLEAN_ORGANIC_EARNINGS` |
+| `2653299-6` | Spinnova Oyj (Tilinpäätös 2024 IFRS: Liiketoiminnan muut tuotot / avustukset ja T&K-aktivoinnit vs. omavarainen käyttökate) | €762,000 | €-15,600,000 | €5,050,000 | **€-20,650,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
+| `2766860-9` | Infinited Fiber Company Oy (Tilinpäätös 2024 KPL: Julkisten T&K-avustusten ja kehittämisaktivointien oikaisu) | €186,000 | €-7,100,000 | €6,500,000 | **€-13,600,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
+| `2872116-8` | Solar Foods Oyj (Tilinpäätös 2024–2025: Liiketoiminnan muihin tuottoihin kirjatut julkiset IPCEI/BF-kehittämisavustukset) | €124,000 | €-8,900,000 | €10,000,000 | **€-18,900,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
+| `0112038-9` | Nokia Oyj (Vertailu: Vahva operatiivinen kassavirta-EBITDA, avustusten osuus <1 % käyttökatteesta) | €19,200,000,000 | €2,650,000,000 | €16,900,000 | **€2,633,100,000** | Clean Organic Cash EBITDA (<1% Grants) |
 
 ---
 
@@ -124,19 +124,19 @@ Across all **686 organizations** and **1,288 funded decisions** (out of 1,527 ap
 
 | Y-tunnus | Organization Name | Grant Source & Class | 2026 Annual Grant | Ay General / Umbrella / Holiday Share | Public Sote Service Sales (`€/yr`) | Evaluated Annual Saving (`€/yr`) |
 | :--- | :--- | :--- | ---: | ---: | ---: | ---: |
-| `0202225-4` | MIELI Suomen Mielenterveys ry (STEA 2026 suurin saaja: 5,00 M€ kohdennettua Ak-kriisityötä + 1,02 M€ Ay-yleisavustusta) | `STEA (Ak/Ay)` | €6,023,155 | 16.9% | €2,800,000 | **-€1,020,600** |
-| `2433194-7` | Ehkäisevä päihdetyö EHYT ry (STEA 2026: 1,26 M€ Ay/C-avustusta + 2,87 M€ kohdennettua Ak-päihdekasvatusta) | `STEA (Ak/Ay)` | €4,132,097 | 30.5% | €0 | **-€1,261,292** |
-| `0116988-7` | Suomen Punainen Risti (STEA 2026: 3,03 M€ kohdennettua Ak-avustusta Nuorten turvataloihin ja Vapepa-valmiuteen + 0,52 M€ C-hankkeita) | `STEA (Ak/C)` | €3,547,809 | 14.5% | €38,000,000 | **-€515,190** |
+| `0202225-4` | MIELI Suomen Mielenterveys ry (STEA 2026 suurin saaja: 5,00 M€ kohdennettua Ak-kriisityötä + 1,02 M€ Ay-yleisavustusta) | `STEA (Ak/Ay)` | €6,023,155 | 16.9% | €2,800,000 | **-€0** |
+| `2433194-7` | Ehkäisevä päihdetyö EHYT ry (STEA 2026: 1,26 M€ Ay-yleisavustusta + 2,87 M€ kohdennettua Ak-päihdekasvatusta) | `STEA (Ak/Ay)` | €4,132,097 | 30.5% | €0 | **-€1,261,292** |
+| `0116988-7` | Suomen Punainen Risti (STEA 2026: 3,03 M€ kohdennettua Ak-avustusta Nuorten turvataloihin ja Vapepa-valmiuteen + 0,35 M€ Ay 1 + 0,17 M€ C-hanke) | `STEA (Ak/Ay/C)` | €3,547,809 | 9.8% | €38,000,000 | **-€0** |
 | `0545957-4` | Mielenterveyden Keskusliitto ry (STEA 2026: 1,16 M€ Ay-yleisavustusta + 1,84 M€ kohdennettua Ak-vertais- ja kurssitoimintaa) | `STEA (Ak/Ay)` | €3,003,934 | 38.7% | €0 | **-€1,161,615** |
 | `0202748-5` | Näkövammaisten liitto ry (STEA 2026: 0,73 M€ Ay-yleisavustusta + 2,25 M€ kohdennettua Ak-saavutettavuus- ja oikeuksienvalvontatyötä) | `STEA (Ak/Ay)` | €2,973,075 | 24.4% | €9,400,000 | **-€726,852** |
-| `0200924-4` | A-klinikkasäätiö sr (STEA 2026: 0,91 M€ Ay/C-avustusta + 1,96 M€ kohdennettua Ak-päihdetyötä; konsernilla myös sote-palvelumyyntiä) | `STEA (Ak/Ay)` | €2,869,374 | 31.7% | €24,500,000 | **-€908,357** |
+| `0200924-4` | A-klinikkasäätiö sr (STEA 2026: 0,91 M€ Ay-yleisavustusta + 1,96 M€ kohdennettua Ak-päihdetyötä; konsernilla myös sote-palvelumyyntiä) | `STEA (Ak/Ay)` | €2,869,374 | 31.7% | €24,500,000 | **-€908,357** |
 | `2408739-0` | SOSTE Suomen sosiaali ja terveys ry (STEA 2026: 2,81 M€ valtakunnallisen sote-katto- ja vaikuttamisjärjestön toimintaan) | `STEA (Ak/Ay)` | €2,806,569 | 87.3% | €0 | **-€2,450,000** |
 | `0278760-1` | Loma ja Terveys ry (STEA 2026: 2,68 M€ — 100 % Ak tuettu sosiaalinen lomatoiminta, STM/VM-karsintakohde) | `STEA (Ak)` | €2,684,710 | 100.0% | €0 | **-€2,684,710** |
 | `0222440-3` | Sininauhasäätiö sr (STEA 2026: 0,61 M€ Ay/C-avustusta + 1,99 M€ kohdennettua Ak-asunnottomuustyötä; konsernilla asumispalvelumyyntiä) | `STEA (Ak/Ay)` | €2,604,324 | 23.5% | €14,200,000 | **-€611,287** |
 | `2440730-7` | Hyvinvointilomat ry (STEA 2026: 2,10 M€ — 100 % Ak tuettu sosiaalinen lomatoiminta, STM/VM-karsintakohde) | `STEA (Ak)` | €2,103,947 | 100.0% | €0 | **-€2,103,947** |
 | `0116788-1` | Pelastakaa Lapset ry (STEA 2026: 0,76 M€ Ay-yleisavustusta + 1,61 M€ kohdennettua Ak-lapsi- ja nuorisotyötä) | `STEA (Ak/Ay)` | €2,366,637 | 32.0% | €22,000,000 | **-€757,741** |
-| `0215204-0` | Mannerheimin Lastensuojeluliitto ry (STEA 2026: 0,24 M€ Ay-yleisavustusta + 2,01 M€ kohdennettua Ak-perhe- ja auttava puhelin -työtä) | `STEA (Ak/Ay)` | €2,253,911 | 10.6% | €1,900,000 | **-€240,000** |
+| `0215204-0` | Mannerheimin Lastensuojeluliitto ry (STEA 2026: 0,24 M€ Ay-yleisavustusta + 2,01 M€ kohdennettua Ak-perhe- ja auttava puhelin -työtä) | `STEA (Ak/Ay)` | €2,253,911 | 10.6% | €1,900,000 | **-€0** |
 | `0116583-5` | Suomen nuorisoalan kattojärjestö Allianssi ry (OKM 29.91.50: nuorisoalan valtakunnallinen katto- ja edunvalvontajärjestö) | `OKM (Ay)` | €1,950,000 | 75.9% | €0 | **-€1,700,000** |
 | `0201112-5` | Ensi- ja turvakotien liitto ry (STEA 2026: lähisuhdeväkivalta- ja vauvaperheiden kriisityö — suojattu kenttätyö, 0 € leikkaus) | `STEA (Ak/Ay)` | €1,735,644 | 15.0% | €0 | **-€0** |
 
-* **Total Evaluated Saving Across Featured NGO Cases:** `€16,141,591/yr`
+* **Total Evaluated Saving Across Featured NGO Cases:** `€14,365,801/yr`

@@ -252,7 +252,7 @@ def score_ngo_grant_efficiency(ngos: List[NGOGrantRecord]) -> List[Dict[str, obj
         total_public_inflow = n.annual_grant_eur + n.secondary_ministry_grants_eur + n.public_sote_procurement_sales_eur
         state_dependency_pct = (total_public_inflow / n.total_revenue_eur) * 100.0 if n.total_revenue_eur else 0.0
         is_double_dipper = (n.secondary_ministry_grants_eur > 0.0) or (n.public_sote_procurement_sales_eur > 0.0)
-        is_flagged = overhead_pct > 20.0 or state_dependency_pct > 75.0 or is_double_dipper
+        is_flagged = overhead_pct > 20.0 or state_dependency_pct > 75.0 or (n.secondary_ministry_grants_eur > 0.0)
         recoverable_eur = (
             min(n.annual_grant_eur, n.hq_admin_comms_lobbying_spend_eur + n.secondary_ministry_grants_eur)
             if is_flagged

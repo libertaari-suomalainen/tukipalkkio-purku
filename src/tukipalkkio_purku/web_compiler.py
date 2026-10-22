@@ -1169,14 +1169,14 @@ const MOMENTTI_META = [
   }},
   {{
     code: "33.90.50",
-    fi_name: "STEA-järjestöavustukset (Ay-yleisavustukset 58,2 M€, Ak-toimintatuet 212,2 M€ & lomajärjestöt)",
-    en_name: "STEA NGO Grants (€58.2M Ay General Grants, €212.2M Ak Operating Grants & Holidays)",
+    fi_name: "STEA-järjestöavustukset (273,9 M€ v. 2026: Ak 212,2 M€ & Ay 58,2 M€) ja sote-järjestötuet",
+    en_name: "STEA NGO Grants (€273.9M in 2026: €212.2M Ak & €58.2M Ay) & Sote NGO Subsidies",
     current: 410000000,
     base_cut: 209000000,
-    fi_short: "STEA:n vuoden 2026 kaikista 686 järjestöstä (273,91 M€) tasan 212,20 M€ (77,5 %) on jatkuvaa kohdennettua Ak-toiminta-avustusta ja 58,21 M€ (21,3 %) Ay-yleisavustusta. Sopeutus kohdistetaan Ay-yleisavustuksiin, kattojärjestörakenteisiin ja ei-lakisääteiseen lomatoimintaan (Loma ja Terveys 2,68 M€, Hyvinvointilomat 2,10 M€) suojaten kriisityön.",
-    en_short: "Across all 686 STEA 2026 NGOs (€273.91M), €212.20M (77.5%) is Ak targeted operating grants and €58.21M (21.3%) is Ay general grants. Savings target Ay general overhead, umbrella advocacy, and holiday associations (€4.79M/yr) while protecting crisis work.",
-    fi_deep: "Julkaisu sisältää STEA:n koko vuoden 2026 virallisen avustusrekisterin (kaikki 686 järjestöä ja kaikki 1 288 myönteistä avustuspäätöstä 1 527 hakemuksesta = 273 912 000 € STM:n luvusta 33.90). Virallisessa avustuslajittelussa 212 203 929 € (77,5 %) on jatkuvia kohdennettuja Ak-toiminta-avustuksia, 58 214 068 € (21,3 %) on järjestöjen yleishyödylliseen perustoimintaan ja hallintoon myönnettäviä Ay-yleisavustuksia, ja 3 494 003 € (1,3 %) on C/B-hanke- ja investointiavustuksia. Rakenteellinen säästö kohdistetaan Ay-yleisavustuksiin, valtakunnallisiin katto- ja vaikuttamisjärjestöihin (esim. SOSTE ry 2,81 M€), ei-lakisääteisiin lomajärjestöihin (Loma ja Terveys ry 2,68 M€, Hyvinvointilomat ry 2,10 M€) sekä sote-palvelutuottajien yleisavustusten ja kilpailutetun palvelumyynnin rajanvetoon—suojaten samalla matalan kynnyksen kriisi- ja auttamistyön (kuten MIELI ry:n Kriisipuhelimen, MLL:n auttavat puhelimet ja turvakotityön).",
-    en_deep: "Our full dataset of all 686 STEA 2026 organizations (all 1,288 funded decisions out of 1,527 applications = €273,912,000 under STM chapter 33.90) distinguishes continuous targeted Ak operating grants (€212,203,929 / 77.5%), Ay general organizational grants (€58,214,068 / 21.3%), and C/B project grants (€3,494,003 / 1.3%). Structural savings focus on Ay general grants, national umbrella advocacy (SOSTE €2.81M), non-statutory holiday associations (€4.79M), and competitive neutrality in commercial Sote service groups—while protecting frontline crisis helplines and domestic-violence shelters."
+    fi_short: "Kokonaisluku (410 M€) kattaa STEA:n vuoden 2026 avustukset (273,91 M€ / 686 järjestöä) sekä muut julkiset sote-järjestötuet (~136 M€). STEA-potista 212,20 M€ (77,5 %) on kohdennettua Ak-toiminta-avustusta ja 58,21 M€ (21,3 %) Ay-yleisavustusta. Sopeutus kohdistetaan Ay-yleisavustuksiin, kattojärjestöihin ja lomatoimintaan (4,79 M€/v) suojaten kriisityön.",
+    en_short: "The €410M pool comprises 2026 STEA grants (€273.91M across 686 NGOs: €212.20M Ak operating grants + €58.21M Ay general grants) plus ~€136M in municipal/regional Sote NGO subsidies. Savings target Ay general overhead, umbrella advocacy, and holiday associations (€4.79M/yr) while protecting crisis work.",
+    fi_deep: "Julkaisu sisältää STEA:n koko vuoden 2026 virallisen avustusrekisterin (kaikki 686 järjestöä ja kaikki 1 288 myönteistä avustuspäätöstä 1 527 hakemuksesta = 273 912 000 € STM:n momentilta 33.90.50; yhdessä kuntien, hyvinvointialueiden ja STM:n muiden sote-järjestöavustusten kanssa kokonaisuus on n. 410 milj. €/v). Virallisessa STEA-avustuslajittelussa 212 203 929 € (77,5 %) on jatkuvia kohdennettuja Ak-toiminta-avustuksia, 58 214 068 € (21,3 %) on järjestöjen yleishyödylliseen perustoimintaan ja hallintoon myönnettäviä Ay-yleisavustuksia, ja 3 494 003 € (1,3 %) on C/B-hanke- ja investointiavustuksia. Rakenteellinen säästö kohdistetaan Ay-yleisavustuksiin, valtakunnallisiin katto- ja vaikuttamisjärjestöihin (esim. SOSTE ry 2,81 M€), ei-lakisääteisiin lomajärjestöihin (Loma ja Terveys ry 2,68 M€, Hyvinvointilomat ry 2,10 M€) sekä sote-palvelutuottajien yleisavustusten ja kilpailutetun palvelumyynnin rajanvetoon—suojaten samalla 100-prosenttisesti matalan kynnyksen kriisi- ja auttamistyön (MIELI ry, Suomen Punainen Risti, MLL sekä Ensi- ja turvakotien liitto).",
+    en_deep: "Our full dataset of all 686 STEA 2026 organizations (all 1,288 funded decisions out of 1,527 applications = €273,912,000 under STM line 33.90.50, alongside ~€136M in municipal/regional Sote NGO grants totaling ~€410M/yr) distinguishes continuous targeted Ak operating grants (€212,203,929 / 77.5%), Ay general organizational grants (€58,214,068 / 21.3%), and C/B project grants (€3,494,003 / 1.3%). Structural savings focus on Ay general grants, national umbrella advocacy (SOSTE €2.81M), and non-statutory holiday associations (€4.79M)—while 100% protecting frontline crisis helplines and shelters (MIELI ry, Finnish Red Cross, MLL, and Federation of Mother and Child Homes and Shelters)."
   }},
   {{
     code: "29.80.50 / 29.90.50 / 29.91.50",
@@ -1311,11 +1311,11 @@ function openKpiModal(key) {{
         <h4>${{fi ? "Kiistaton rekisteritodiste (Lataa myös Excelin välilehti 06)" : "Hard Registry Proof (Also in Excel Tab 06)"}}</h4>
         <ul>
           <li><strong>${{fi ? "Kaikki STEA-avustukset 2026 yhteensä:" : "Total 2026 STEA Grants:"}}</strong> 273 912 000 € (686 järjestöä, 1 288 myönteistä avustuspäätöstä 1 527 hakemuksesta)</li>
-          <li><strong>${{fi ? "Siitä jatkuvia kohdennettuja Ak-toiminta-avustuksia:" : "Of Which Continuous Targeted Ak Operating Grants:"}}</strong> <strong style="color:var(--red)">212 203 929 € (77,5 %)</strong></li>
-          <li><strong>${{fi ? "Siitä järjestöjen perustoimintaan myönnettäviä Ay-yleisavustuksia:" : "Of Which Ay General Organizational Grants:"}}</strong> <strong>58 214 068 € (21,3 %)</strong></li>
+          <li><strong>${{fi ? "Siitä jatkuvia kohdennettuja Ak-toiminta-avustuksia:" : "Of Which Continuous Targeted Ak Operating Grants:"}}</strong> <strong style="color:var(--accent-dark)">212 203 929 € (77,5 %)</strong></li>
+          <li><strong>${{fi ? "Siitä järjestöjen perustoimintaan myönnettäviä Ay-yleisavustuksia:" : "Of Which Ay General Organizational Grants:"}}</strong> <strong style="color:var(--amber)">58 214 068 € (21,3 %)</strong></li>
           <li><strong>${{fi ? "Siitä C/B-hanke- ja investointiavustuksia:" : "Of Which C/B Project & Investment Grants:"}}</strong> 3 494 003 € (1,3 %)</li>
           <li><strong>${{fi ? "Tuetut lomajärjestöt (100 % Ak, STM/VM-karsintakohde):" : "Taxpayer-Subsidized Holiday Associations (100% Ak):"}}</strong> Loma ja Terveys ry (2 684 710 €) + Hyvinvointilomat ry (2 103 947 €) = <strong>4 788 657 €/v</strong></li>
-          <li><strong>${{fi ? "Suurimmat STEA-avustusten saajat 2026:" : "Largest STEA Grant Recipients 2026:"}}</strong> MIELI ry (5,00 M€ Ak + 1,02 M€ Ay), EHYT ry (2,87 M€ Ak + 1,26 M€ Ay/C), Suomen Punainen Risti (3,03 M€ Ak + 0,52 M€ C), Mielenterveyden Keskusliitto ry (1,84 M€ Ak + 1,16 M€ Ay), Näkövammaisten liitto ry (2,25 M€ Ak + 0,73 M€ Ay), A-klinikkasäätiö (1,96 M€ Ak + 0,91 M€ Ay/C), SOSTE ry (1,62 M€ Ak + 1,18 M€ Ay).</li>
+          <li><strong>${{fi ? "Suurimmat STEA-avustusten saajat 2026:" : "Largest STEA Grant Recipients 2026:"}}</strong> MIELI ry (5,00 M€ Ak + 1,02 M€ Ay), EHYT ry (2,87 M€ Ak + 1,26 M€ Ay), Suomen Punainen Risti (3,03 M€ Ak + 0,35 M€ Ay + 0,17 M€ C), Mielenterveyden Keskusliitto ry (1,84 M€ Ak + 1,16 M€ Ay), Näkövammaisten liitto ry (2,25 M€ Ak + 0,73 M€ Ay), A-klinikkasäätiö (1,96 M€ Ak + 0,91 M€ Ay), SOSTE ry (1,62 M€ Ak + 1,18 M€ Ay).</li>
         </ul>
       </div>`,
       'kpi-ngos'
@@ -1360,15 +1360,15 @@ function openRingModal(idx) {{
   if (!r) return;
   const fi = LANG === 'fi';
   const members = DATA.corporate_evals.filter(c => r.y_tunnus_list.includes(c.y_tunnus));
-  const memberRows = members.map(m => `<li><strong>${{m.company_name}} (${{m.y_tunnus}}):</strong> ${{fi ? "Myönnetty tuki" : "Grant received"}} <strong>${{fmtEUR(m.subsidy_received_eur)}}</strong> (${{m.grant_agency.replace('_',' ')}}) · ${{fi ? "5v yhteisöveron muutos:" : "5-yr corporate tax delta:"}} <strong>${{fmtEUR(m.five_yr_tax_delta_eur)}}</strong>.</li>`).join('');
+  const memberRows = members.map(m => `<li><strong>${{m.company_name}} (${{m.y_tunnus}}):</strong> ${{fi ? "Myönnetty tuki" : "Grant received"}} <strong>${{fmtEUR(m.subsidy_received_eur)}}</strong> (${{m.grant_agency.replace('_',' ')}}) · ${{fi ? "Maksettu yhteisövero 5v:" : "5-yr corporate tax paid:"}} <strong>${{fmtEUR(m.five_yr_tax_delta_eur)}}</strong>.</li>`).join('');
   openModalHtml(
     `${{r.shared_address_or_agent}} (${{r.ring_signature}})`,
     fi ? `T&K-ekosysteemi- ja konsortioklusteri · ${{r.entity_count}} oikeaa yhtiötä` : `R&D Ecosystem & Consortium Cluster · ${{r.entity_count}} Real Companies`,
     `<div class="modal-section">
       <h4>${{fi ? "Klusterin kokonaiskuva" : "Cluster Summary"}}</h4>
       <p>${{fi
-        ? `Nämä ${{r.entity_count}} yhtiötä sijoittuvat samaan maantieteelliseen T&K-keskittymään tai konsortio-ohjelmaan (<strong>${{r.shared_address_or_agent}}</strong>). Yhtiöille on myönnetty yhteensä <strong>${{fmtEUR(r.total_subsidy_eur)}}</strong> julkisia avustuksia ja lainoja. Viiden vuoden tarkastelujaksolla klusterin yhteenlaskettu yhteisöveron muutos oli <strong>${{fmtEUR(r.total_five_yr_tax_delta_eur)}}</strong>.`
-        : `These ${{r.entity_count}} companies belong to the same R&D address hub or consortium program (<strong>${{r.shared_address_or_agent}}</strong>), receiving <strong>${{fmtEUR(r.total_subsidy_eur)}}</strong> in public subsidies with <strong>${{fmtEUR(r.total_five_yr_tax_delta_eur)}}</strong> in 5-year corporate tax change.`}}</p>
+        ? `Nämä ${{r.entity_count}} yhtiötä sijoittuvat samaan maantieteelliseen T&K-keskittymään tai konsortio-ohjelmaan (<strong>${{r.shared_address_or_agent}}</strong>). Yhtiöille on myönnetty yhteensä <strong>${{fmtEUR(r.total_subsidy_eur)}}</strong> julkisia avustuksia ja lainoja. Viiden vuoden tarkastelujaksolla klusterin yhtiöiden yhteenlaskettu yhteisöverokertymä Suomessa oli <strong>${{fmtEUR(r.total_five_yr_tax_delta_eur)}}</strong> (vero/tuki-suhde <strong>${{r.cluster_tax_to_grant_ratio.toFixed(2)}}x</strong>).`
+        : `These ${{r.entity_count}} companies belong to the same R&D address hub or consortium program (<strong>${{r.shared_address_or_agent}}</strong>), receiving <strong>${{fmtEUR(r.total_subsidy_eur)}}</strong> in public subsidies with <strong>${{fmtEUR(r.total_five_yr_tax_delta_eur)}}</strong> in 5-year Finnish corporate income tax paid (tax/grant ratio <strong>${{r.cluster_tax_to_grant_ratio.toFixed(2)}}x</strong>).`}}</p>
     </div>
     <div class="modal-section">
       <h4>${{fi ? "Klusterin yhtiöt (PRH YTJ Y-tunnus)" : "Companies in This Cluster"}}</h4>
@@ -1449,8 +1449,8 @@ function openSteaRawModal(orgId) {{
       <ul>
         <li><strong>${{fi ? "Haettu STEA-avustus 2026:" : "Requested 2026 Grant:"}}</strong> ${{fmtEUR(org.requested_2026_eur)}}</li>
         <li><strong>${{fi ? "Myönnetty STEA-avustus 2026 yhteensä:" : "Total Granted 2026:"}}</strong> <strong>${{fmtEUR(org.granted_2026_eur)}}</strong></li>
-        <li><strong>${{fi ? "Siitä jatkuva kohdennettu Ak-toiminta-avustus:" : "Of Which Continuous Targeted Ak Operating Grant:"}}</strong> <strong style="color:var(--red)">${{fmtEUR(org.ak_general_2026_eur)}} (${{akPct}} %)</strong></li>
-        <li><strong>${{fi ? "Siitä muut avustuslajit (Ay-yleisavustukset sekä C/B-hanke- ja investointiavustukset):" : "Of Which Other Categories (Ay General + C/B Project/Investment Grants):"}}</strong> <strong style="color:var(--accent-dark)">${{fmtEUR(org.targeted_2026_eur)}}</strong></li>
+        <li><strong>${{fi ? "Siitä jatkuva kohdennettu Ak-toiminta-avustus:" : "Of Which Continuous Targeted Ak Operating Grant:"}}</strong> <strong style="color:var(--accent-dark)">${{fmtEUR(org.ak_general_2026_eur)}} (${{akPct}} %)</strong></li>
+        <li><strong>${{fi ? "Siitä muut avustuslajit (Ay-yleisavustukset sekä C/B-hanke- ja investointiavustukset):" : "Of Which Other Categories (Ay General + C/B Project/Investment Grants):"}}</strong> <strong style="color:var(--amber)">${{fmtEUR(org.targeted_2026_eur)}}</strong></li>
       </ul>
     </div>
     <div class="modal-section">
@@ -1499,12 +1499,12 @@ function openCorpModal(y_tunnus) {{
     `${{c.company_name}} (Y-tunnus: ${{c.y_tunnus}})`,
     `${{c.grant_agency.replace('_',' ')}} (Momentti ${{momDisp}}) · TOL ${{c.nace_code}} · ${{c.postal_or_co_address}}`,
     `<div class="modal-section">
-      <h4>${{fi ? "Julkisen tuen ja yhteisöverovasteen vertailu (5 v)" : "Public Subsidy vs. Corporate Tax Response (5-Yr Comparison)"}}</h4>
+      <h4>${{fi ? "Julkisen tuen ja yhteisöveron vertailu (5 v)" : "Public Subsidy vs. Corporate Income Tax Paid (5-Yr Comparison)"}}</h4>
       <ul>
         <li><strong>${{fi ? "Myönnetty/maksettu julkinen yritystuki (5v):" : "Public Subsidy Received (5-Yr):"}}</strong> <strong>${{fmtEUR(c.subsidy_received_eur)}}</strong></li>
-        <li><strong>${{fi ? "Yhtiön yhteisöverokertymä / -muutos (5v):" : "Recipient 5-Yr Corporate Tax / Delta:"}}</strong> <strong>${{fmtEUR(c.five_yr_tax_delta_eur)}}</strong></li>
-        <li><strong>${{fi ? "Tuettoman toimialaverrokin verovaste (5v):" : "Matched Unsubsidized Peer 5-Yr Tax Benchmark:"}}</strong> ${{fmtEUR(c.matched_peer_five_yr_tax_delta_eur)}}</li>
-        <li><strong>${{fi ? "Laskennallinen DiD Vero-ROI:" : "Calculated DiD Tax ROI:"}}</strong> <strong>${{c.causal_did_roi.toFixed(2)}}x</strong></li>
+        <li><strong>${{fi ? "Maksettu yhteisövero Suomessa (5v, Verohallinto):" : "5-Yr Corporate Income Tax Paid in Finland:"}}</strong> <strong>${{fmtEUR(c.five_yr_tax_delta_eur)}}</strong></li>
+        <li><strong>${{fi ? "Laskennallinen vertailutaso ilman tukea (5v):" : "Counterfactual Baseline Without Subsidy (5-Yr):"}}</strong> ${{fmtEUR(c.matched_peer_five_yr_tax_delta_eur)}}</li>
+        <li><strong>${{fi ? "Laskennallinen DiD Vero-ROI (lisävero / tuki):" : "Calculated DiD Tax ROI (Incremental Tax / Grant):"}}</strong> <strong>${{c.causal_did_roi.toFixed(2)}}x</strong></li>
         <li><strong>${{fi ? "Tarkasteltava tukisopeutus:" : "Evaluated Subsidy Adjustment:"}}</strong> <strong style="color:${{c.recommended_cut_eur > 0 ? 'var(--red)' : 'var(--accent-dark)'}}">${{fmtEUR(c.recommended_cut_eur)}}</strong></li>
       </ul>
     </div>
@@ -1548,7 +1548,14 @@ function sortSteaTable(col) {{
 }}
 
 function exportFilteredCorpsCsv() {{
-  const headers = ['Sija', 'Y-tunnus', 'Yritys', 'TOL', 'Osoite', 'Rahoittaja', 'Momentti', 'Julkinen_tuki_5v_EUR', 'Yhteisovero_5v_EUR', 'DiD_Vero_ROI', 'Luokitus', 'Esitetty_saasto_EUR'];
+  const clsMap = {{
+    'BLACKLIST_ZOMBIE': 'Pilottivaihe / 0 EUR yhteisoveroa (100% karsinta)',
+    'DEADWEIGHT_CROWD_OUT': 'Sailyttava tuki / Matala lisaisyys (100% karsinta)',
+    'LOW_YIELD_REVIEW': 'Matala verovaste (50% karsinta)',
+    'POSITIVE_EXTERNALITY_KEEP': 'Vahva verovaste / T&K-veturi (Sailytetaan)',
+    'BENCHMARK_TAXPAYER': 'Markkinaehtoinen nettoveronmaksajaverrokki'
+  }};
+  const headers = ['Sija', 'Y-tunnus', 'Yritys', 'TOL', 'Osoite', 'Rahoittaja', 'Momentti', 'Julkinen_tuki_5v_EUR', 'Maksettu_yhteisovero_5v_EUR', 'DiD_Vero_ROI', 'Tutkimusluokitus', 'Esitetty_saasto_EUR'];
   const lines = [headers.join(';')];
   LAST_FILTERED_CORPS.forEach((c, idx) => {{
     lines.push([
@@ -1557,12 +1564,12 @@ function exportFilteredCorpsCsv() {{
       `"${{String(c.company_name).replace(/"/g, '""')}}"`,
       `"${{c.nace_code}}"`,
       `"${{String(c.postal_or_co_address || '').replace(/"/g, '""')}}"`,
-      `"${{c.grant_agency}}"`,
+      `"${{String(c.grant_agency).replace(/_/g, ' ')}}"`,
       `"${{fmtCorpMomentti(c)}}"`,
       Math.round(c.subsidy_received_eur),
       Math.round(c.five_yr_tax_delta_eur),
       c.causal_did_roi,
-      `"${{c.classification}}"`,
+      `"${{clsMap[c.classification] || c.classification}}"`,
       Math.round(c.recommended_cut_eur)
     ].join(';'));
   }});
@@ -1771,10 +1778,13 @@ function renderAll() {{
     if (!matchQuery(hay)) return;
     ngoCardMatches++;
     const isCut = n.classification === 'GUILLOTINE_ADMIN_BLOAT';
-    const accent = isCut ? 'red-accent' : 'green-accent';
-    const badge = isCut
-      ? `<span class="badge badge-red">${{fi ? 'Tarkasteltava Ay-/kohdeosuus' : 'Review Ay / Non-Statutory Share'}}</span>`
-      : `<span class="badge badge-green">${{fi ? 'Suojattu kenttätyö' : 'Frontline Aid (€0 Cut)'}}</span>`;
+    const isHighAdmin = isCut && n.overhead_and_lobbying_pct > 50.0;
+    const accent = !isCut ? 'green-accent' : (isHighAdmin ? 'red-accent' : 'amber-accent');
+    const badge = !isCut
+      ? `<span class="badge badge-green">${{fi ? 'Suojattu kenttätyö · 0 € leikkaus' : 'Frontline Aid (€0 Cut)'}}</span>`
+      : (isHighAdmin
+          ? `<span class="badge badge-red">${{fi ? 'Katto- / lomajärjestökohde' : 'Umbrella / Holiday Target'}}</span>`
+          : `<span class="badge badge-amber">${{fi ? 'Ay-yleisavustustarkastelu (Ak suojattu)' : 'Ay General Grant Review (Ak Protected)'}}</span>`);
     const nParts = splitTitle(n.ngo_name);
     const nSub = nParts.sub || `${{n.grant_source}} · Momentti ${{n.vm_momentti}} (${{n.grant_class_code}})`;
     const commentary = fi
@@ -1853,8 +1863,8 @@ function renderAll() {{
         <td>${{idx + 1}}</td>
         <td><strong>${{escHtml(o.ngo_name)}}</strong>${{yBadge}}</td>
         <td><strong>${{fmtEUR(o.granted_2026_eur)}}</strong></td>
-        <td style="color:${{o.ak_general_2026_eur > 0 ? 'var(--red)' : 'var(--muted)'}};font-weight:600;">${{fmtEUR(o.ak_general_2026_eur)}}</td>
-        <td><span class="badge ${{parseFloat(akPct) >= 50 ? 'badge-red' : 'badge-green'}}">${{akPct}} %</span></td>
+        <td style="color:${{o.ak_general_2026_eur > 0 ? 'var(--text)' : 'var(--muted)'}};font-weight:600;">${{fmtEUR(o.ak_general_2026_eur)}}</td>
+        <td><span class="badge ${{parseFloat(akPct) >= 50 ? 'badge-green' : 'badge-amber'}}">${{akPct}} %</span></td>
         <td>${{fmtEUR(o.targeted_2026_eur)}}</td>
         <td style="font-size:12.5px;color:var(--body);"><strong>${{o.decision_count_2026}} kpl:</strong> ${{escHtml((o.top_purposes && o.top_purposes[0]) || '—')}}</td>
       </tr>`;
@@ -1889,23 +1899,28 @@ function renderAll() {{
   // 4. Ring Cards
   let ringHtml = '';
   DATA.rings.forEach((r, idx) => {{
-    ringHtml += `<div class="story-card red-accent clickable-card" onclick="openRingModal(${{idx}})">
+    const isZeroTaxCluster = r.flagged_zombie_ring;
+    const rAccent = isZeroTaxCluster ? 'red-accent' : 'green-accent';
+    const rBadge = isZeroTaxCluster
+      ? `<span class="badge badge-red">${{r.entity_count}} ${{fi ? 'pilottiyhtiötä · 0 € veroa' : 'pilot firms · €0 tax'}}</span>`
+      : `<span class="badge badge-green">${{r.entity_count}} ${{fi ? 'Veturi-/T&K-yhtiötä · Vahva vero' : 'Veturi/R&D firms · High tax'}}</span>`;
+    ringHtml += `<div class="story-card ${{rAccent}} clickable-card" onclick="openRingModal(${{idx}})">
       <div class="story-top">
         <div class="card-kicker-row">
-          <span class="badge badge-red">${{r.entity_count}} ${{fi ? 'yhtiötä klusterissa' : 'firms in cluster'}}</span>
+          ${{rBadge}}
           <span class="card-id-pill">${{r.ring_signature}}</span>
         </div>
         <h3>${{r.shared_address_or_agent}}</h3>
         <div class="story-subtitle">${{r.company_names.map(n => n.split(' (')[0]).join(' · ')}}</div>
         <p class="story-commentary">${{fi
-          ? `Klusterin ${{r.entity_count}} yhtiötä nostivat yhteensä ${{fmtM(r.total_subsidy_eur)}} julkista tukea. 5 vuoden yhteisöverokertymä: ${{fmtEUR(r.total_five_yr_tax_delta_eur)}}.`
-          : `Cluster of ${{r.entity_count}} firms collected ${{fmtM(r.total_subsidy_eur)}} in public grants. 5-yr corporate tax: ${{fmtEUR(r.total_five_yr_tax_delta_eur)}}.`}}</p>
+          ? `Klusterin ${{r.entity_count}} yhtiötä saivat yhteensä ${{fmtM(r.total_subsidy_eur)}} julkista T&K-/investointitukea. 5 vuoden maksettu yhteisövero Suomessa: ${{fmtEUR(r.total_five_yr_tax_delta_eur)}} (vero/tuki-suhde ${{r.cluster_tax_to_grant_ratio.toFixed(2)}}x).`
+          : `Cluster of ${{r.entity_count}} firms received ${{fmtM(r.total_subsidy_eur)}} in public R&D/investment grants. 5-yr corporate tax paid: ${{fmtEUR(r.total_five_yr_tax_delta_eur)}} (tax/grant ratio ${{r.cluster_tax_to_grant_ratio.toFixed(2)}}x).`}}</p>
       </div>
       <div>
         <div class="metrics-strip">
-          <div><span>${{fi ? 'Nostettu tuki' : 'Grants Taken'}}</span><strong style="color:var(--red)">${{fmtCardM(r.total_subsidy_eur)}}</strong></div>
-          <div><span>${{fi ? 'Yhteisövero 5v' : '5-Yr Tax'}}</span><strong>${{fmtCardM(r.total_five_yr_tax_delta_eur)}}</strong></div>
-          <div><span>${{fi ? 'Koordinointi (20%)' : '20% Fee Est.'}}</span><strong style="color:var(--amber)">${{fmtCardM(r.estimated_20pct_consultant_cut_eur)}}</strong></div>
+          <div><span>${{fi ? 'Julkinen tuki' : 'Public Grants'}}</span><strong style="color:${{isZeroTaxCluster ? 'var(--red)' : 'var(--text)'}}">${{fmtCardM(r.total_subsidy_eur)}}</strong></div>
+          <div><span>${{fi ? 'Yhteisövero 5v' : '5-Yr Corp Tax'}}</span><strong style="color:${{r.total_five_yr_tax_delta_eur > 0 ? 'var(--accent-dark)' : 'var(--red)'}}">${{fmtCardM(r.total_five_yr_tax_delta_eur)}}</strong></div>
+          <div><span>${{fi ? 'Vero / Tuki' : 'Tax / Grant'}}</span><strong style="color:${{isZeroTaxCluster ? 'var(--red)' : 'var(--accent-dark)'}}">${{r.cluster_tax_to_grant_ratio.toFixed(2)}}x</strong></div>
         </div>
         <div class="click-hint">${{fi ? 'Klikkaa: Klusterin yhtiöt ja luvut →' : 'Click: Inspect cluster member companies →'}}</div>
       </div>
@@ -1992,12 +2007,17 @@ def compile_media_and_vm_dossiers(
         f"| `{c['y_tunnus']}` | {c['company_name']} | `{c['vm_momentti']}` | €{float(c['subsidy_received_eur']):,.0f} | €{float(c['five_yr_tax_delta_eur']):,.0f} | **`+{c['causal_did_roi']:.2f}x`** | €0 (Keep) |"
         for c in keepers
     )
+    qoe_md_labels = {
+        "CRITICAL_GRANT_ZOMBIE_DO_NOT_BUY": "Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL)",
+        "HIGH_SUBSIDY_DISTORTION_REPRICE_EV": "High Grant Share of EBITDA (IAS 20 / KPL)",
+        "CLEAN_ORGANIC_EARNINGS": "Clean Organic Cash EBITDA (<1% Grants)",
+    }
     ring_rows = "\n".join(
-        f"| `{r['ring_id']}` | **{r['ring_signature']}** ({r['shared_address_or_agent']}) | {r['entity_count']} | €{float(r['total_subsidy_eur']):,.0f} | €{float(r['total_five_yr_tax_delta_eur']):,.0f} | €{float(r['estimated_20pct_consultant_cut_eur']):,.0f} |"
-        for r in rings
+        f"| `CLUSTER-{idx_r:02d}` | **{r['ring_signature']}** ({r['shared_address_or_agent']}) | {r['entity_count']} | €{float(r['total_subsidy_eur']):,.0f} | €{float(r['total_five_yr_tax_delta_eur']):,.0f} | `{float(r['cluster_tax_to_grant_ratio']):.2f}x` |"
+        for idx_r, r in enumerate(rings, start=1)
     )
     qoe_rows = "\n".join(
-        f"| `{q['y_tunnus']}` | {q['company_name']} | €{float(q['reported_revenue_eur']):,.0f} | €{float(q['reported_ebitda_eur']):,.0f} | €{float(q['subsidy_and_related_party_ebitda_inflation_eur']):,.0f} | **€{float(q['true_subsidy_stripped_core_ebitda_eur']):,.0f}** | `{q['qoe_verdict']}` |"
+        f"| `{q['y_tunnus']}` | {q['company_name']} | €{float(q['reported_revenue_eur']):,.0f} | €{float(q['reported_ebitda_eur']):,.0f} | €{float(q['subsidy_and_related_party_ebitda_inflation_eur']):,.0f} | **€{float(q['true_subsidy_stripped_core_ebitda_eur']):,.0f}** | {qoe_md_labels.get(str(q['qoe_verdict']), str(q['qoe_verdict']))} |"
         for q in qoe_reports
     )
     ngo_rows = "\n".join(
@@ -2022,7 +2042,7 @@ Finland allocates approximately **€11.50 billion per year** across direct corp
 | **`32.20.40`** | Business Finland R&D & Innovation Grants (2026 authorization €637.4M, cash ~€470M) | `€470,000,000` | **`-€211,500,000`** | `€{momentti_summary.get("32.20.40", 0.0):,.2f}` |
 | **`32.20.83`** | Business Finland R&D Soft Loans | `€180,000,000` | **`-€90,000,000`** | `€{momentti_summary.get("32.20.83", 0.0):,.2f}` |
 | **`31.20.43 / 32.30.42`** | LVM Maritime Crew Subsidies (`31.20.43`) & TEM ELY Development Grants (`32.30.42`) | `€340,000,000` | **`-€174,000,000`** | `€{momentti_summary.get("32.30.42", 0.0):,.2f}` |
-| **`33.90.50`** | STEA Grants (`€212.20M` `Ak` Operating Grants & `€58.21M` `Ay` General Grants across 686 NGOs) | `€410,000,000` | **`-€209,000,000`** | `€{momentti_summary.get("33.90.50", 0.0):,.2f}` |
+| **`33.90.50`** | STEA Grants (`€273.91M` in 2026: `€212.20M` `Ak` & `€58.21M` `Ay` across 686 NGOs) + Municipal/Regional Sote NGO Grants (`~€136M`) | `€410,000,000` | **`-€209,000,000`** | `€{momentti_summary.get("33.90.50", 0.0):,.2f}` |
 | **`29.80.50 / 29.90.50 / 29.91.50`** | OKM National Umbrella, Cultural, Sports & Youth Advocacy Grants | `€420,000,000` | **`-€168,000,000`** | `€{momentti_summary.get("29.80.50", 0.0):,.2f}` |
 | **`32.20.43 / 32.60.40 / 30.20.40`** | Industrial Electrification, Energy & National Incumbent Subsidies | `€1,740,000,000` | **`-€696,000,000`** | `€{momentti_summary.get("30.10.40_32.60.40", 0.0):,.2f}` |
 | **TOTAL** | **KEHYSRIIHI 2027 STRUCTURAL REFORM (6 BUDGET GROUPS)** | **`€3,560,000,000`** | **`-€1,548,500,000 / yr`** | **`€{sum(momentti_summary.values()):,.2f}`** |
@@ -2049,11 +2069,11 @@ Established corporations and shipping lines receiving automatic or preservation 
 
 ---
 
-## 4. High-Externality R&D & Veturi Exporters (`POSITIVE_EXTERNALITY_KEEP` — Protect)
+## 4. High-Externality R&D & Veturi Exporters (Positive Tax Externality — Protect)
 
 Industrial and technology exporters whose R&D investments and Business Finland Veturi ecosystems translate into strong domestic corporate tax returns (`DiD ROI > 1.20x`):
 
-| Y-tunnus | Company & Statutory Context | VM Momentti | 5-Yr Public Subsidy | 5-Yr Corporate Tax Delta | Causal DiD Tax ROI | Recommended Action |
+| Y-tunnus | Company & Statutory Context | VM Momentti | 5-Yr Public Subsidy | 5-Yr Corporate Tax Paid | Causal DiD Tax ROI | Recommended Action |
 | :--- | :--- | :--- | ---: | ---: | ---: | :--- |
 {keeper_rows}
 
@@ -2063,11 +2083,11 @@ Industrial and technology exporters whose R&D investments and Business Finland V
 
 Multi-registry entity resolution across PRH `YTJ` street addresses, consortium identifiers, and shared ecosystem hubs:
 
-| Cluster ID | Cluster Name & Address Hub | Entities | Total Public Subsidies | 5-Yr Corporate Tax Delta | Est. 20% Admin/Coordination Allocation |
+| Cluster ID | Cluster Name & Address Hub | Entities | Total Public Subsidies | 5-Yr Corporate Tax Paid | Tax / Subsidy Ratio |
 | :--- | :--- | ---: | ---: | ---: | ---: |
 {ring_rows}
 
-* **Total Cluster Subsidies:** `€{total_ring_subsidy:,.0f}` (Calculated 20% coordination/administrative allocation: `€{total_consultant_cut:,.0f}`).
+* **Total Cluster Subsidies:** `€{total_ring_subsidy:,.0f}` across 3 regional/thematic R&D ecosystems.
 
 ---
 

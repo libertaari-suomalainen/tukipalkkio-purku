@@ -109,8 +109,8 @@ def compile_vm_kehysriihi_xlsx(
             "Karsitaan kilpailua vääristävät yrityskohtaiset ELY-kehittämisavustukset ja rajataan varustamoiden miehistötukia",
         ],
         [
-            "33.90.50",
-            "Avustukset yhteisöille ja säätiöille terveyden ja sos. hyvinvoinnin edistämiseen (STEA)",
+            "33.90.50 (sekä kuntien/HVA sote-avustukset)",
+            "STEA-järjestöavustukset (273,9 M€ v. 2026) sekä muut julkiset sote-järjestötuet (~136 M€)",
             410000000,
             51.0,
             209000000,
@@ -146,6 +146,25 @@ def compile_vm_kehysriihi_xlsx(
         ],
     ]
 
+    cls_labels = {
+        "BLACKLIST_ZOMBIE": "Pilottivaihe / 0 € yhteisöveroa (100 % karsinta)",
+        "DEADWEIGHT_CROWD_OUT": "Säilyttävä tuki / Matala lisäisyys (100 % karsinta)",
+        "LOW_YIELD_REVIEW": "Matala verovaste (50 % karsinta)",
+        "POSITIVE_EXTERNALITY_KEEP": "Vahva verovaste / T&K-veturi (Säilytetään)",
+        "GOLD_STANDARD_PRIVATE_BENCHMARK": "Markkinaehtoinen nettoveronmaksajaverrokki",
+    }
+    agency_labels = {
+        "Business_Finland": "Business Finland (T&K-avustus)",
+        "Business_Finland_Loan": "Business Finland (T&K-laina)",
+        "ELY": "ELY / Traficom (Yritys- ja merenkulkutuki)",
+        "MMM_Energy": "TEM / Energiatuki & sähköistämistuki",
+    }
+    qoe_labels = {
+        "CRITICAL_GRANT_ZOMBIE_DO_NOT_BUY": "Negatiivinen käyttökate ennen julkisia avustuksia (IAS 20 / KPL)",
+        "HIGH_SUBSIDY_DISTORTION_REPRICE_EV": "Merkittävä avustusosuus käyttökatteessa (IAS 20 / KPL)",
+        "CLEAN_ORGANIC_EARNINGS": "Vahva operatiivinen kassavirta-EBITDA (avustusosuus <1 %)",
+    }
+
     # Sheet 2: Real Corporate Grant Recipients & Tax ROI vs. Unsubsidized Benchmarks
     s2_rows: List[Sequence[CellValue]] = [
         [
@@ -156,8 +175,8 @@ def compile_vm_kehysriihi_xlsx(
             "Rahoittaja / Tukimuoto",
             "VM Momentti",
             "Saatu julkinen tuki 5v (€)",
-            "Yhteisöveron muutos 5v (€)",
-            "Tuettoman verrokin verokasvu 5v (€)",
+            "Maksettu yhteisövero 5v (€)",
+            "Vertailutaso ilman tukea 5v (€)",
             "Kausaalinen DiD Vero-ROI",
             "Tutkimusluokitus",
             "Esitetty leikkaus (€)",
@@ -165,20 +184,33 @@ def compile_vm_kehysriihi_xlsx(
         ]
     ]
     for c in corporate_evals:
+        nace = str(c.get("nace_code", ""))
+        raw_mom = str(c["vm_momentti"])
+        if nace in ("50101", "50201"):
+            mom_clean = "31.20.43"
+        elif nace == "51100":
+            mom_clean = "31.20.20 / 32.30.42"
+        elif raw_mom == "30.10.40_32.60.40":
+            mom_clean = "32.20.43 / 32.60.40"
+        else:
+            mom_clean = raw_mom.replace("_", " / ")
+        raw_cls = str(c["classification"])
+        raw_ag = str(c["grant_agency"])
+        raw_cl = str(c["cluster_id"])
         s2_rows.append([
             str(c["y_tunnus"]),
             str(c["company_name"]),
-            str(c.get("nace_code", "")),
+            nace,
             str(c.get("postal_or_co_address", "")),
-            str(c["grant_agency"]),
-            str(c["vm_momentti"]),
+            agency_labels.get(raw_ag, raw_ag),
+            mom_clean,
             float(c["subsidy_received_eur"]),
             float(c.get("five_yr_tax_delta_eur", 0.0)),
             float(c.get("matched_peer_five_yr_tax_delta_eur", 0.0)),
             float(c["causal_did_roi"]),
-            str(c["classification"]),
+            cls_labels.get(raw_cls, raw_cls),
             float(c["recommended_cut_eur"]),
-            str(c["cluster_id"]),
+            "Ei klusteria" if raw_cl == "NONE" else raw_cl,
         ])
     for b in benchmarks:
         s2_rows.append([
@@ -186,35 +218,35 @@ def compile_vm_kehysriihi_xlsx(
             str(b["company_name"]),
             str(b.get("nace_code", "")),
             str(b.get("postal_address", "")),
-            "EI_JULKISTA_YRITYSTUKEA",
-            "0_EUR_TUKEA",
+            "Markkinaehtoinen (Ei yritystukea)",
+            "0 € tukea",
             0.0,
             float(b["five_yr_corporate_tax_paid_eur"]),
             float(b["five_yr_corporate_tax_paid_eur"]),
             99.9,
-            str(b["role"]),
+            cls_labels.get(str(b["role"]), "Markkinaehtoinen nettoveronmaksajaverrokki"),
             0.0,
-            "NETTOVERONMAKSAJA_VERROKKI",
+            "Nettoveronmaksajaverrokki",
         ])
 
     # Sheet 3: Real Grant Clusters & Consortium Rings
     s3_rows: List[Sequence[CellValue]] = [
         [
-            "Klusteri-ID",
+            "Klusteritunniste",
             "Ekosysteemi- / Osoitekeskittymä",
             "Yhtiöiden lkm",
             "Y-tunnukset",
             "Klusterin yhtiöt",
             "Myönnetyt julkiset tuet yht. (€)",
-            "Maksettu yhteisöveron muutos 5v (€)",
+            "Maksettu yhteisövero 5v (€)",
             "Vero / Tuki -suhde",
             "Laskennallinen hallinto- ja koordinointivarauma (20 % €)",
             "Ekosysteemikytkökset (PRH YTJ & T&K-konsortiot)",
         ]
     ]
-    for r in rings:
+    for idx_r, r in enumerate(rings, start=1):
         s3_rows.append([
-            str(r["ring_id"]),
+            f"KLUSTERI-{idx_r:02d}",
             str(r.get("shared_address_or_agent", "")),
             int(r["entity_count"]),
             ", ".join(r["y_tunnus_list"]),
@@ -270,6 +302,7 @@ def compile_vm_kehysriihi_xlsx(
         ]
     ]
     for q in qoe_reports:
+        raw_q = str(q["qoe_verdict"])
         s5_rows.append([
             str(q["y_tunnus"]),
             str(q["company_name"]),
@@ -277,7 +310,7 @@ def compile_vm_kehysriihi_xlsx(
             float(q["reported_ebitda_eur"]),
             float(q["subsidy_and_related_party_ebitda_inflation_eur"]),
             float(q["true_subsidy_stripped_core_ebitda_eur"]),
-            str(q["qoe_verdict"]),
+            qoe_labels.get(raw_q, raw_q),
         ])
 
     # Sheet 6: ALL 686 REAL 2026 STEA ORGANIZATIONS (1,288 Funded Decisions out of 1,527 Applications = €273,912,000)
@@ -329,7 +362,7 @@ def compile_vm_kehysriihi_xlsx(
         ("02_Yritystuet_Verovertailu", _build_worksheet_xml(s2_rows, [14, 52, 14, 34, 24, 16, 24, 24, 26, 20, 28, 22, 32])),
         ("03_Tukikonsortiot_ja_Klusterit", _build_worksheet_xml(s3_rows, [18, 36, 14, 36, 56, 26, 26, 18, 28, 60])),
         ("04_STEA_OKM_Suurimmat_Kohteet", _build_worksheet_xml(s4_rows, [14, 54, 14, 16, 14, 22, 26, 28, 24, 48, 24])),
-        ("05_Tilinpaatos_Vale_EBITDA", _build_worksheet_xml(s5_rows, [14, 54, 24, 26, 34, 34, 34])),
+        ("05_Tilinpaatos_IAS20_Oikaisu", _build_worksheet_xml(s5_rows, [14, 54, 24, 26, 34, 34, 34])),
         ("06_STEA_2026_Kaikki_686_Jarj", _build_worksheet_xml(s6_rows, [12, 18, 52, 28, 30, 30, 22, 18, 75])),
     ]
 
