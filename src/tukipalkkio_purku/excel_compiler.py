@@ -254,7 +254,7 @@ def compile_vm_kehysriihi_xlsx(
             float(r["total_subsidy_eur"]),
             float(r["total_five_yr_tax_delta_eur"]),
             float(r["cluster_tax_to_grant_ratio"]),
-            float(r["estimated_20pct_consultant_cut_eur"]),
+            float(r["estimated_20pct_consultant_cut_eur"]) if r.get("flagged_zombie_ring") else 0.0,
             " ; ".join(r["link_signals"]),
         ])
 
@@ -321,7 +321,8 @@ def compile_vm_kehysriihi_xlsx(
             "Järjestön virallinen nimi (STEA 2026 avustusrekisteri)",
             "Myönnetty STEA-avustus 2026 yht. (€)",
             "Siitä: Jatkuva Ak-toiminta-avustus 2026 (€)",
-            "Siitä: Muut avustuslajit Ay/C/B (€)",
+            "Siitä: Ay-yleisavustus 2026 (€)",
+            "Siitä: C/B-hankeavustus 2026 (€)",
             "Ak-toiminta-avustuksen osuus (%)",
             "Päätösten lkm (2026)",
             "Suurimmat avustuskohteet (2026 virallinen käyttötarkoitus)",
@@ -330,7 +331,9 @@ def compile_vm_kehysriihi_xlsx(
     for rank, org in enumerate(stea_all, start=1):
         granted = float(org.get("granted_2026_eur", 0))
         ak_amt = float(org.get("ak_general_2026_eur", 0))
+        ay_amt = float(org.get("ay_general_2026_eur", 0))
         targeted = float(org.get("targeted_2026_eur", 0))
+        cb_amt = max(0.0, round(targeted - ay_amt, 2))
         ak_pct = round((ak_amt / granted) * 100.0, 1) if granted > 0 else 0.0
         s6_rows.append([
             rank,
@@ -338,7 +341,8 @@ def compile_vm_kehysriihi_xlsx(
             str(org.get("ngo_name", "")),
             granted,
             ak_amt,
-            targeted,
+            ay_amt,
+            cb_amt,
             ak_pct,
             int(org.get("decision_count_2026", 0)),
             " | ".join(org.get("top_purposes", [])),
@@ -352,9 +356,10 @@ def compile_vm_kehysriihi_xlsx(
             f"=SUM(D2:D{last_data_row})",
             f"=SUM(E2:E{last_data_row})",
             f"=SUM(F2:F{last_data_row})",
+            f"=SUM(G2:G{last_data_row})",
             77.5,
-            f"=SUM(H2:H{last_data_row})",
-            "Todistaa: 273 912 000 € kokopotista tasan 212 203 929 € (77,5 %) on jatkuvaa Ak-toiminta-avustusta ja 61 708 071 € (22,5 %) Ay/C/B-avustusta",
+            f"=SUM(I2:I{last_data_row})",
+            "Todistaa: 273 912 000 € kokopotista 212 203 929 € (77,5 %) on Ak-toimintatukea, 58 214 068 € (21,3 %) Ay-yleisavustusta ja 3 494 003 € (1,3 %) C/B-hankeavustusta",
         ])
 
     sheets = [
@@ -363,7 +368,7 @@ def compile_vm_kehysriihi_xlsx(
         ("03_Tukikonsortiot_ja_Klusterit", _build_worksheet_xml(s3_rows, [18, 36, 14, 36, 56, 26, 26, 18, 28, 60])),
         ("04_STEA_OKM_Suurimmat_Kohteet", _build_worksheet_xml(s4_rows, [14, 54, 14, 16, 14, 22, 26, 28, 24, 48, 24])),
         ("05_Tilinpaatos_IAS20_Oikaisu", _build_worksheet_xml(s5_rows, [14, 54, 24, 26, 34, 34, 34])),
-        ("06_STEA_2026_Kaikki_686_Jarj", _build_worksheet_xml(s6_rows, [12, 18, 52, 28, 30, 30, 22, 18, 75])),
+        ("06_STEA_2026_Kaikki_686_Jarj", _build_worksheet_xml(s6_rows, [12, 18, 52, 28, 30, 26, 26, 22, 18, 75])),
     ]
 
     content_types_xml = (

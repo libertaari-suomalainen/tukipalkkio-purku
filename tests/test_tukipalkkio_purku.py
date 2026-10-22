@@ -186,14 +186,30 @@ class TestTukipalkkioPurkuEngine(unittest.TestCase):
                 s2_xml = zf.read("xl/worksheets/sheet2.xml").decode("utf-8")
                 self.assertNotIn("BLACKLIST_ZOMBIE", s2_xml)
                 self.assertNotIn("DEADWEIGHT_CROWD_OUT", s2_xml)
+                s6_xml = zf.read("xl/worksheets/sheet6.xml").decode("utf-8")
+                self.assertIn("Siitä: Ay-yleisavustus 2026 (€)", s6_xml)
+                self.assertIn("Siitä: C/B-hankeavustus 2026 (€)", s6_xml)
             with open(artifacts["html"], "r", encoding="utf-8") as f:
                 html_text = f.read()
             self.assertNotIn("Konkurssiin 2024", html_text)
+            self.assertNotIn("BLACKLIST_ZOMBIE", html_text)
+            self.assertNotIn("DEADWEIGHT_CROWD_OUT", html_text)
+            self.assertNotIn("GUILLOTINE_ADMIN_BLOAT", html_text)
+            self.assertNotIn("CRITICAL_GRANT_ZOMBIE_DO_NOT_BUY", html_text)
             self.assertIn("1 288 virallista avustuspäätöstä", html_text)
+            self.assertIn("id=\"sec-qoe\"", html_text)
+            self.assertIn("sortQoeTable", html_text)
+            self.assertIn("exportQoeCsv", html_text)
+            self.assertIn("body.modal-open", html_text)
+            with open(artifacts["dossier"], "r", encoding="utf-8") as f:
+                md_text = f.read()
+            self.assertNotIn("TUKI-RING-", md_text)
+            self.assertNotIn("30.10.40_32.60.40", md_text)
 
     def test_peer_review_ytunnus_checksums_and_classifications(self) -> None:
         corps, ngos, qoes, benchmarks = load_calibrated_sovereign_dataset()
         self.assertEqual(len(corps) + len(benchmarks), 47)
+        self.assertEqual(len(qoes), 8)
         for c in corps:
             self.assertTrue(validate_ytunnus_checksum(c.y_tunnus), f"Invalid corporate Y-tunnus: {c.y_tunnus}")
         for n in ngos:

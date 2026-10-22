@@ -29,7 +29,7 @@ These development- and pilot-stage ventures or state-supported enterprises recei
 | Y-tunnus | Company & Statutory Context | VM Momentti | 5-Yr Public Subsidy | 5-Yr Corporate Tax Delta | Causal DiD Tax ROI | Evaluated Adjustment |
 | :--- | :--- | :--- | ---: | ---: | ---: | ---: |
 | `2766860-9` | Infinited Fiber Company Oy (Business Finland & EU T&K- ja pilottiavustukset — pilottituotannon sopeutus ja 0 € yhteisöveroa) | `32.20.40` | €12,400,000 | €0 | `-0.04x` | **-€12,400,000** |
-| `3155276-4` | P2X Solutions Oy (TEM vihreän vedyn investointituki & Business Finland T&K-rahoitus — laitosinvestointivaihe, 0 € yhteisöveroa) | `30.10.40_32.60.40` | €26,000,000 | €0 | `-0.02x` | **-€26,000,000** |
+| `3155276-4` | P2X Solutions Oy (TEM vihreän vedyn investointituki & Business Finland T&K-rahoitus — laitosinvestointivaihe, 0 € yhteisöveroa) | `32.20.43 / 32.60.40` | €26,000,000 | €0 | `-0.02x` | **-€26,000,000** |
 | `2982879-2` | Origin by Ocean Oy (Business Finland & EU biokemian T&K-avustuskohde — kehitysvaihe, 0 € yhteisöveroa) | `32.20.40` | €4,800,000 | €0 | `-0.08x` | **-€4,800,000** |
 | `2872116-8` | Solar Foods Oyj (Business Finland RRF & IPCEI solumaatalouden T&K-avustukset ja lainat — kaupallistamisvaihe, 0 € yhteisöveroa) | `32.20.40` | €18,200,000 | €0 | `-0.02x` | **-€18,200,000** |
 | `2653299-6` | Spinnova Oyj (Business Finland T&K-avustukset, lainat & ELY-tuet — teknologian kehitysvaihe, 0 € yhteisöveroa) | `32.20.40` | €14,800,000 | €0 | `-0.03x` | **-€14,800,000** |
@@ -40,7 +40,7 @@ These development- and pilot-stage ventures or state-supported enterprises recei
 | `3005880-1` | Rester Oy (Tekstiilikierrätyslaitoksen julkiset kehittämisavustukset — 0 € yhteisöveroa tarkastelujaksolla) | `32.20.40` | €3,900,000 | €0 | `-0.08x` | **-€3,900,000** |
 | `2506251-5` | Norsepower Oy Ltd (Roottoripurjeiden puhtaan merenkulun T&K-tuet — kaupallistamisvaihe, 0 € yhteisöveroa tarkastelujaksolla) | `32.20.40` | €6,500,000 | €0 | `-0.07x` | **-€6,500,000** |
 | `0772017-4` | Meyer Turku Oy (Business Finland NEcOLEAP Veturi 20 M€ & TEM meriteollisuuden innovaatiotuet — 0 € yhteisöveroa tarkastelujaksolla) | `32.20.40` | €54,000,000 | €0 | `-0.22x` | **-€54,000,000** |
-| `0108023-3` | Finnair Oyj (Julkiset reitti-, huoltovarmuus- ja tukirahoituserät — 0 € maksettua yhteisöveroa tarkastelujaksolla) | `32.30.42` | €85,000,000 | €0 | `-0.29x` | **-€85,000,000** |
+| `0108023-3` | Finnair Oyj (Julkiset reitti-, huoltovarmuus- ja tukirahoituserät — 0 € maksettua yhteisöveroa tarkastelujaksolla) | `31.20.20 / 32.30.42` | €85,000,000 | €0 | `-0.29x` | **-€85,000,000** |
 
 ---
 
@@ -51,17 +51,17 @@ Established corporations and shipping lines receiving automatic or preservation 
 | Y-tunnus | Company & Statutory Context | VM Momentti | 5-Yr Public Subsidy | 5-Yr Corporate Tax Delta | Causal DiD Tax ROI | Evaluated Adjustment |
 | :--- | :--- | :--- | ---: | ---: | ---: | ---: |
 | `1877769-4` | Spinverse Oy (Innovaatio- ja EU/Veturi-ekosysteemikonsultointi — omat T&K- ja kehittämisavustukset) | `32.20.40` | €3,850,000 | €2,100,000 | `-0.06x` | **-€3,850,000** |
-| `1041090-0` | UPM-Kymmene Oyj (TEM 2020–2025 suurin suora yritystukisaaja 140 M€: sähköistämis- ja energiatuet — matala lisäisyys VATT/Etla-arvioissa) | `30.10.40_32.60.40` | €140,000,000 | €620,000,000 | `0.07x` | **-€140,000,000** |
-| `1039050-8` | Stora Enso Oyj (Teollisuuden sähköistämistuki, energiatuet & T&K-avustukset — matala lisäisyys VATT/Etla-arvioissa) | `30.10.40_32.60.40` | €96,000,000 | €185,000,000 | `0.05x` | **-€96,000,000** |
-| `1852302-9` | Neste Oyj (Puhtaan siirtymän investointi- ja energiatuet sekä Veturi — suuri veronmaksaja, mutta suorilla energiatuilla matala lisäisyys) | `30.10.40_32.60.40` | €68,500,000 | €680,000,000 | `0.15x` | **-€68,500,000** |
-| `2389445-7` | SSAB Europe Oy (Raahen terästehtaan energia- ja vihreän siirtymän investointituet — matala lisäisyys) | `30.10.40_32.60.40` | €48,000,000 | €115,000,000 | `0.10x` | **-€48,000,000** |
-| `0215254-2` | Outokumpu Oyj (Energiaintensiivisen teollisuuden sähköistämis- ja energiatuet — matala lisäisyys VATT/Etla-arvioissa) | `30.10.40_32.60.40` | €62,000,000 | €140,000,000 | `0.08x` | **-€62,000,000** |
-| `0144983-8` | Viking Line Abp (TEM/Traficom 2020–2025 suorat varustamo- ja miehistötuet 129 M€ — momentti 31.20.43) | `32.30.42` | €129,000,000 | €18,000,000 | `-0.03x` | **-€129,000,000** |
-| `0114296-7` | Tallink Silja Oy (TEM/Traficom 2020–2025 merenkulun miehistö- ja varustamotuet 71 M€ — momentti 31.20.43) | `32.30.42` | €71,000,000 | €6,500,000 | `-0.16x` | **-€71,000,000** |
-| `0201153-9` | Finnlines Oyj (TEM/Traficom 2020–2025 rahti- ja matkustajavarustamoiden miehistötuet 93 M€ — momentti 31.20.43) | `32.30.42` | €93,000,000 | €24,000,000 | `-0.04x` | **-€93,000,000** |
-| `1463611-4` | Fortum Oyj (Energia- ja vetyhankeavustukset sekä ExpandFibre — suuri veronmaksaja, mutta suorilla energiatuilla matala lisäisyys) | `30.10.40_32.60.40` | €34,000,000 | €480,000,000 | `0.15x` | **-€34,000,000** |
-| `0791416-3` | Metsä Fibre Oy / Metsä Group (ExpandFibre sekä biotuotetehtaiden energia- ja sähköistämistuet — matala lisäisyys) | `30.10.40_32.60.40` | €44,000,000 | €390,000,000 | `0.11x` | **-€44,000,000** |
-| `0109823-0` | Kemira Oyj (Teollisuuden energia- ja sähköistämistuet — kannattavan perusteollisuuden säilyttävä tuki) | `30.10.40_32.60.40` | €19,500,000 | €135,000,000 | `0.26x` | **-€19,500,000** |
+| `1041090-0` | UPM-Kymmene Oyj (TEM 2020–2025 suurin suora yritystukisaaja 140 M€: sähköistämis- ja energiatuet — matala lisäisyys VATT/Etla-arvioissa) | `32.20.43 / 32.60.40` | €140,000,000 | €620,000,000 | `0.07x` | **-€140,000,000** |
+| `1039050-8` | Stora Enso Oyj (Teollisuuden sähköistämistuki, energiatuet & T&K-avustukset — matala lisäisyys VATT/Etla-arvioissa) | `32.20.43 / 32.60.40` | €96,000,000 | €185,000,000 | `0.05x` | **-€96,000,000** |
+| `1852302-9` | Neste Oyj (Puhtaan siirtymän investointi- ja energiatuet sekä Veturi — suuri veronmaksaja, mutta suorilla energiatuilla matala lisäisyys) | `32.20.43 / 32.60.40` | €68,500,000 | €680,000,000 | `0.15x` | **-€68,500,000** |
+| `2389445-7` | SSAB Europe Oy (Raahen terästehtaan energia- ja vihreän siirtymän investointituet — matala lisäisyys) | `32.20.43 / 32.60.40` | €48,000,000 | €115,000,000 | `0.10x` | **-€48,000,000** |
+| `0215254-2` | Outokumpu Oyj (Energiaintensiivisen teollisuuden sähköistämis- ja energiatuet — matala lisäisyys VATT/Etla-arvioissa) | `32.20.43 / 32.60.40` | €62,000,000 | €140,000,000 | `0.08x` | **-€62,000,000** |
+| `0144983-8` | Viking Line Abp (TEM/Traficom 2020–2025 suorat varustamo- ja miehistötuet 129 M€ — momentti 31.20.43) | `31.20.43` | €129,000,000 | €18,000,000 | `-0.03x` | **-€129,000,000** |
+| `0114296-7` | Tallink Silja Oy (TEM/Traficom 2020–2025 merenkulun miehistö- ja varustamotuet 71 M€ — momentti 31.20.43) | `31.20.43` | €71,000,000 | €6,500,000 | `-0.16x` | **-€71,000,000** |
+| `0201153-9` | Finnlines Oyj (TEM/Traficom 2020–2025 rahti- ja matkustajavarustamoiden miehistötuet 93 M€ — momentti 31.20.43) | `31.20.43` | €93,000,000 | €24,000,000 | `-0.04x` | **-€93,000,000** |
+| `1463611-4` | Fortum Oyj (Energia- ja vetyhankeavustukset sekä ExpandFibre — suuri veronmaksaja, mutta suorilla energiatuilla matala lisäisyys) | `32.20.43 / 32.60.40` | €34,000,000 | €480,000,000 | `0.15x` | **-€34,000,000** |
+| `0791416-3` | Metsä Fibre Oy / Metsä Group (ExpandFibre sekä biotuotetehtaiden energia- ja sähköistämistuet — matala lisäisyys) | `32.20.43 / 32.60.40` | €44,000,000 | €390,000,000 | `0.11x` | **-€44,000,000** |
+| `0109823-0` | Kemira Oyj (Teollisuuden energia- ja sähköistämistuet — kannattavan perusteollisuuden säilyttävä tuki) | `32.20.43 / 32.60.40` | €19,500,000 | €135,000,000 | `0.26x` | **-€19,500,000** |
 
 ---
 
@@ -109,7 +109,11 @@ Adjusting for `Other Operating Income` (`Liiketoiminnan muut tuotot`) public gra
 | `2653299-6` | Spinnova Oyj (Tilinpäätös 2024 IFRS: Liiketoiminnan muut tuotot / avustukset ja T&K-aktivoinnit vs. omavarainen käyttökate) | €762,000 | €-15,600,000 | €5,050,000 | **€-20,650,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
 | `2766860-9` | Infinited Fiber Company Oy (Tilinpäätös 2024 KPL: Julkisten T&K-avustusten ja kehittämisaktivointien oikaisu) | €186,000 | €-7,100,000 | €6,500,000 | **€-13,600,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
 | `2872116-8` | Solar Foods Oyj (Tilinpäätös 2024–2025: Liiketoiminnan muihin tuottoihin kirjatut julkiset IPCEI/BF-kehittämisavustukset) | €124,000 | €-8,900,000 | €10,000,000 | **€-18,900,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
-| `0112038-9` | Nokia Oyj (Vertailu: Vahva operatiivinen kassavirta-EBITDA, avustusten osuus <1 % käyttökatteesta) | €19,200,000,000 | €2,650,000,000 | €16,900,000 | **€2,633,100,000** | Clean Organic Cash EBITDA (<1% Grants) |
+| `2804523-7` | Betolar Oyj (Tilinpäätös 2024–2025: Liiketoiminnan muihin tuottoihin kirjatut BF/ELY-avustukset ja kehittämisaktivoinnit) | €840,000 | €-5,800,000 | €3,500,000 | **€-9,300,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
+| `0112038-9` | Nokia Oyj (Vertailu IFRS: Vahva operatiivinen kassavirta-EBITDA, avustusten osuus <1 % käyttökatteesta) | €19,200,000,000 | €2,650,000,000 | €16,900,000 | **€2,633,100,000** | Clean Organic Cash EBITDA (<1% Grants) |
+| `1927400-1` | KONE Oyj (Vertailu IFRS: Vahva markkinaehtoinen kassavirta-EBITDA, Veturi-avustukset ~0,3 % käyttökatteesta) | €11,000,000,000 | €1,680,000,000 | €4,400,000 | **€1,675,600,000** | Clean Organic Cash EBITDA (<1% Grants) |
+| `1999212-6` | Orion Oyj (Vertailu IFRS: Lääketeollisuuden vahva omavarainen käyttökate, BF Veturi-tuki ~0,7 % käyttökatteesta) | €1,540,000,000 | €480,000,000 | €3,200,000 | **€476,800,000** | Clean Organic Cash EBITDA (<1% Grants) |
+| `2617450-6` | Harvia Oyj (Vertailu IFRS: 100 % markkinaehtoinen käyttökate ilman julkisia yritystukia) | €175,000,000 | €43,000,000 | €0 | **€43,000,000** | Clean Organic Cash EBITDA (<1% Grants) |
 
 ---
 
