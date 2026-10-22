@@ -1,4 +1,4 @@
-name: Deploy Static Pages
+name: Deploy Veronmaksajan Tuomioistuin to GitHub Pages
 
 on:
   push:
@@ -23,12 +23,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Configure Pages
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Run Unit & Empirical Verification Tests
+        run: PYTHONPATH=src python3 -B -m unittest discover -s tests -v
+
+      - name: Build Reproducible HTML, Excel (.xlsx) & Markdown Artifacts
+        run: PYTHONPATH=src python3 -B -m tukipalkkio_purku.cli --offline
+
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
-      - name: Upload Static Artifact (dist/)
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: "dist"
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

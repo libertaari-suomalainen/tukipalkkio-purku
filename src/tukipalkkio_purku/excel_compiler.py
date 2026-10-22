@@ -87,8 +87,8 @@ def compile_vm_kehysriihi_xlsx(
             470000000,
             45.0,
             211500000,
-            "Välilehdet 02 & 03: Infinited Fiber (12,4 M€ tuki -> yt-neuvottelut & 0 € veroa), Spinnova (14,8 M€ -> 0 € veroa), Solar Foods (18,2 M€ -> 0 € veroa), Meyer Turku (54 M€)",
-            "Rajataan avustukset vain aidon ulkoisvaikutuksen T&K-hankkeisiin (kuten Nokia, Kempower, ICEYE); katkaistaan 0 € veron tukikonsortiot",
+            "Välilehdet 02 & 03: Infinited Fiber (12,4 M€ tuki -> 0 € yhteisöveroa), Spinnova (14,8 M€ -> 0 € veroa), Solar Foods (18,2 M€ -> 0 € veroa), Meyer Turku (54 M€ -> 0 € veroa)",
+            "Kohdennetaan T&K-rahoitus korkean verovasteen vientiin ja Veturi-ohjelmiin (Nokia, KONE, Orion, Wärtsilä, Konecranes, Vaisala, Ponsse, Kempower)",
         ],
         [
             "32.20.83",
@@ -96,8 +96,8 @@ def compile_vm_kehysriihi_xlsx(
             180000000,
             50.0,
             90000000,
-            "Välilehti 02: Kroonisesti tappiollisten tuki- ja pilottiyhtiöiden (esim. eniferBio, Spinnova, Infinited Fiber) vakuudettomat T&K-pehmolainat",
-            "Lopetetaan anteeksiannettavat vakuudettomat tuotekehityslainat kroonisesti verokielteisille yhtiöille",
+            "Välilehti 02: Pitkittyneen kehitysvaiheen pilottiyhtiöiden (esim. eniferBio, Spinnova, Infinited Fiber) vakuudettomat T&K-lainat",
+            "Rajataan vakuudettomat tuotekehityslainat hankkeisiin, joilla on yksityinen pääomasitoutuminen ja takaisinmaksukyky",
         ],
         [
             "31.20.43 / 32.30.42",
@@ -105,8 +105,8 @@ def compile_vm_kehysriihi_xlsx(
             340000000,
             51.2,
             174000000,
-            "Välilehti 02: Viking Line (115 M€/5v), Tallink Silja (98 M€/5v) ja ELY-kehittämisavustukset (Betolar 6,9 M€ -> 0 € yhteisöveroa)",
-            "Lakkautetaan paikallista kilpailua vääristävät ELY-konsulttituet ja karsitaan varustamoiden automaattitukia",
+            "Välilehti 02: TEM 2020–2025 suorat tuet Viking Line (129 M€), Finnlines (93 M€), Tallink Silja (71 M€) sekä ELY-kehittämisavustukset (Betolar 6,9 M€)",
+            "Karsitaan kilpailua vääristävät yrityskohtaiset ELY-kehittämisavustukset ja rajataan varustamoiden miehistötukia",
         ],
         [
             "33.90.50",
@@ -114,8 +114,8 @@ def compile_vm_kehysriihi_xlsx(
             410000000,
             51.0,
             209000000,
-            "Välilehdet 04 & 06: KAIKKI 686 STEA-järjestöä 2026 (273 912 000 € / 1 288 päätöstä), josta 212 203 929 € (77,5 %) on jatkuvaa Ak-toimintatukea!",
-            "Karsitaan jatkuvien Ak/Ay-avustusten hallintopöhö, tuetut lomajärjestöt (Loma ja Terveys 2,68 M€ + Hyvinvointilomat 2,10 M€) ja sote-päällekkäisyydet",
+            "Välilehdet 04 & 06: KAIKKI 686 STEA-järjestöä 2026 (273 912 000 € / 1 288 päätöstä): 212,20 M€ (77,5 %) jatkuvaa Ak-toiminta-avustusta ja 58,21 M€ (21,3 %) Ay-yleisavustusta",
+            "Karsitaan Ay-yleisavustuksia, valtakunnallisia kattojärjestörakenteita ja ei-lakisääteiset lomajärjestöt (Loma ja Terveys 2,68 M€ + Hyvinvointilomat 2,10 M€); suojataan kriisityö",
         ],
         [
             "29.80.50 / 29.90.50 / 29.91.50",
@@ -124,7 +124,7 @@ def compile_vm_kehysriihi_xlsx(
             40.0,
             168000000,
             "Välilehti 04: Katto- ja edunvalvontajärjestöjen (esim. Allianssi ry 1,95 M€/v momentilta 29.91.50) yleisavustukset ja monikanavarahoitus",
-            "Poistetaan valtakunnallisten katto- ja lobbausjärjestöjen yleisavustukset; suojataan paikallinen lasten ja nuorten seuratoiminta",
+            "Karsitaan valtakunnallisten katto- ja edunvalvontajärjestöjen yleisavustuksia; suojataan paikallinen lasten ja nuorten seuratoiminta",
         ],
         [
             "32.20.43 / 32.60.40 / 30.20.40",
@@ -132,17 +132,17 @@ def compile_vm_kehysriihi_xlsx(
             1740000000,
             40.0,
             696000000,
-            "Välilehti 02: UPM-Kymmene (142 M€), Stora Enso (96 M€), Neste (68,5 M€), Outokumpu (62 M€), SSAB (48 M€), Metsä Fibre (44 M€), Fortum (34 M€)",
-            "Leikataan kannattavien suuryritysten kuolleen painon (Deadweight ROI < 0.5x) säilyttävät energia- ja sähköistämistuet",
+            "Välilehti 02: UPM-Kymmene (140 M€), Stora Enso (96 M€), Neste (68,5 M€), Outokumpu (62 M€), SSAB (48 M€), Metsä Fibre (44 M€), Fortum (34 M€)",
+            "Puretaan vakiintuneiden suuryritysten matalan lisäisyyden (Deadweight ROI < 0.5x) sähköistämis-, energia- ja säilytystuet VATT/Etla-suositusten mukaisesti",
         ],
         [
             "YHTEENSÄ",
-            "KEHYSRIIHI 2027 TUKILEIKKURI YHTEENSÄ (6 VALTION TALOUSARVIOMOMENTTIA)",
+            "KEHYSRIIHI 2027 TUKIUUDISTUS YHTEENSÄ (6 VALTION TALOUSARVIOMOMENTTIA)",
             "=SUM(C2:C7)",
             44.5,
             "=SUM(E2:E7)",
             "Todistettu rivi riviltä välilehdillä 02–06 (686 STEA-järjestöä + 47 suomalaista suuryritystä, tukikohdetta ja veronmaksajaverrokkia)",
-            "1,55 miljardin euron välitön vuosisäästö ilman yhtäkään leikkausta sairaanhoitajista, opettajista tai poliiseista",
+            "1,55 miljardin euron vuotuinen säästöpotentiaali kohdentamalla sopeutus tehottomiin yritys- ja yleisavustuksiin peruspalveluiden sijaan",
         ],
     ]
 
@@ -201,15 +201,15 @@ def compile_vm_kehysriihi_xlsx(
     s3_rows: List[Sequence[CellValue]] = [
         [
             "Klusteri-ID",
-            "Kytkös / Osoitekeskittymä",
+            "Ekosysteemi- / Osoitekeskittymä",
             "Yhtiöiden lkm",
             "Y-tunnukset",
             "Klusterin yhtiöt",
-            "Nostetut julkiset tuet yht. (€)",
+            "Myönnetyt julkiset tuet yht. (€)",
             "Maksettu yhteisöveron muutos 5v (€)",
             "Vero / Tuki -suhde",
-            "Arvioitu hakemus- ja koordinointikulu (20 % €)",
-            "Kytkössignaalit (PRH YTJ & Konsortiot)",
+            "Laskennallinen hallinto- ja koordinointivarauma (20 % €)",
+            "Ekosysteemikytkökset (PRH YTJ & T&K-konsortiot)",
         ]
     ]
     for r in rings:
@@ -226,20 +226,20 @@ def compile_vm_kehysriihi_xlsx(
             " ; ".join(r["link_signals"]),
         ])
 
-    # Sheet 4: Audited Major STEA & OKM NGO Cases (Including Sote Double-Dipping & Holiday Associations)
+    # Sheet 4: Audited Major STEA & OKM NGO Cases (Ay vs. Ak Breakdown & Sote Service Sales)
     s4_rows: List[Sequence[CellValue]] = [
         [
             "Y-tunnus",
             "Järjestön / Säätiön nimi",
             "Rahoittaja",
             "VM Momentti",
-            "Pääavustuslaji",
+            "Avustuslajit",
             "Vuosiavustus 2026 (€)",
-            "Keskushallinto, viestintä & Ak-osuus (%)",
-            "Kaupallinen sote-palvelumyynti hyvinvointialueille (€/v)",
-            "Monikanava- / Sote-tuplalaskuttaja",
-            "Rahoitusrakenteen huomio",
-            "Esitetty säästö (€/v)",
+            "Yleisavustus- (Ay) / hallinto- / karsintaosuus (%)",
+            "Sote- ja julkinen palvelumyynti (€/v)",
+            "Monikanava- / Palvelutuottaja",
+            "Virallinen avustuserittely (STEA 2026 / OKM)",
+            "Tarkasteltava Ay- / kohdesäästö (€/v)",
         ]
     ]
     for n in ngo_evals:
@@ -257,16 +257,16 @@ def compile_vm_kehysriihi_xlsx(
             float(n["recoverable_cut_eur"]),
         ])
 
-    # Sheet 5: Tilinpäätösten Vale-EBITDA & Tukiriisunta
+    # Sheet 5: Tilinpäätösten avustuserien ja T&K-aktivointien oikaisu (IFRS / KPL)
     s5_rows: List[Sequence[CellValue]] = [
         [
             "Y-tunnus",
             "Tarkasteltava yhtiö",
             "Raportoitu liikevaihto (€)",
             "Raportoitu käyttökate / EBITDA (€)",
-            "Muihin tuottoihin kirjatut avustukset & aktivoinnit (€)",
-            "Oikaistu todellinen kassavirta-EBITDA ilman tukia (€)",
-            "Tilinpäätösdiagnoosi",
+            "Muihin tuottoihin kirjatut avustukset & T&K-aktivoinnit (KPL/IFRS €)",
+            "Omavarainen käyttökate ennen julkisia tukia (€)",
+            "Tilinpäätösanalyysin luokitus",
         ]
     ]
     for q in qoe_reports:

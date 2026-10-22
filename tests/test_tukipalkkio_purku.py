@@ -198,13 +198,19 @@ class TestTukipalkkioPurkuEngine(unittest.TestCase):
         evals = {x["y_tunnus"]: x for x in compute_subsidy_causal_roi(corps)}
         self.assertEqual(evals["2766860-9"]["classification"], "BLACKLIST_ZOMBIE")  # Infinited Fiber (€0 tax)
         self.assertEqual(evals["2712152-3"]["classification"], "BLACKLIST_ZOMBIE")  # Woodio (€0 tax)
-        self.assertEqual(evals["1041090-0"]["classification"], "DEADWEIGHT_CROWD_OUT")  # UPM-Kymmene
+        self.assertEqual(evals["1041090-0"]["classification"], "DEADWEIGHT_CROWD_OUT")  # UPM-Kymmene (140 M€)
         self.assertEqual(evals["1852302-9"]["classification"], "DEADWEIGHT_CROWD_OUT")  # Neste
         self.assertEqual(evals["0112038-9"]["classification"], "POSITIVE_EXTERNALITY_KEEP")  # Nokia
+        self.assertEqual(evals["1927400-1"]["classification"], "POSITIVE_EXTERNALITY_KEEP")  # KONE Veturi
+        self.assertEqual(evals["1999212-6"]["classification"], "POSITIVE_EXTERNALITY_KEEP")  # Orion Veturi
+        self.assertEqual(evals["0934209-0"]["classification"], "POSITIVE_EXTERNALITY_KEEP")  # Ponsse Veturi
 
-        ngo_evals = score_ngo_grant_efficiency(ngos)
-        for ne in ngo_evals:
+        ngo_evals = {x["y_tunnus"]: x for x in score_ngo_grant_efficiency(ngos)}
+        for ne in ngo_evals.values():
             self.assertLessEqual(float(ne["recoverable_cut_eur"]), float(ne["annual_grant_eur"]))
+        # Verify MLL Ay general grant is accurately 240,000 € (10.6%) while Ak frontline work is 2,013,911 €
+        self.assertEqual(ngo_evals["0215204-0"]["hq_admin_comms_lobbying_spend_eur"], 240000.0)
+        self.assertEqual(ngo_evals["0215204-0"]["direct_frontline_aid_spend_eur"], 2013911.0)
 
 
 if __name__ == "__main__":

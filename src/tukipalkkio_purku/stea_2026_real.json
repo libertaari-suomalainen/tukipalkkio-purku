@@ -127,7 +127,8 @@
       "Ak 12261: Monikielisten päihteillä oireilevien nuorten tukemiseen ja palveluihin ohjaamiseen jalkautuvalla työllä (115 000 €)",
       "Ak 9776: Kuntodopingaineiden käytöstä aiheutuvien terveyshaittojen ehkäisyyn ja vähentämiseen terveysneuvonnan, tiedontuotannon ja ammattilaisten kouluttamisen avulla (Dopinglinkki) (80 000 €)",
       "Ak 14: Järjestölähtöisen päihdetyön asiakaslähtöisyyden ja palvelupolkujen sujuvuuden parantamiseen sekä päihdetyössä tarvittavan tiedon saannin edistämiseen (67 333 €)"
-    ]
+    ],
+    "y_tunnus": "0200924-4"
   },
   {
     "org_id": 1192,
@@ -142,7 +143,8 @@
     "top_purposes": [
       "Ak 13: Sosiaali- ja terveysjärjestöjen asiantuntemuksen ja näkökulmien välilliseen hyödyntämiseen osana palvelujärjestelmän kehittämistä ja päätöksentekoa. Järjestötoiminnan toimintaedellytysten vahvistamiseen ja haavoittuvassa asemassa olevan väestönosan äänen esille tuomiseen julkisessa keskustelussa. (1 623 702 €)",
       "Ay 1: Yleisavustuksena avustuksen saajan yleishyödylliseen toimintaan (1 182 867 €)"
-    ]
+    ],
+    "y_tunnus": "2408739-0"
   },
   {
     "org_id": 730,
@@ -180,7 +182,8 @@
       "Ay 3069: Yleisavustuksena avustuksen saajan yleishyödylliseen toimintaan (194 162 €)",
       "Ak 2: Asunnottomuutta kokeneiden asumisen laadun asukaslähtöiseen kehittämiseen, heidän äänensä ja näkökulmiensa keräämiseen ja tuomiseen yhteiskunnalliseen keskusteluun sekä asunnottomuuden ja asunnottomuusstigman vastaiseen työhön (Koti kaikille) (138 721 €)",
       "Ak 7092: Vapaaehtoistoiminnan koordinointiin sekä uusien vapaaehtoistyöntekijöiden rekrytointiin ja toiminnanohjaukseen (108 047 €)"
-    ]
+    ],
+    "y_tunnus": "0222440-3"
   },
   {
     "org_id": 191,
@@ -262,7 +265,8 @@
       "Ak 13: Lasten ja lapsiperheiden hyvinvoinnin edistämiseen ja tasavertaisen vanhemmuuden vahvistamiseen kehittämällä mentalisaatioperusteista vanhempainryhmätoimintaa ja Jututtamo-vertaisryhmätoimintaa sekä kouluttamalla vapaaehtoisia ja ammattilaisia ryhmien ohjaajiksi (Mentalisaatioperustainen vanhempainryhmätoiminta) (144 217 €)",
       "Ak 11254: Eri-ikäisten lasten ja aikuisten kohtaamisen ja osallisuuden lisäämiseen leikkitoiminnan avulla (Leikkipäivä-ohjelma). (58 965 €)",
       "Ak 7: Valtakunnallisen äitienpäiväjuhlan järjestämiseen (27 563 €)"
-    ]
+    ],
+    "y_tunnus": "0215204-0"
   },
   {
     "org_id": 1190,
@@ -510,7 +514,8 @@
       "Ak 13: Jäsenyhdistyksissä toteutettavien vaativan vauvatyön työmuotojen (Vauvaperheryhmä, Vauvaperheohjaus, vapaaehtoisdoulatoiminta ja vauvaperheiden kohtaamispaikkatoiminta) kehittämis- ja koordinointitoimintaan sekä vaikuttamistyöhön. Vauvaperheille suunnatun verkkoauttamistoiminnan (vauvaperhe chat ja vauvaperhe.fi -sivusto) koordinointiin ja kehittämiseen, sekä monikulttuurisen työotteen kehittämiseen. (451 200 €)",
       "Ak 16: Jäsenjärjestöissä tehtävän perhe- ja lähisuhdeväkivaltaan liittyvän ennaltaehkäisyn ja avotyön koordinointiin, kehittämiseen ja auditointiin sekä vaikuttamistyöhön ja Nettiturvakoti -sivuston kehittämiseen ja verkkoauttamisen koordinointiin (Perhe- ja lähisuhdeväkivaltatyö) (392 818 €)",
       "Ak 22: Eroperheiden auttamisen kehittämiseen ja yhteistyövanhemmuuden ja rinnakkaisvanhemmuuden vahvistamiseen. Varhaisen tuen ja vaativien eropalvelujen kehittämiseen, menetelmien levittämiseen ja juurruttamiseen sekä vaikuttamistyöhön. Yhteistyön koordinointiin muiden alan toimijoiden kanssa (Ero lapsiperheessä -työ). (230 000 €)"
-    ]
+    ],
+    "y_tunnus": "0201112-5"
   },
   {
     "org_id": 526,
@@ -8430,7 +8435,7 @@
     "top_purposes": [
       "Ak 1: Yksinäisten tai kaverisuhteissa ongelmia kokevien lasten ja nuorten pienryhmätoiminnan järjestämiseen (Minä olen tärkeä -pienryhmätoiminta) sekä perheiden vuorovaikutuksen, voimavarojen, jaksamisen, osallisuuden ja toimijuuden vahvistamiseen Myö yhessä! -perhetoiminnan kautta. (99 225 €)"
     ],
-    "y_tunnus": "0116788-1"
+    "y_tunnus": null
   },
   {
     "org_id": 487,
@@ -8559,7 +8564,7 @@
     "top_purposes": [
       "Ak 1: Mielenterveyskuntoutujien mielenterveyden edistämiseen matalan kynnyksen kohtaamispaikan sekä ryhmä- ja vapaaehtoistoiminnan avulla Hyvinkään seudulla (Versotalo) (96 651 €)"
     ],
-    "y_tunnus": "0278760-1"
+    "y_tunnus": null
   },
   {
     "org_id": 791,
@@ -8828,7 +8833,7 @@
     "top_purposes": [
       "Ak 3: Lapsiperheiden hyvinvoinnin vahvistamiseen matalan kynnyksen toiminnoilla Koillis-Lapin alueella (Askel-toiminta) (86 000 €)"
     ],
-    "y_tunnus": "2408739-0"
+    "y_tunnus": null
   },
   {
     "org_id": 1011,
