@@ -317,6 +317,8 @@ def compute_subsidy_qoe_ebitda_strip(targets: List[AcquisitionTargetQoERecord]) 
             "reported_revenue_eur": round(t.reported_revenue_eur, 2),
             "reported_ebitda_eur": round(t.reported_ebitda_eur, 2),
             "direct_grants_in_other_income_eur": round(t.other_operating_income_grants_eur, 2),
+            "capitalized_dev_payroll_eur": round(t.capitalized_grant_rd_payroll_eur, 2),
+            "related_party_grant_consulting_revenue_eur": round(t.related_party_cluster_revenue_eur * 0.35, 2),
             "subsidy_and_related_party_ebitda_inflation_eur": round(artificial_ebitda_boost, 2),
             "true_subsidy_stripped_core_ebitda_eur": round(true_core_ebitda, 2),
             "true_standalone_ebitda_eur": round(true_core_ebitda, 2),

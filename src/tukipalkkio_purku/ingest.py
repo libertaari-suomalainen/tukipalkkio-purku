@@ -1059,7 +1059,7 @@ def load_calibrated_sovereign_dataset() -> Tuple[
             headline_ev_ebitda_multiple=8.5,
         ),
         AcquisitionTargetQoERecord(
-            y_tunnus="2804523-7",
+            y_tunnus="2800638-3",
             company_name="Betolar Oyj (Tilinpäätös 2024–2025: Liiketoiminnan muihin tuottoihin kirjatut BF/ELY-avustukset ja kehittämisaktivoinnit)",
             reported_revenue_eur=840000.0,
             reported_ebitda_eur=-5800000.0,
@@ -1099,7 +1099,7 @@ def load_calibrated_sovereign_dataset() -> Tuple[
             headline_ev_ebitda_multiple=13.0,
         ),
         AcquisitionTargetQoERecord(
-            y_tunnus="2617450-6",
+            y_tunnus="2612169-5",
             company_name="Harvia Oyj (Vertailu IFRS: 100 % markkinaehtoinen käyttökate ilman julkisia yritystukia)",
             reported_revenue_eur=175000000.0,
             reported_ebitda_eur=43000000.0,

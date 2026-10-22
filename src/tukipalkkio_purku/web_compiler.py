@@ -1014,9 +1014,10 @@ def compile_tuomioistuin_html(
               <th class="sortable" onclick="sortQoeTable('company_name')"><span data-i18n="th_q_name">Yhtiö &amp; Y-tunnus</span> <span id="sort-qoe-company_name"></span></th>
               <th class="sortable" onclick="sortQoeTable('reported_revenue_eur')"><span data-i18n="th_q_rev">Liikevaihto (€)</span> <span id="sort-qoe-reported_revenue_eur"></span></th>
               <th class="sortable" onclick="sortQoeTable('reported_ebitda_eur')"><span data-i18n="th_q_rep">Raportoitu EBITDA (€)</span> <span id="sort-qoe-reported_ebitda_eur"></span></th>
-              <th class="sortable" onclick="sortQoeTable('subsidy_and_related_party_ebitda_inflation_eur')"><span data-i18n="th_q_inf">IAS 20 / KPL avustuserät (€)</span> <span id="sort-qoe-subsidy_and_related_party_ebitda_inflation_eur">▼</span></th>
-              <th class="sortable" onclick="sortQoeTable('true_subsidy_stripped_core_ebitda_eur')"><span data-i18n="th_q_true">Omavarainen EBITDA ennen tukia (€)</span> <span id="sort-qoe-true_subsidy_stripped_core_ebitda_eur"></span></th>
-              <th class="sortable" onclick="sortQoeTable('qoe_verdict')"><span data-i18n="th_q_vrd">Tilinpäätösluokitus</span> <span id="sort-qoe-qoe_verdict"></span></th>
+              <th class="sortable" onclick="sortQoeTable('direct_grants_in_other_income_eur')"><span data-i18n="th_q_grn">Avustukset muissa tuotoissa (€)</span> <span id="sort-qoe-direct_grants_in_other_income_eur"></span></th>
+              <th class="sortable" onclick="sortQoeTable('subsidy_and_related_party_ebitda_inflation_eur')"><span data-i18n="th_q_cap">T&amp;K-aktivoinnit &amp; oikaisut (€)</span> <span id="sort-qoe-subsidy_and_related_party_ebitda_inflation_eur">▼</span></th>
+              <th class="sortable" onclick="sortQoeTable('true_standalone_ebitda_eur')"><span data-i18n="th_q_str">Omavarainen EBITDA ennen tukia (€)</span> <span id="sort-qoe-true_standalone_ebitda_eur"></span></th>
+              <th class="sortable" onclick="sortQoeTable('qoe_verdict')"><span data-i18n="th_q_cls">Tilinpäätösarvio (IAS 20 / KPL)</span> <span id="sort-qoe-qoe_verdict"></span></th>
             </tr>
           </thead>
           <tbody id="qoe-tbody"></tbody>

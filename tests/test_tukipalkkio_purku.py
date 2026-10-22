@@ -216,6 +216,10 @@ class TestTukipalkkioPurkuEngine(unittest.TestCase):
             self.assertTrue(validate_ytunnus_checksum(n.y_tunnus), f"Invalid NGO Y-tunnus: {n.y_tunnus}")
         for b in benchmarks:
             self.assertTrue(validate_ytunnus_checksum(str(b["y_tunnus"])), f"Invalid benchmark Y-tunnus: {b['y_tunnus']}")
+        for q in qoes:
+            self.assertTrue(validate_ytunnus_checksum(q.y_tunnus), f"Invalid QoE Y-tunnus: {q.y_tunnus}")
+        qoe_evals = {x["y_tunnus"]: x for x in compute_subsidy_qoe_ebitda_strip(qoes)}
+        self.assertGreater(qoe_evals["2653299-6"]["capitalized_dev_payroll_eur"], 0.0)
 
         evals = {x["y_tunnus"]: x for x in compute_subsidy_causal_roi(corps)}
         self.assertEqual(evals["2766860-9"]["classification"], "BLACKLIST_ZOMBIE")  # Infinited Fiber (€0 tax)

@@ -109,11 +109,11 @@ Adjusting for `Other Operating Income` (`Liiketoiminnan muut tuotot`) public gra
 | `2653299-6` | Spinnova Oyj (Tilinpäätös 2024 IFRS: Liiketoiminnan muut tuotot / avustukset ja T&K-aktivoinnit vs. omavarainen käyttökate) | €762,000 | €-15,600,000 | €5,050,000 | **€-20,650,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
 | `2766860-9` | Infinited Fiber Company Oy (Tilinpäätös 2024 KPL: Julkisten T&K-avustusten ja kehittämisaktivointien oikaisu) | €186,000 | €-7,100,000 | €6,500,000 | **€-13,600,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
 | `2872116-8` | Solar Foods Oyj (Tilinpäätös 2024–2025: Liiketoiminnan muihin tuottoihin kirjatut julkiset IPCEI/BF-kehittämisavustukset) | €124,000 | €-8,900,000 | €10,000,000 | **€-18,900,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
-| `2804523-7` | Betolar Oyj (Tilinpäätös 2024–2025: Liiketoiminnan muihin tuottoihin kirjatut BF/ELY-avustukset ja kehittämisaktivoinnit) | €840,000 | €-5,800,000 | €3,500,000 | **€-9,300,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
+| `2800638-3` | Betolar Oyj (Tilinpäätös 2024–2025: Liiketoiminnan muihin tuottoihin kirjatut BF/ELY-avustukset ja kehittämisaktivoinnit) | €840,000 | €-5,800,000 | €3,500,000 | **€-9,300,000** | Negative Standalone EBITDA Before Subsidies (IAS 20 / KPL) |
 | `0112038-9` | Nokia Oyj (Vertailu IFRS: Vahva operatiivinen kassavirta-EBITDA, avustusten osuus <1 % käyttökatteesta) | €19,200,000,000 | €2,650,000,000 | €16,900,000 | **€2,633,100,000** | Clean Organic Cash EBITDA (<1% Grants) |
 | `1927400-1` | KONE Oyj (Vertailu IFRS: Vahva markkinaehtoinen kassavirta-EBITDA, Veturi-avustukset ~0,3 % käyttökatteesta) | €11,000,000,000 | €1,680,000,000 | €4,400,000 | **€1,675,600,000** | Clean Organic Cash EBITDA (<1% Grants) |
 | `1999212-6` | Orion Oyj (Vertailu IFRS: Lääketeollisuuden vahva omavarainen käyttökate, BF Veturi-tuki ~0,7 % käyttökatteesta) | €1,540,000,000 | €480,000,000 | €3,200,000 | **€476,800,000** | Clean Organic Cash EBITDA (<1% Grants) |
-| `2617450-6` | Harvia Oyj (Vertailu IFRS: 100 % markkinaehtoinen käyttökate ilman julkisia yritystukia) | €175,000,000 | €43,000,000 | €0 | **€43,000,000** | Clean Organic Cash EBITDA (<1% Grants) |
+| `2612169-5` | Harvia Oyj (Vertailu IFRS: 100 % markkinaehtoinen käyttökate ilman julkisia yritystukia) | €175,000,000 | €43,000,000 | €0 | **€43,000,000** | Clean Organic Cash EBITDA (<1% Grants) |
 
 ---
 
